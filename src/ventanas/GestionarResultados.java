@@ -213,63 +213,62 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                
-                else if ("Puntuacion".equals(compAux.getFormaPuntuacion())){
-                    int PP1 = (int)jTable1.getValueAt(0, 1);
-                    int PP2 = (int)jTable1.getValueAt(1, 1);
-                    asispar1=(Boolean)jTable1.getValueAt(0, 2);
-                    asispar2=(Boolean)jTable1.getValueAt(1, 2);
-                    if(PP1>PP2){
-                        indiceGanador = 0;
-                    }
-                    else if (PP2>PP1){
-                        indiceGanador = 1;
-                    }
-                    else{
-                        if(empatePermitido == false){
-                            V.get().alerta();
-                            JOptionPane.showMessageDialog(null,"La competencia no permite empate",
-                                    "Error", JOptionPane.INFORMATION_MESSAGE);
-                        }
-                        else{
-                            indiceGanador = 2;
-                        }
-                    }
-                    ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
-                    listaResultadosAux.add(unResultado);
-                    
+            }
+        }
+        else if ("Puntuacion".equals(compAux.getFormaPuntuacion())){
+            int PP1 = (int)jTable1.getValueAt(0, 1);
+            int PP2 = (int)jTable1.getValueAt(1, 1);
+            asispar1=(Boolean)jTable1.getValueAt(0, 2);
+            asispar2=(Boolean)jTable1.getValueAt(1, 2);
+            if(PP1>PP2){
+                indiceGanador = 0;
+            }
+            else if (PP2>PP1){
+                indiceGanador = 1;
+            }
+            else{
+                if(empatePermitido == false){
+                    V.get().alerta();
+                    JOptionPane.showMessageDialog(null,"La competencia no permite empate",
+                            "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    Boolean ganador1=(Boolean)jTable1.getValueAt(0, 1);
-                    Boolean ganador2=(Boolean)jTable1.getValueAt(1, 1);
-                    asispar1=(Boolean)jTable1.getValueAt(0, 2);
-                    asispar2=(Boolean)jTable1.getValueAt(1, 2);
-                    if(ganador1 == true && ganador2 == false){
-                        indiceGanador = 0;
-                    }
-                    else if(ganador2 == true && ganador1 == false){
-                        indiceGanador = 1;
-                    }
-                    else{
-                        if(empatePermitido == false){
-                            V.get().alerta();
-                            JOptionPane.showMessageDialog(null,"La competencia no permite empate",
-                                    "Error", JOptionPane.INFORMATION_MESSAGE);
-                        }
-                        else{
-                            indiceGanador = 2;
-                        }
-                    }
-                    ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
-                    listaResultadosAux.add(unResultado);
+                    indiceGanador = 2;
                 }
-                
-                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
-                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+            ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
+            listaResultadosAux.add(unResultado);
+            
+        }
+        else{
+            Boolean ganador1=(Boolean)jTable1.getValueAt(0, 1);
+            Boolean ganador2=(Boolean)jTable1.getValueAt(1, 1);
+            asispar1=(Boolean)jTable1.getValueAt(0, 2);
+            asispar2=(Boolean)jTable1.getValueAt(1, 2);
+            if(ganador1 == true && ganador2 == false){
+                indiceGanador = 0;
+            }
+            else if(ganador2 == true && ganador1 == false){
+                indiceGanador = 1;
+            }
+            else{
+                if(empatePermitido == false){
+                    V.get().alerta();
+                    JOptionPane.showMessageDialog(null,"La competencia no permite empate",
+                            "Error", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    indiceGanador = 2;
+                }
+            }
+            ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
+            listaResultadosAux.add(unResultado);
+        }
+        
+        GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+        JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-            
-        }}
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         V.get().remove(this);
         V.get().gestionarResultadosVolver();
