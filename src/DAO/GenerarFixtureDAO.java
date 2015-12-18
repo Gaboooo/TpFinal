@@ -30,7 +30,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return listaIDParticipantes; }
     
-    // DONE!
+
     public static void deletePartidos(int unIDRonda) {
         Connection conn = null;
         try {
@@ -44,7 +44,7 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void deleteRondas(int unIDFixture) {
         Connection conn = null;
         try {
@@ -66,7 +66,7 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void deleteFixture(int unaIDCD) {
         Connection conn = null; 
         try {
@@ -87,7 +87,7 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void persistirPartido(Partido unPartido, int IDRonda) {
         Connection conn = null;
         try {
@@ -109,7 +109,7 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void persistirRonda(Ronda unaRonda, int IDFixture) {
         Connection conn = null;
         try {
@@ -121,7 +121,7 @@ public class GenerarFixtureDAO {
             statement.executeUpdate(persistirRonda, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = statement.getGeneratedKeys();
             while(rs.next()) {
-                IDRonda = rs.getInt(1); // Notese el 1 ;)
+                IDRonda = rs.getInt(1); // Notese el 1
             }
             // Persistencia partidos
             for (Partido unPartido:(unaRonda.getListaPartidos())) {
@@ -132,7 +132,7 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void persistirFixture(Competencia unaCompetencia, Fixture unFixture) {
         Connection conn = null; 
         try {
@@ -143,7 +143,7 @@ public class GenerarFixtureDAO {
             statement.executeUpdate(persistirFixture, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = statement.getGeneratedKeys();
             while(rs.next()) {
-                IDFixture = rs.getInt(1); // Notese el 1 ;)
+                IDFixture = rs.getInt(1); // Notese el 1
             }
             // Persistencia rondas
             for (Ronda unaRonda:(unFixture.getListaRondas())) {
@@ -154,14 +154,14 @@ public class GenerarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static ArrayList<HistorialParticipante> getHistorialParticipante(int unIDParticipante) {
         ArrayList<HistorialParticipante> historial = new ArrayList();
         Connection conn = null;
         try {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
-            HistorialParticipante unCambio; // CAMBIEMOS
+            HistorialParticipante unCambio;
             int IDHP; String nombre, correo, fecha, hora;
             String getHistorial = "SELECT * FROM historial_participante WHERE id_participante = " + unIDParticipante;
             ResultSet rs = statement.executeQuery(getHistorial);
@@ -180,7 +180,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return historial; }    
     
-    // DONE!
+
     public static ArrayList<Participante> getParticipantes(int unIDCompetencia) {
         ArrayList<Participante> listaParticipantes = new ArrayList();
         Connection conn = null;
@@ -203,7 +203,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return listaParticipantes; }
     
-    // DONE!
+
     public static ArrayList<Deporte> getDeportes(int unIDLR) {
         ArrayList<Deporte> listaDeportes = new ArrayList();
         Connection conn = null;
@@ -227,7 +227,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return listaDeportes; }
     
-    // DONE!
+
     public static LugarRealizacion getLR(int unID) {
         LugarRealizacion unLR = null;
         Connection conn = null;
@@ -252,7 +252,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unLR; }
     
-    // DONE!
+
     public static LugarRealizacion getLR(String unNombre) {
         LugarRealizacion unLR = null;
         Connection conn = null;
@@ -277,7 +277,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unLR; } 
     
-    // DONE!
+
     public static ArrayList<Disponibilidad> getDisponibilidades(int unIDCompetencia) {
         ArrayList<Disponibilidad> listaDisponibilidades = new ArrayList();
         Connection conn = null;
@@ -301,7 +301,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return listaDisponibilidades; }
     
-    // DONE!
+
     public static Deporte getDeporte(int unID) {
         Deporte unDeporte = null;
         Connection conn = null;
@@ -323,7 +323,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unDeporte; }
     
-    // DONE!
+
     public static Modalidad getModalidad(int unID) {
         Modalidad unaModalidad = null;
         Connection conn = null;
@@ -345,7 +345,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unaModalidad; }
     
-    // DONE!
+
     public static Estado getEstado(int unID) {
         Estado unEstado = null;
         Connection conn = null;
@@ -367,7 +367,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unEstado; }
     
-    // DONE!
+
     public static Estado getEstado(String unNombre) {
         Estado unEstado = null;
         Connection conn = null;
@@ -389,7 +389,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unEstado; }
     
-    // DONE!
+
     public static FormaPuntuacion getFormaPuntuacion(int unID) {
         FormaPuntuacion unaFormaPuntuacion = null;
         Connection conn = null;
@@ -411,7 +411,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unaFormaPuntuacion; }        
     
-    // DONE!
+
     public static Competencia getCompetencia(CompetenciaAux unaCDAUX) {
         Competencia unaCompetencia = null;
         Connection conn = null;
@@ -433,7 +433,7 @@ public class GenerarFixtureDAO {
                 IDEstado = rs.getInt("id_estado"); IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
                 IDModalidad = rs.getInt("id_modalidad"); IDDeporte = rs.getInt("id_deporte");
                 unNombre = rs.getString("nombre"); unReglamento = rs.getString("reglamento");
-                cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival"); /**/
+                cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival"); 
                 ptosPresentacion = rs.getInt("puntos_por_presentacion"); ptosVictoria = rs.getInt("puntos_por_victoria");
                 permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate"); }
             unDeporte = getDeporte(IDDeporte);
@@ -455,7 +455,7 @@ public class GenerarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unaCompetencia; }
 
-    // DONE!
+
     public static void setEstado(Competencia unaCompetencia, Estado unEstado) {
         Connection conn = null;
         try {
