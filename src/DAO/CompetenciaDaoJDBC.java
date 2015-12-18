@@ -172,10 +172,11 @@ public class CompetenciaDaoJDBC {
         int cantidadPartidosPorRonda = cantidadPartidosPorRonda(compAux.getId());
         
         //2   Comparar cantidad de partidos cargados, con la posibilidad de la ronda actual
-        int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda);
-        /*int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda)/cantidadPartidosPorRonda;*/
+        //int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda);
+        int numeroRondaActual= (cantidadPartidosCargados + cantidadPartidosPorRonda)/cantidadPartidosPorRonda;
         if(numeroRondaActual>cantRondas(compAux.getId()))
             numeroRondaActual--;
+        
         //3 Buscar en la bd todos los partidos de la ronda con numero ACTUAL 'numeroRondaActual'
         int idRonda=getIdRondaPorNumero(numeroRondaActual, compAux.getId());
         
