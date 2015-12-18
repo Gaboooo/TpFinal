@@ -12,10 +12,6 @@ public class GenerarFixtureGestor {
     public static void deleteFixture(CompetenciaAux unaCompetenciaAux) {
         GenerarFixtureDAO.deleteFixture(unaCompetenciaAux.getId()); }
     
-    public static int randomInt(int min, int max) {
-        // Error ??????? java.lang.IllegalArgumentException: bound must be greater than origin
-        int rand = ThreadLocalRandom.current().nextInt(min, max+1);
-        return rand; }
     
     // Crea todos los pares de P1 vs P2, desordenadamente, para que sean asignados a partidos
     public static ArrayList<ArrayList<Participante>> armarMatcheoParticipantes(
