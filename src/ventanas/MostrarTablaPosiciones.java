@@ -29,6 +29,7 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
         compAux=param;
         initComponents();
         
+        inicializarTabla();
     }
 
     /**
@@ -79,7 +80,6 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        inicializarTabla();
         jTable1.setRowHeight(20);
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -87,13 +87,21 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
             new Dimension(jTable1.getColumnModel().getTotalColumnWidth(), 30));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Nombre");
             jTable1.getColumnModel().getColumn(1).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Puntos");
             jTable1.getColumnModel().getColumn(2).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("<html>Partidos<br>Ganados");
             jTable1.getColumnModel().getColumn(3).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("<html>Partidos<br>Empatados");
             jTable1.getColumnModel().getColumn(4).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("<html>Partidos<br>Perdidos");
             jTable1.getColumnModel().getColumn(5).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("<html>Tantos<br>a Favor");
             jTable1.getColumnModel().getColumn(6).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("<html>Tantos<br>en Contra");
             jTable1.getColumnModel().getColumn(7).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(7).setHeaderValue("Diferencia");
         }
 
         add(jScrollPane1);

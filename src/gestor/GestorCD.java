@@ -31,31 +31,25 @@ public class GestorCD {
         else return false;
     }
     
-  /* public static ArrayList<PosicionAux> getPosicionesAux(int IDCompetencia) {
-        return CompetenciaDaoJDBC.getPosicionesAux(IDCompetencia); }*/
-   
-   /* public static ArrayList<PosicionAux> getPosicionesAux(int IDCompetencia) {
-        return CompetenciaDaoJDBC.getPosicionesAux(IDCompetencia); }*/
-    // lista tablaPosicionAux
     public static ArrayList<PosicionAux> getPosicionesAux(int id_competencia){
-        
+         
         Competencia c=CompetenciaDaoJDBC.getCompetencia(id_competencia);
         
         ArrayList<PosicionAux> listaTablaAux;
             listaTablaAux = new ArrayList<> ();
         
-        if("Finalizada".equals(c.getEstado().getNombre()) || "En Disputa".equals(c.getEstado().getNombre()) && "Liga".equals(c.getModalidad().getNombre())){
+        if("Finalizada".equals(c.getEstado().getNombre()) || "En disputa".equals(c.getEstado().getNombre()) && "Liga".equals(c.getModalidad().getNombre())){
             
 	    //Buscar TablaPosiciones
             ArrayList<Posicion> listaTablaPosiciones = c.getTablaPosiciones();
-            
+ 
             for(int i=0 ; i< listaTablaPosiciones.size();i++){
             
                 PosicionAux tablaAux;
                 
+                //una tabla de Posicion de la lista listaTablaPosiciones  
                 Posicion tpp=listaTablaPosiciones.get(i);
                 
-                 
                 tablaAux= new PosicionAux(tpp.getParticipante().getNombre(), tpp.getPuntaje(),
                         tpp.getPartidosGanados(),tpp.getPartidosPerdidos(),
                         tpp.getPartidosEmpatados(), 0, 0  );
