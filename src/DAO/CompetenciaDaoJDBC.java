@@ -258,12 +258,13 @@ public class CompetenciaDaoJDBC {
         
         try{
             conn = DBConnection.get();
-            ResultSet  rs;
+            
             Statement stmt = conn.createStatement();
-            rs=stmt.executeQuery(SQL_ID_RONDA);
-            rs.next();
-            idRonda=rs.getInt("result");
+            ResultSet  rs=stmt.executeQuery(SQL_ID_RONDA);
            
+            while(rs.next()){
+                idRonda=rs.getInt("result");
+            }
             
         }catch (SQLException ex) {
             
