@@ -46,7 +46,6 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return empatePermitido; }
     
-    // DONE!
     public static void persistirPosicion(Competencia unaCompetencia, Posicion unaPosicion) {
         Connection conn = null;
         try {
@@ -68,7 +67,6 @@ public class GestionarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // REWORK! Ahora recibe un PartidoAux
     public static Partido getPartido(PartidoAux unPartidoAux) {
         Partido unPartido = null;
         Connection conn = null;
@@ -102,7 +100,7 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unPartido; }
     
-    // REWORK! Ahora recibe una RondaAux
+
     public static Ronda getRonda(RondaAux unaRondaAux) {
         Ronda unaRonda = null;
         Connection conn = null;
@@ -126,7 +124,7 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unaRonda; }
     
-    // DONE!
+
     public static void persistirHistorialResultado(Partido unPartido, HistorialResultado unHR) {
         Connection conn = null;
         try {
@@ -156,7 +154,7 @@ public class GestionarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void updatePosicion(Competencia unaCompetencia, Participante unParticipante, Posicion unaPosicion) {
         Connection conn = null;
         try {
@@ -180,7 +178,7 @@ public class GestionarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } } 
     
-    // DONE!
+
     public static void setGanadorAndEmpate(Partido unPartido) {
         Connection conn = null;
         try {
@@ -201,7 +199,7 @@ public class GestionarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static void persistirResultado(Partido unPartido, Resultado unResultado) {
         int IDPartido = unPartido.getID();
         Connection conn = null;
@@ -226,7 +224,7 @@ public class GestionarFixtureDAO {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
     
-    // DONE!
+
     public static ArrayList<Resultado> getResultados(int unIDPartido) {
         ArrayList<Resultado> listaResultados = new ArrayList<>();
         Connection conn = null;
@@ -260,7 +258,7 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return listaResultados; }
     
-    // DONE!
+
     public static Participante getParticipante(int unID) {
         Participante unParticipante = null;
         Connection conn = null;
@@ -283,7 +281,7 @@ public class GestionarFixtureDAO {
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
         return unParticipante; }
     
-    // DONE!
+
     public static ArrayList<Partido> getPartidos(int unIDRonda) {
         ArrayList<Partido> listaPartidos = new ArrayList<>();
         Connection conn = null;
@@ -319,7 +317,7 @@ public class GestionarFixtureDAO {
         return listaPartidos;
     }
     
-    // DONE!
+
     public static ArrayList<Ronda> getRondas(int idFixture) {
         ArrayList<Ronda> listaRondas = new ArrayList<>();
         Connection conn = null;
