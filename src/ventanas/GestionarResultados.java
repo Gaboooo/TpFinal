@@ -177,12 +177,12 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel5.setBounds(274, 294, 490, 30);
 
         jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel7.setText("Participante 1:");
+        jLabel7.setText("Par. 1: Nombre Participante 1");
         add(jLabel7);
         jLabel7.setBounds(20, 160, 170, 40);
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel8.setText("Participante 2:");
+        jLabel8.setText("Par. 2: Nombre Participante 2");
         add(jLabel8);
         jLabel8.setBounds(20, 200, 160, 40);
 
@@ -205,40 +205,76 @@ public class GestionarResultados extends javax.swing.JPanel {
         jCheckBox3.setBounds(390, 170, 20, 21);
         add(jCheckBox4);
         jCheckBox4.setBounds(390, 210, 20, 20);
+
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner1);
         jSpinner1.setBounds(179, 170, 40, 20);
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner2);
         jSpinner2.setBounds(230, 170, 40, 20);
+
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner3);
         jSpinner3.setBounds(280, 170, 40, 20);
+
+        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner4);
         jSpinner4.setBounds(330, 170, 40, 20);
+
+        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner5);
         jSpinner5.setBounds(380, 170, 40, 20);
+
+        jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner6);
         jSpinner6.setBounds(430, 170, 40, 20);
+
+        jSpinner7.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner7);
         jSpinner7.setBounds(480, 170, 40, 20);
+
+        jSpinner8.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner8);
         jSpinner8.setBounds(530, 170, 40, 20);
+
+        jSpinner9.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner9);
         jSpinner9.setBounds(580, 170, 40, 20);
+
+        jSpinner10.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner10);
         jSpinner10.setBounds(180, 210, 40, 20);
+
+        jSpinner11.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner11);
         jSpinner11.setBounds(230, 210, 40, 20);
+
+        jSpinner12.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner12);
         jSpinner12.setBounds(280, 210, 40, 20);
+
+        jSpinner13.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner13);
         jSpinner13.setBounds(330, 210, 40, 20);
+
+        jSpinner14.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner14);
         jSpinner14.setBounds(380, 210, 40, 20);
+
+        jSpinner15.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner15);
         jSpinner15.setBounds(430, 210, 40, 20);
+
+        jSpinner16.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner16);
         jSpinner16.setBounds(480, 210, 40, 20);
+
+        jSpinner17.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner17);
         jSpinner17.setBounds(530, 210, 40, 20);
+
+        jSpinner18.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner18);
         jSpinner18.setBounds(580, 210, 40, 20);
 
