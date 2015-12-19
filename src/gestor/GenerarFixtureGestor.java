@@ -71,7 +71,7 @@ public class GenerarFixtureGestor {
             
             // Cantidad de partidos por ronda
             int cantPartidosPorRonda=listaParticipantes.size()/2;
-            
+            System.out.println(cantRondas); 
             // Para todas las rondas
             for (int i=0; i<cantRondas; i++){
                 ArrayList<Partido> listaPartidos = new ArrayList();
