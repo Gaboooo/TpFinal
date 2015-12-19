@@ -16,16 +16,20 @@ public class PosicionAux {
         this.partidosPerdidos = partidosPerdidos;
         this.partidosEmpatados = partidosEmpatados;
         this.tantosEnContra = tantosEnContra;
-        this.tantosAFavor = tantosAFavor; }
+        this.tantosAFavor = tantosAFavor;
+    }
     
      public String getNombre() {
-        return nombreParticipante; }
+        return nombreParticipante;
+     }
     
     public int getPuntos() {
-        return puntos; }
+        return puntos;
+    }
 
     public int getPartidosGanados() {
-        return partidosGanados; }
+        return partidosGanados;
+    }
 
     public int getPartidosPerdidos() {
         return partidosPerdidos; }
@@ -37,4 +41,6 @@ public class PosicionAux {
         return tantosEnContra; }
 
     public int getTantosAFavor() {
-        return tantosAFavor; } }
+        return tantosAFavor;
+    }
+}
