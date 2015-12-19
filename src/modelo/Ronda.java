@@ -10,41 +10,52 @@ public class Ronda {
     ArrayList<Partido> listaPartidos;  
     
     public void setID(int unID) {
-        this.ID = unID; }
+        this.ID = unID;
+    }
     
     public void setNumeroRonda(int unNumero) {
-        this.numRonda = unNumero; }
+        this.numRonda = unNumero;
+    }
     
     public void setRondaPerdedores(Boolean esRP) {
-        this.rondaPerdedores = esRP; }
+        this.rondaPerdedores = esRP;
+    }
 
     public void setFecha(String unaFecha) {
-        this.fecha = unaFecha; }
+        this.fecha = unaFecha;
+    }
 
     public void setPartido(ArrayList<Partido> unaLista) {
-        this.listaPartidos = unaLista; }
+        this.listaPartidos = unaLista;
+    }
 
     public int getID() {
-        return ID; }
+        return ID;
+    }
     
     public int getNumero() {
-        return numRonda; }    
+        return numRonda;
+    }    
     
     public Boolean getRondaPerdedores() {
-        return rondaPerdedores; }
+        return rondaPerdedores;
+    }
 
     public String getFecha() {
-        return fecha; }
+        return fecha;
+    }
 
     public ArrayList<Partido> getListaPartidos() {
-        return listaPartidos; }
+        return listaPartidos;
+    }
 
     // Sin ID
     public Ronda(int unNumero, Boolean esRP, String unaFecha, ArrayList<Partido> unaLista) { 
         this.numRonda = unNumero;
         this.rondaPerdedores = esRP;
         this.fecha = unaFecha;
-        this.listaPartidos = unaLista; }
+        this.listaPartidos = unaLista;
+    }
     
     // Con ID
     public Ronda(int unaID, int unNumero, Boolean esRP, String unaFecha, ArrayList<Partido> unaLista) {
@@ -52,4 +63,6 @@ public class Ronda {
         this.numRonda = unNumero;
         this.rondaPerdedores = esRP;
         this.fecha = unaFecha;
-        this.listaPartidos = unaLista; } }
+        this.listaPartidos = unaLista;
+    }
+}

@@ -26,6 +26,10 @@ public class Competencia {
     
     private boolean aux;
     
+    public void addParticipante(Participante partic){
+        listaParticipantes.add(partic);
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre; }
 

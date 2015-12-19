@@ -12,25 +12,32 @@ public class ResultadoAux {
     private int indiceParticipante;
     
     public int getID(){
-        return ID; }   
+        return ID;
+    }   
     
     public int getNumero() {
-        return numResultado; }
+        return numResultado;
+    }
         
     public int getPuntajeP0() {
-        return puntajeP0; }
+        return puntajeP0;
+    }
 
     public int getPuntajeP1() {
-        return puntajeP1; }
+        return puntajeP1;
+    }
 
     public Boolean getAsistenciaP0() {
-        return asistenciaP0; }
+        return asistenciaP0;
+    }
 
     public Boolean getAsistenciaP1() {
-        return asistenciaP1; }
+        return asistenciaP1;
+    }
 
     public int getIndiceParticipante() {
-        return indiceParticipante; }
+        return indiceParticipante;
+    }
     
     // Con ID
     public ResultadoAux(int unID, int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, int unIndice) {
@@ -40,7 +47,8 @@ public class ResultadoAux {
         this.puntajeP1 = PP1;
         this.asistenciaP0 = AP0;
         this.asistenciaP1 = AP1;
-        this.indiceParticipante = unIndice; }
+        this.indiceParticipante = unIndice;
+    }
     
     // Sin ID
     public ResultadoAux(int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, int unIndice) {
@@ -49,4 +57,6 @@ public class ResultadoAux {
         this.puntajeP1 = PP1;
         this.asistenciaP0 = AP0;
         this.asistenciaP1 = AP1;
-        this.indiceParticipante = unIndice; } }
+        this.indiceParticipante = unIndice;
+    }
+}

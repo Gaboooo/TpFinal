@@ -12,25 +12,32 @@ public class Resultado {
     private Participante ganador;
     
     public int getID(){
-        return ID; }   
+        return ID;
+    }   
     
     public int getNumero() {
-        return numResultado; }
+        return numResultado;
+    }
         
     public int getPuntajeP0() {
-        return puntajeP0; }
+        return puntajeP0;
+    }
 
     public int getPuntajeP1() {
-        return puntajeP1; }
+        return puntajeP1;
+    }
 
     public Boolean getAsistenciaP0() {
-        return asistenciaP0; }
+        return asistenciaP0;
+    }
 
     public Boolean getAsistenciaP1() {
-        return asistenciaP1; }
+        return asistenciaP1;
+    }
 
     public Participante getGanador() {
-        return ganador; }
+        return ganador;
+    }
     
     // Con ID
     public Resultado(int unID, int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, Participante unGanador) {
@@ -40,7 +47,8 @@ public class Resultado {
         this.puntajeP1 = PP1;
         this.asistenciaP0 = AP0;
         this.asistenciaP1 = AP1;
-        this.ganador = unGanador; }
+        this.ganador = unGanador;
+    }
     
     // Sin ID
     public Resultado(int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, Participante unGanador) {
@@ -49,4 +57,6 @@ public class Resultado {
         this.puntajeP1 = PP1;
         this.asistenciaP0 = AP0;
         this.asistenciaP1 = AP1;
-        this.ganador = unGanador; } }
+        this.ganador = unGanador;
+    }
+}
