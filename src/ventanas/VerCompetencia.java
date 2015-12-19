@@ -95,7 +95,7 @@ public class VerCompetencia extends javax.swing.JPanel {
         }
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setFocusable(false);
-
+        jTable1.setRowHeight(18);
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);

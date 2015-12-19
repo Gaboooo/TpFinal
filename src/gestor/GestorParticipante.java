@@ -36,25 +36,23 @@ public class GestorParticipante {
     
     public static void altaParticipante(int idCD, String nombre, String correo, FileInputStream fis){
         // Nuevo participante
-        ArrayList<HistorialParticipante> unHistorial = new ArrayList<>();
+        ArrayList<HistorialParticipante> unHistorial = new ArrayList<>(); // * No implementado
         Participante participante= new Participante(nombre, correo, unHistorial);
         
         // Buscar competencia de la BD CON los participantes
         Competencia comp = DAO.CompetenciaDaoJDBC.getCompetenciaAltaP(idCD);
         
         // Agregar el participante a la competencia
-        comp.getListaParticipantes().add(participante);
+        comp.addParticipante(participante);
         
-        // Cambiar si esta planificada
+        // Si esta planificada se pasa a creada y se elimina el fixture
         if("Planificada".equals(comp.getEstado().getNombre())){
             comp.setEstado(getEstadoPorNombre("Creada"));
             comp.setFixture(null);
-            //comp.setAux(true);
         }
         
-        // Persistir participante/competencia   (se elimina el fixture adentro)
+        // Persistir participante/competencia
         CompetenciaDaoJDBC.persistirCDP(comp);
-        //ParticipanteDao.persistirParticipante(idCD, participante);
     }
     
     public static ArrayList<ParticipanteAux> listarParticipantes (int idCD) {

@@ -15,64 +15,84 @@ public class Usuario {
     ArrayList<Competencia> listaCompetencias;
 
     public void setId(int unID) {
-        this.ID = unID; }
+        this.ID = unID;
+    }
 
     public void setCorreoElectronico(String unCorreo) {
-        this.correoElectronico = unCorreo; }
+        this.correoElectronico = unCorreo;
+    }
 
     public void setContraseña(String unaContraseña) {
-        this.contraseña = unaContraseña; }
+        this.contraseña = unaContraseña;
+    }
 
     public void setNumDocumento(int unNumero) {
-        this.numDocumento = unNumero; }
+        this.numDocumento = unNumero;
+    }
 
     public void setNombre(String unNombre) {
-        this.nombre = unNombre; }
+        this.nombre = unNombre;
+    }
 
     public void setApellido(String unApellido) {
-        this.apellido = unApellido; }
+        this.apellido = unApellido;
+    }
 
     public void setTipoDocumento(String unTipo) {
-        this.tipoDocumento = unTipo; }
+        this.tipoDocumento = unTipo;
+    }
 
     public void setLocalidad(Localidad unaLocalidad) {
-        this.localidad = unaLocalidad;  }
+        this.localidad = unaLocalidad;
+    }
 
     public void setIngresos(ArrayList<Ingreso> unaLista) {
-        this.listaIngresos = unaLista; }
+        this.listaIngresos = unaLista;
+    }
 
     public void setCompetencias(ArrayList<Competencia> unaLista) {
-        this.listaCompetencias = unaLista; }
+        this.listaCompetencias = unaLista;
+    }
 
     public int getID() {
-        return ID; }
+        return ID;
+    }
 
     public String getCorreoElectronico() {
-        return correoElectronico; }
+        return correoElectronico;
+    }
 
     public String getContraseña() {
-        return contraseña; }
+        return contraseña;
+    }
 
     public int getNumoDocumento() {
-        return numDocumento; }
+        return numDocumento;
+    }
 
     public String getNombre() {
-        return nombre; }
+        return nombre;
+    }
 
     public String getApellido() {
-        return apellido; }
+        return apellido;
+    }
 
     public String getTipoDocumento() {
-        return tipoDocumento; }
+        return tipoDocumento;
+    }
 
     public Localidad getLocalidad() {
-        return localidad; }
+        return localidad;
+    }
 
     public ArrayList<Ingreso> getIngresos() {
-        return listaIngresos; }
+        return listaIngresos;
+    }
 
     public ArrayList<Competencia> getCompetencias() {
-        return listaCompetencias; }
+        return listaCompetencias;
+    }
 
     // Sin ID
     public Usuario(String unCorreo, String unaContraseña, int unNumero, String unNombre, String unApellido,
@@ -85,7 +105,8 @@ public class Usuario {
         this.tipoDocumento = unTipo;
         this.localidad = unaLocalidad;
         this.listaIngresos = unaLI;
-        this.listaCompetencias = unaLC; }
+        this.listaCompetencias = unaLC;
+    }
     
     // Con ID
     public Usuario(int unID, String unCorreo, String unaContraseña, int unNumero, String unNombre, String unApellido,
@@ -99,4 +120,6 @@ public class Usuario {
         this.tipoDocumento = unTipo;
         this.localidad = unaLocalidad;
         this.listaIngresos = unaLI;
-        this.listaCompetencias = unaLC; } }
+        this.listaCompetencias = unaLC;
+    }
+}
