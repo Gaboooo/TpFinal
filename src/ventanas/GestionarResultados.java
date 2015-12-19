@@ -335,39 +335,39 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         
         if (cantSets == 1){
-        String[] colNames = {"Participante1", "1er Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 3){
-        String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 5){
-        String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 7){
-        String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 9){
-        String[] colNames = {"Participante1", "1erSet", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "8vo Set", "9no Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1erSet", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "8vo Set", "9no Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         //}
         
@@ -376,7 +376,7 @@ public class GestionarResultados extends javax.swing.JPanel {
     
     private void crearTablaPuntuacion(){
         String[] colNames = {"Participante1", "Puntuacion", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
+        Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
             {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
         };
         
@@ -402,17 +402,20 @@ public class GestionarResultados extends javax.swing.JPanel {
     
     private void crearTablaResFinal(){
         String[] colNames = {"Participante1", "Ganador", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Boolean.valueOf(true), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Boolean.valueOf(true), Boolean.valueOf(true)}
-        };
+        Object[][] data = {{partidoAux.getParticipante1(), null, null}, 
+            {partidoAux.getParticipante2(), null, null}};
         
+        Class[] types = new Class [] {
+        java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class
+        };
+
         DefaultTableModel model = new DefaultTableModel(data, colNames) {
 
             private static final long serialVersionUID = 1L;
 
             @Override
             public Class getColumnClass(int col) {
-                return data[0][col].getClass();
+                return types [col];
             }
         };
         jTable1 = new JTable(model);
@@ -423,7 +426,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         jTable1.setPreferredScrollableViewportSize(d);
     }
     
-    private void metodoModel(final Object[][] data, String[] colNames){
+    private void metodoModel(Object[][] data, String[] colNames){
         int cantSets = GestionarFixtureGestor.getCantSets(compAux);
         
         DefaultTableModel model = new DefaultTableModel(data, colNames) {
@@ -463,7 +466,7 @@ public class GestionarResultados extends javax.swing.JPanel {
 
 class SpinnerEditor extends AbstractCellEditor implements TableCellEditor {
 
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
     private SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 999, 1);
     private JSpinner spinner = new JSpinner(model);
     private int clickCountToStart = 1;
