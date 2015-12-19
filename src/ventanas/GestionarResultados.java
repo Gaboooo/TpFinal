@@ -172,47 +172,54 @@ public class GestionarResultados extends javax.swing.JPanel {
         int indiceGanador = 0;
         Boolean asispar1;
         Boolean asispar2;
+        String cadenaError = "";
+        
         
         if("Sets".equals(compAux.getFormaPuntuacion())){
             asispar1=(Boolean)jTable1.getValueAt(0, cantSets+1);
             asispar2=(Boolean)jTable1.getValueAt(1, cantSets+1);
-            
-            
             ArrayList<Integer> listaSets = new ArrayList<>();
+            int contador1 = 0;
+            int contador2 = 0;
+            int unNumero = 0;
+            
+            if(asispar1 == false && asispar2 == false){
+                cadenaError += "Debe haber presente al menos un Participante\n";
+            }
+            // Se recorre la tabla y se guarda el valor de los sets en listaSets.
             for (int i=1; i<=cantSets; i++) {
                 if((int)jTable1.getValueAt(0, i) == (int)jTable1.getValueAt(1, i)){
-                    JOptionPane.showMessageDialog(null, "No se permite empate por sets", "", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    if(asispar1 == false && asispar2 == false){
-                        V.get().alerta();
-                        JOptionPane.showMessageDialog(null,"Sets no permite empate",
-                                "Error", JOptionPane.INFORMATION_MESSAGE);
+                    cadenaError += "No se permite empate por sets.\n";
+                }
+                else{
+                    listaSets.add((Integer)jTable1.getValueAt(0, i));
+                    listaSets.add((Integer)jTable1.getValueAt(1, i));
+                }
+            }
+            // Se recorre la listaSets y se compara los resultados para guardar el indice.
+            for (int i=0; i<(cantSets*2); i+=2) {
+                int PP1 = listaSets.get(i);
+                int PP2 = listaSets.get(i+1);
+                if(PP1 > PP2){
+                    contador1 += 1;
+                }
+                else{
+                    contador2 += 1;
+                }
+                if(i == (cantSets*2)-1){
+                    if(contador1>contador2){
+                        indiceGanador = 0;
                     }
                     else{
-                        for (i=1; i<=cantSets; i++) {
-                            if((int)jTable1.getValueAt(0, i) == (int)jTable1.getValueAt(1, i)){
-                                JOptionPane.showMessageDialog(null, "No se permite empate por sets", "", JOptionPane.INFORMATION_MESSAGE);
-                            }
-                            else{
-                                listaSets.add((Integer)jTable1.getValueAt(0, i));
-                                listaSets.add((Integer)jTable1.getValueAt(1, i));
-                            }
-                        }
-                        
-                        for (i=0; i<cantSets; i+=2) {
-                            int PP1 = listaSets.get(i);
-                            int PP2 = listaSets.get(i+1);
-                            if(PP1 > PP2){
-                                indiceGanador = 0;
-                            }
-                            else{
-                                indiceGanador = 1;
-                            }
-                            ResultadoAux unResultado = new ResultadoAux(i/2, PP1, PP2, asispar1, asispar2, indiceGanador);
-                            listaResultadosAux.add(unResultado);
-                        }
+                        indiceGanador = 1;
                     }
                 }
+                if("".equals(cadenaError)){
+                    unNumero = i/2;
+                    ResultadoAux unResultado = new ResultadoAux(unNumero, PP1, PP2, asispar1, asispar2, indiceGanador);
+                    listaResultadosAux.add(unResultado);
+                }
+                
             }
         }
         else if ("Puntuacion".equals(compAux.getFormaPuntuacion())){
@@ -220,31 +227,37 @@ public class GestionarResultados extends javax.swing.JPanel {
             int PP2 = (int)jTable1.getValueAt(1, 1);
             asispar1=(Boolean)jTable1.getValueAt(0, 2);
             asispar2=(Boolean)jTable1.getValueAt(1, 2);
+            if(asispar1 == false && asispar2 == false){
+                cadenaError += "Debe haber presente al menos un Participante.\n";
+            }
             if(PP1>PP2){
                 indiceGanador = 0;
             }
             else if (PP2>PP1){
                 indiceGanador = 1;
             }
-            else{
+            else if(PP1 == PP2){
                 if(empatePermitido == false){
-                    V.get().alerta();
-                    JOptionPane.showMessageDialog(null,"La competencia no permite empate",
-                            "Error", JOptionPane.INFORMATION_MESSAGE);
+                    cadenaError += "La competencia no permite empate.\n";
                 }
                 else{
                     indiceGanador = 2;
                 }
             }
-            ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
-            listaResultadosAux.add(unResultado);
             
+            if("".equals(cadenaError)){
+                ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
+                listaResultadosAux.add(unResultado);
+            }
         }
         else{
             Boolean ganador1=(Boolean)jTable1.getValueAt(0, 1);
             Boolean ganador2=(Boolean)jTable1.getValueAt(1, 1);
             asispar1=(Boolean)jTable1.getValueAt(0, 2);
             asispar2=(Boolean)jTable1.getValueAt(1, 2);
+            if(asispar1 == false && asispar2 == false){
+                cadenaError += "Debe haber presente al menos un Participante.\n";
+            }
             if(ganador1 == true && ganador2 == false){
                 indiceGanador = 0;
             }
@@ -253,20 +266,26 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
             else{
                 if(empatePermitido == false){
-                    V.get().alerta();
-                    JOptionPane.showMessageDialog(null,"La competencia no permite empate",
-                            "Error", JOptionPane.INFORMATION_MESSAGE);
+                    cadenaError += "La competencia no permite empate.\n";
                 }
                 else{
                     indiceGanador = 2;
                 }
             }
-            ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
-            listaResultadosAux.add(unResultado);
+            if("".equals(cadenaError)){
+                ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
+                listaResultadosAux.add(unResultado);
+            }
+            
         }
-        
-        GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
-        JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
+        if("".equals(cadenaError)){
+            GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+            JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            V.get().alerta();
+            JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -316,39 +335,39 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         
         if (cantSets == 1){
-        String[] colNames = {"Participante1", "1er Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 3){
-        String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 5){
-        String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 7){
-        String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         if (cantSets == 9){
-        String[] colNames = {"Participante1", "1erSet", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "8vo Set", "9no Set", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        metodoModel(data, colNames);
+            String[] colNames = {"Participante1", "1erSet", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "8vo Set", "9no Set", "Asistio"};
+            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
+                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
+            };
+            metodoModel(data, colNames);
         }
         //}
         
@@ -357,7 +376,7 @@ public class GestionarResultados extends javax.swing.JPanel {
     
     private void crearTablaPuntuacion(){
         String[] colNames = {"Participante1", "Puntuacion", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
+        Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
             {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
         };
         
@@ -383,17 +402,20 @@ public class GestionarResultados extends javax.swing.JPanel {
     
     private void crearTablaResFinal(){
         String[] colNames = {"Participante1", "Ganador", "Asistio"};
-        final Object[][] data = {{partidoAux.getParticipante1(), Boolean.valueOf(true), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Boolean.valueOf(true), Boolean.valueOf(true)}
-        };
+        Object[][] data = {{partidoAux.getParticipante1(), null, null}, 
+            {partidoAux.getParticipante2(), null, null}};
         
+        Class[] types = new Class [] {
+        java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class
+        };
+
         DefaultTableModel model = new DefaultTableModel(data, colNames) {
 
             private static final long serialVersionUID = 1L;
 
             @Override
             public Class getColumnClass(int col) {
-                return data[0][col].getClass();
+                return types [col];
             }
         };
         jTable1 = new JTable(model);
@@ -404,7 +426,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         jTable1.setPreferredScrollableViewportSize(d);
     }
     
-    private void metodoModel(final Object[][] data, String[] colNames){
+    private void metodoModel(Object[][] data, String[] colNames){
         int cantSets = GestionarFixtureGestor.getCantSets(compAux);
         
         DefaultTableModel model = new DefaultTableModel(data, colNames) {
@@ -444,7 +466,7 @@ public class GestionarResultados extends javax.swing.JPanel {
 
 class SpinnerEditor extends AbstractCellEditor implements TableCellEditor {
 
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
     private SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 999, 1);
     private JSpinner spinner = new JSpinner(model);
     private int clickCountToStart = 1;
