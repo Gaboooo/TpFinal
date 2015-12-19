@@ -57,6 +57,8 @@ public class GenerarFixtureGestor {
         // En el caso de cantidad impar de participantes, un participante se deja fuera por ronda
         Participante participanteDejadoFuera=null;
         
+        ArrayList<Participante> listaDejadosAfuera= new ArrayList();
+        
         Estado unEstado = unaCompetencia.getEstado();
         if ("Creada".equals(unEstado.getNombre()) || "Planificada".equals(unEstado.getNombre())) {
             
@@ -85,18 +87,20 @@ public class GenerarFixtureGestor {
                 for(int j=0; j<cantPartidosPorRonda; j++){
                     
                     // Verificar que si un participante no se uso en la ronda anterior, se usa en esta
-                    if(participanteDejadoFuera!=null){
-                        parAux=getParObligatorio(listaPares, participanteDejadoFuera);
+                    /*if(participanteDejadoFuera!=null){
+                        System.out.println(participanteDejadoFuera.getNombre());
+                        parAux=getParObligatorio(listaPares, participanteDejadoFuera, listaDejadosAfuera);
                         listaUsados.add(parAux.get(0));
                         listaUsados.add(parAux.get(1));
+                        listaDejadosAfuera.add(participanteDejadoFuera);
                         participanteDejadoFuera=null;
-                    }
-                    else{
+                    }*/
+                    /*else{*/
                         // Verificar que no se repitan los participantes
-                        parAux=getPar(listaPares, listaUsados);
+                        parAux=getPar(listaPares, listaUsados, listaDejadosAfuera);
                         listaUsados.add(parAux.get(0));
                         listaUsados.add(parAux.get(1));
-                    }
+                    //}
                     
                     // Se obtiene un lugar de realizacion
                     Random rn = new Random();
@@ -111,8 +115,10 @@ public class GenerarFixtureGestor {
                 // Verificar cual es el participante dejado fuera
                 ArrayList<Participante> listAux = new ArrayList<>(listaParticipantes);
                 listAux.removeAll(listaUsados);
+                
                 if(!listAux.isEmpty()){
                     participanteDejadoFuera=listAux.get(0);
+                    listaDejadosAfuera.add(listAux.get(0));
                 }
                 else participanteDejadoFuera=null;
                 
@@ -140,18 +146,44 @@ public class GenerarFixtureGestor {
     
     // Saca un par de P1 vs P2 en el que se encuentra el participante pedido
     private static ArrayList<Participante> getParObligatorio(ArrayList<ArrayList<Participante>> listaPares,
-            Participante participante){
+            Participante participante, ArrayList<Participante> listaDejadosAfuera){
         
-        ArrayList<Participante> par= new ArrayList<>();
-        ArrayList<Participante> parAux;
+        ArrayList<Participante> par= null;
+        ArrayList<Participante> parAux= null;
         
-        for(int i=0; i<listaPares.size(); i++){
-            parAux=listaPares.get(i);
-            // Se encuentra en la primera o segunda posicion
-            if(parAux.get(0)==participante || parAux.get(1)==participante){
-                par=parAux;
-                listaPares.remove(parAux);
-                break;
+        // Hay participantes que ya se han dejado afuera en rondas anteriores
+        // Entonces hay que darles prioridades a estos
+        if (listaDejadosAfuera.size()>1){
+            for(int i=0; i<listaPares.size(); i++){
+                parAux=listaPares.get(i);
+                if(listaDejadosAfuera.contains(parAux.get(0)) && listaDejadosAfuera.contains(parAux.get(1))
+                        && (parAux.get(0)==participante || parAux.get(1)==participante)){
+                    par=parAux;
+                    listaPares.remove(parAux);
+                    break;
+                }
+            }
+        }
+        if (listaDejadosAfuera.size()>1 && par==null){
+            for(int i=0; i<listaPares.size(); i++){
+                parAux=listaPares.get(i);
+                if((listaDejadosAfuera.contains(parAux.get(0)) || listaDejadosAfuera.contains(parAux.get(1)))
+                        && (parAux.get(0)==participante || parAux.get(1)==participante)){
+                    par=parAux;
+                    listaPares.remove(parAux);
+                    break;
+                }
+            }
+        }
+        if(parAux==null){
+            for(int i=0; i<listaPares.size(); i++){
+                parAux=listaPares.get(i);
+                // Se encuentra en la primera o segunda posicion
+                if(parAux.get(0)==participante || parAux.get(1)==participante){
+                    par=parAux;
+                    listaPares.remove(parAux);
+                    break;
+                }
             }
         }
         return par;
@@ -159,18 +191,46 @@ public class GenerarFixtureGestor {
     
     // Saca un par fijandose que no este utilizado
     private static ArrayList<Participante> getPar(ArrayList<ArrayList<Participante>> listaPares,
-            ArrayList<Participante> listaUsados){
+            ArrayList<Participante> listaUsados, ArrayList<Participante> listaDejadosAfuera){
         
-        ArrayList<Participante> par= new ArrayList<>();
+        ArrayList<Participante> par= null;
         ArrayList<Participante> parAux;
         
-        for(int i=0; i<listaPares.size(); i++){
-            parAux=listaPares.get(i);
-            // Se encuentra en la primera o segunda posicion
-            if(!listaUsados.contains(parAux.get(0)) && !listaUsados.contains(parAux.get(1))){
-                par=parAux;
-                listaPares.remove(parAux);
-                break;
+        // Hay participantes que ya se han dejado afuera en rondas anteriores
+        // Entonces hay que darles prioridades a estos
+        
+        // El par tiene dos participantes que se dejaron afuera
+        if (listaDejadosAfuera.size()>1){
+            for(int i=0; i<listaPares.size(); i++){
+                parAux=listaPares.get(i);
+                if(listaDejadosAfuera.contains(parAux.get(0)) && listaDejadosAfuera.contains(parAux.get(1))
+                        && !listaUsados.contains(parAux.get(0)) && !listaUsados.contains(parAux.get(1))){
+                    par=parAux;
+                    listaPares.remove(parAux);
+                    i+=listaPares.size();
+                }
+            }
+        }
+        // El par tiene un solo participante que se dejo afuera
+        if (listaDejadosAfuera.size()>0 && par==null){
+            for(int i=0; i<listaPares.size(); i++){
+                parAux=listaPares.get(i);
+                if((listaDejadosAfuera.contains(parAux.get(0)) || listaDejadosAfuera.contains(parAux.get(1)))
+                        && !listaUsados.contains(parAux.get(0)) && !listaUsados.contains(parAux.get(1))){
+                    par=parAux;
+                    listaPares.remove(parAux);
+                    i+=listaPares.size();
+                }
+            }
+        }
+        if (par==null){
+            for(int i=0; i<listaPares.size(); i++){
+                parAux=listaPares.get(i);
+                if(!listaUsados.contains(parAux.get(0)) && !listaUsados.contains(parAux.get(1))){
+                    par=parAux;
+                    listaPares.remove(parAux);
+                    i+=listaPares.size();
+                }
             }
         }
         return par;
