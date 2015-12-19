@@ -55,8 +55,6 @@ public class GenerarFixtureGestor {
         ArrayList<ArrayList<Participante>> listaPares = armarMatcheoParticipantes(listaParticipantes);
         
         // En el caso de cantidad impar de participantes, un participante se deja fuera por ronda
-        Participante participanteDejadoFuera=null;
-        
         ArrayList<Participante> listaDejadosAfuera= new ArrayList();
         
         Estado unEstado = unaCompetencia.getEstado();
@@ -86,25 +84,16 @@ public class GenerarFixtureGestor {
                 
                 for(int j=0; j<cantPartidosPorRonda; j++){
                     
-                    // Verificar que si un participante no se uso en la ronda anterior, se usa en esta
-                    /*if(participanteDejadoFuera!=null){
-                        System.out.println(participanteDejadoFuera.getNombre());
-                        parAux=getParObligatorio(listaPares, participanteDejadoFuera, listaDejadosAfuera);
-                        listaUsados.add(parAux.get(0));
-                        listaUsados.add(parAux.get(1));
-                        listaDejadosAfuera.add(participanteDejadoFuera);
-                        participanteDejadoFuera=null;
-                    }*/
-                    /*else{*/
-                        // Verificar que no se repitan los participantes
-                        parAux=getPar(listaPares, listaUsados, listaDejadosAfuera);
-                        listaUsados.add(parAux.get(0));
-                        listaUsados.add(parAux.get(1));
-                    //}
                     
-                    // Se obtiene un lugar de realizacion
-                    Random rn = new Random();
-                    int indice = rn.nextInt(listaDisponibilidades.size());
+                    // Saca un par de la lista, dentro se verifica que los participantes no esten usados,
+                    // y que se usen los participantes que se dejaron afuera en las rondas anteriores
+                    parAux=getPar(listaPares, listaUsados, listaDejadosAfuera);
+                    listaUsados.add(parAux.get(0));
+                    listaUsados.add(parAux.get(1));
+                    
+                    // Se obtiene un lugar de realizacion aleatorio
+                    Random rand = new Random();
+                    int indice = rand.nextInt(listaDisponibilidades.size());
                     LugarRealizacion lugarRealizacion = listaDisponibilidades.get(indice).getLR();
                     
                     // Creacion del partido (sacando participante 1, participante 2, y el lugar obtenido
@@ -115,12 +104,9 @@ public class GenerarFixtureGestor {
                 // Verificar cual es el participante dejado fuera
                 ArrayList<Participante> listAux = new ArrayList<>(listaParticipantes);
                 listAux.removeAll(listaUsados);
-                
                 if(!listAux.isEmpty()){
-                    participanteDejadoFuera=listAux.get(0);
                     listaDejadosAfuera.add(listAux.get(0));
                 }
-                else participanteDejadoFuera=null;
                 
                 // Creacion de la ronda
                 Ronda unaRonda = new Ronda(i, false, null, listaPartidos);
@@ -235,5 +221,6 @@ public class GenerarFixtureGestor {
         }
         return par;
     }
+    
     
 }
