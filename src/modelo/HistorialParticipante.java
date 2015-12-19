@@ -1,7 +1,8 @@
 package modelo;
 
 public class HistorialParticipante {
-    private int ID;
+    
+    private int id;
     private String nombre;
     private String correo_electronico;
     // private String imagen;
@@ -9,40 +10,50 @@ public class HistorialParticipante {
     private String hora;
     
     public void setID(int unID) {
-        this.ID = unID; }
+        this.id = unID; 
+    }
     
     public void setCorreo(String correo) {
-        this.correo_electronico = correo; }
+        this.correo_electronico = correo; 
+    }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre; }
+        this.nombre = nombre; 
+    }
 
     /* public void setImagen(String imagen) {
         this.imagen = imagen; } */
 
     public void setFecha(String fecha) {
-        this.fecha = fecha; }
+        this.fecha = fecha; 
+    }
 
     public void setHora(String hora) {
-        this.hora = hora; }
+        this.hora = hora; 
+    }
 
     public int getID() {
-        return ID; }
+        return id; 
+    }
     
     public String getCorreo() {
-        return correo_electronico; }
+        return correo_electronico; 
+    }
 
     public String getNombre() {
-        return nombre; }
+        return nombre; 
+    }
 
     /* public String getImagen() {
         return imagen; } */
 
     public String getFecha() {
-        return fecha; }
+        return fecha; 
+    }
 
     public String getHora() {
-        return hora; }
+        return hora; 
+    }
 
     /* public HistorialParticipante(int id, String correoElectronico, String nombre, String imagen, Date fecha, Time hora) {
         this.id = id;
@@ -54,15 +65,18 @@ public class HistorialParticipante {
     
     // Con ID
     public HistorialParticipante(int unID, String nombre, String correo, String fecha, String hora) {
-        this.ID = unID;
+        this.id = unID;
         this.nombre = nombre;
         this.correo_electronico = correo;
         this.fecha = fecha;
-        this.hora = hora; }
+        this.hora = hora; 
+    }
     
     // Sin ID
     public HistorialParticipante(String nombre, String correo, String fecha, String hora) {
         this.nombre = nombre;
         this.correo_electronico = correo;
         this.fecha = fecha;
-        this.hora = hora; } }
+        this.hora = hora; 
+    } 
+}

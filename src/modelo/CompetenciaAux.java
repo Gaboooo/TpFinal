@@ -17,6 +17,7 @@ public class CompetenciaAux {
      * @param nombre
      */
     public CompetenciaAux(String estado, String deporte, String modalidad, String nombre) {
+        
         this.estado=estado;
         this.deporte=deporte;
         this.modalidad=modalidad;
@@ -33,6 +34,7 @@ public class CompetenciaAux {
      * @param id
      */
     public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, String formaP, int id) {
+        
         this(estado,deporte,modalidad,nombre);
         this.id_competencia=id;
         this.formaPuntuacion=formaP;
@@ -47,6 +49,7 @@ public class CompetenciaAux {
      * @param id
      */
     public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, int id){
+        
         this(estado,deporte,modalidad,nombre);
         this.id_competencia=id;
     }
@@ -60,6 +63,7 @@ public class CompetenciaAux {
      * @param formaP
      */
     public CompetenciaAux(String estado, String deporte, String modalidad, String nombre, String formaP) {
+        
         this(estado,deporte,modalidad,nombre);
         this.formaPuntuacion=formaP;
     }

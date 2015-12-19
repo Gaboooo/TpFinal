@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Martin
- */
+
 public class RondaAux {
     public int id;
     public int numRonda;
     public String fecha;
     public ArrayList<PartidoAux> partidos;
 
-    public RondaAux(int ID, int numRonda, String fecha, ArrayList<PartidoAux> partidos) {
-        this.id = ID;
+    public RondaAux(int id, int numRonda, String fecha, ArrayList<PartidoAux> partidos) {
+        this.id = id;
         this.numRonda = numRonda;
         this.fecha = fecha;
         this.partidos = partidos;

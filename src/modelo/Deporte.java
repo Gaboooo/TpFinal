@@ -1,21 +1,28 @@
 package modelo;
 
 public class Deporte {
-    int ID; 
+    
+    int id; 
     String nombre;
     
     public void setNombre(String unNombre) {
-        this.nombre = unNombre; }
+        this.nombre = unNombre; 
+    }
 
     public void setId(int unID) {
-        this.ID = unID; }
+        this.id = unID; 
+    }
     
     public String getNombre() {
-        return nombre; }
+        return nombre; 
+    }
     
     public int getId() {
-        return ID; }
+        return id;
+    }
     
     public Deporte(int unID, String unNombre) {
-        this.ID = unID;
-        this.nombre = unNombre; } }
+        this.id = unID;
+        this.nombre = unNombre; 
+    } 
+}

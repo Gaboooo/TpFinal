@@ -1,6 +1,7 @@
 package modelo;
 
 public class PosicionAux {
+    
     private String nombreParticipante;
     private int puntos;
     private int partidosGanados;
@@ -10,6 +11,7 @@ public class PosicionAux {
     private int tantosAFavor;
    
     public PosicionAux(String NombreParticipante, int puntos, int partidosGanados, int partidosPerdidos, int partidosEmpatados, int tantosEnContra, int tantosAFavor) {
+        
         this.nombreParticipante = NombreParticipante;
         this.puntos = puntos;
         this.partidosGanados = partidosGanados;
@@ -21,7 +23,7 @@ public class PosicionAux {
     
      public String getNombre() {
         return nombreParticipante;
-     }
+    }
     
     public int getPuntos() {
         return puntos;
@@ -32,13 +34,16 @@ public class PosicionAux {
     }
 
     public int getPartidosPerdidos() {
-        return partidosPerdidos; }
+        return partidosPerdidos; 
+    }
 
     public int getPartidosEmpatados() {
-        return partidosEmpatados; }
+        return partidosEmpatados; 
+    }
 
     public int getTantosEnContra() {
-        return tantosEnContra; }
+        return tantosEnContra;
+    }
 
     public int getTantosAFavor() {
         return tantosAFavor;
