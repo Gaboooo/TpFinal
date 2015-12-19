@@ -88,6 +88,7 @@ public class GenerarFixtureGestor {
                     // Saca un par de la lista, dentro se verifica que los participantes no esten usados,
                     // y que se usen los participantes que se dejaron afuera en las rondas anteriores
                     parAux=getPar(listaPares, listaUsados, listaDejadosAfuera);
+                    
                     listaUsados.add(parAux.get(0));
                     listaUsados.add(parAux.get(1));
                     
