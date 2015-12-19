@@ -12,6 +12,8 @@ import modelo.PartidoAux;
 import modelo.RondaAux;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import javax.swing.*;
@@ -54,9 +56,8 @@ public class GestionarResultados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -64,11 +65,50 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel9 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner2 = new javax.swing.JSpinner();
+        jSpinner3 = new javax.swing.JSpinner();
+        jSpinner4 = new javax.swing.JSpinner();
+        jSpinner5 = new javax.swing.JSpinner();
+        jSpinner6 = new javax.swing.JSpinner();
+        jSpinner7 = new javax.swing.JSpinner();
+        jSpinner8 = new javax.swing.JSpinner();
+        jSpinner9 = new javax.swing.JSpinner();
+        jSpinner10 = new javax.swing.JSpinner();
+        jSpinner11 = new javax.swing.JSpinner();
+        jSpinner12 = new javax.swing.JSpinner();
+        jSpinner13 = new javax.swing.JSpinner();
+        jSpinner14 = new javax.swing.JSpinner();
+        jSpinner15 = new javax.swing.JSpinner();
+        jSpinner16 = new javax.swing.JSpinner();
+        jSpinner17 = new javax.swing.JSpinner();
+        jSpinner18 = new javax.swing.JSpinner();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
+
+        jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel6.setText("Participantes:");
+        add(jLabel6);
+        jLabel6.setBounds(10, 140, 160, 30);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,31 +116,6 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel2.setText("Gestionar Resultados:");
         add(jLabel2);
         jLabel2.setBounds(0, 0, 800, 55);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Competidores", "NO", "DEBERIA", "MOSTRARSE"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.getTableHeader().setResizingAllowed(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        crearYLlenarTabla();
-        jScrollPane1.setViewportView(jTable1);
-
-        add(jScrollPane1);
-        jScrollPane1.setBounds(47, 148, 720, 100);
 
         jButton1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton1.setText("Aceptar");
@@ -110,7 +125,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(675, 258, 90, 30);
+        jButton1.setBounds(625, 258, 100, 30);
 
         jButton2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jButton2.setText("Atras");
@@ -155,10 +170,131 @@ public class GestionarResultados extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(55, 90, 190, 40);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos.");
         jLabel5.setVisible(false);
         add(jLabel5);
-        jLabel5.setBounds(274, 314, 490, 90);
+        jLabel5.setBounds(274, 294, 490, 30);
+
+        jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel7.setText("Participante 1:");
+        add(jLabel7);
+        jLabel7.setBounds(20, 160, 170, 40);
+
+        jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel8.setText("Participante 2:");
+        add(jLabel8);
+        jLabel8.setBounds(20, 200, 160, 40);
+
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        add(jCheckBox1);
+        jCheckBox1.setBounds(660, 171, 20, 20);
+        add(jCheckBox2);
+        jCheckBox2.setBounds(660, 210, 20, 21);
+
+        jLabel9.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Asistencia");
+        add(jLabel9);
+        jLabel9.setBounds(630, 134, 80, 40);
+        add(jCheckBox3);
+        jCheckBox3.setBounds(390, 170, 20, 21);
+        add(jCheckBox4);
+        jCheckBox4.setBounds(390, 210, 20, 20);
+        add(jSpinner1);
+        jSpinner1.setBounds(179, 170, 40, 20);
+        add(jSpinner2);
+        jSpinner2.setBounds(230, 170, 40, 20);
+        add(jSpinner3);
+        jSpinner3.setBounds(280, 170, 40, 20);
+        add(jSpinner4);
+        jSpinner4.setBounds(330, 170, 40, 20);
+        add(jSpinner5);
+        jSpinner5.setBounds(380, 170, 40, 20);
+        add(jSpinner6);
+        jSpinner6.setBounds(430, 170, 40, 20);
+        add(jSpinner7);
+        jSpinner7.setBounds(480, 170, 40, 20);
+        add(jSpinner8);
+        jSpinner8.setBounds(530, 170, 40, 20);
+        add(jSpinner9);
+        jSpinner9.setBounds(580, 170, 40, 20);
+        add(jSpinner10);
+        jSpinner10.setBounds(180, 210, 40, 20);
+        add(jSpinner11);
+        jSpinner11.setBounds(230, 210, 40, 20);
+        add(jSpinner12);
+        jSpinner12.setBounds(280, 210, 40, 20);
+        add(jSpinner13);
+        jSpinner13.setBounds(330, 210, 40, 20);
+        add(jSpinner14);
+        jSpinner14.setBounds(380, 210, 40, 20);
+        add(jSpinner15);
+        jSpinner15.setBounds(430, 210, 40, 20);
+        add(jSpinner16);
+        jSpinner16.setBounds(480, 210, 40, 20);
+        add(jSpinner17);
+        jSpinner17.setBounds(530, 210, 40, 20);
+        add(jSpinner18);
+        jSpinner18.setBounds(580, 210, 40, 20);
+
+        jLabel10.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("1er Set");
+        add(jLabel10);
+        jLabel10.setBounds(170, 134, 50, 40);
+
+        jLabel11.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("2do Set");
+        add(jLabel11);
+        jLabel11.setBounds(230, 134, 40, 40);
+
+        jLabel12.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("3er Set");
+        add(jLabel12);
+        jLabel12.setBounds(280, 134, 40, 40);
+
+        jLabel13.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("4to Set");
+        add(jLabel13);
+        jLabel13.setBounds(330, 134, 40, 40);
+
+        jLabel14.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("5to Set");
+        add(jLabel14);
+        jLabel14.setBounds(330, 134, 140, 40);
+
+        jLabel15.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("6to Set");
+        add(jLabel15);
+        jLabel15.setBounds(430, 134, 40, 40);
+
+        jLabel16.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("7mo Set");
+        add(jLabel16);
+        jLabel16.setBounds(478, 134, 42, 40);
+
+        jLabel17.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("8vo Set");
+        add(jLabel17);
+        jLabel17.setBounds(530, 134, 40, 40);
+
+        jLabel18.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("9no Set");
+        add(jLabel18);
+        jLabel18.setBounds(580, 134, 40, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
@@ -170,31 +306,76 @@ public class GestionarResultados extends javax.swing.JPanel {
         Boolean empatePermitido = GestionarFixtureGestor.getEmpatePermitido(compAux);
         ArrayList<ResultadoAux> listaResultadosAux = new ArrayList<>();
         int indiceGanador = 0;
-        Boolean asispar1;
-        Boolean asispar2;
+        Boolean asispar1= jCheckBox1.isSelected();
+        Boolean asispar2= jCheckBox2.isSelected();
         String cadenaError = "";
+        String formaPuntuacion = compAux.getFormaPuntuacion();
         
-        
-        if("Sets".equals(compAux.getFormaPuntuacion())){
-            asispar1=(Boolean)jTable1.getValueAt(0, cantSets+1);
-            asispar2=(Boolean)jTable1.getValueAt(1, cantSets+1);
+        if(asispar1 == false && asispar2 == false){
+            cadenaError += "Debe haber presente al menos un Participante\n";
+        }
+                    
+        if("Sets".equals(formaPuntuacion)){
             ArrayList<Integer> listaSets = new ArrayList<>();
             int contador1 = 0;
             int contador2 = 0;
             int unNumero = 0;
+            int set1participante1 = (int) jSpinner1.getValue();
+            int set1participante2 = (int) jSpinner10.getValue();
+            int set2participante1 = (int) jSpinner2.getValue();
+            int set2participante2 = (int) jSpinner11.getValue();
+            int set3participante1 = (int) jSpinner3.getValue();
+            int set3participante2 = (int) jSpinner12.getValue();
+            int set4participante1 = (int) jSpinner4.getValue();
+            int set4participante2 = (int) jSpinner13.getValue();
+            int set5participante1 = (int) jSpinner5.getValue();
+            int set5participante2 = (int) jSpinner14.getValue();
+            int set6participante1 = (int) jSpinner6.getValue();
+            int set6participante2 = (int) jSpinner15.getValue();
+            int set7participante1 = (int) jSpinner7.getValue();
+            int set7participante2 = (int) jSpinner16.getValue();
+            int set8participante1 = (int) jSpinner8.getValue();
+            int set8participante2 = (int) jSpinner17.getValue();
+            int set9participante1 = (int) jSpinner9.getValue();
+            int set9participante2 = (int) jSpinner18.getValue();
             
-            if(asispar1 == false && asispar2 == false){
-                cadenaError += "Debe haber presente al menos un Participante\n";
-            }
-            // Se recorre la tabla y se guarda el valor de los sets en listaSets.
-            for (int i=1; i<=cantSets; i++) {
-                if((int)jTable1.getValueAt(0, i) == (int)jTable1.getValueAt(1, i)){
+            if(set1participante1 == set1participante2 || 
+                   set2participante1 == set2participante2 || 
+                   set3participante1 == set3participante2 || 
+                   set4participante1 == set4participante2 || 
+                   set5participante1 == set5participante2 || 
+                   set6participante1 == set6participante2 || 
+                   set7participante1 == set7participante2 || 
+                   set8participante1 == set8participante2 || 
+                   set9participante1 == set9participante2){
                     cadenaError += "No se permite empate por sets.\n";
-                }
-                else{
-                    listaSets.add((Integer)jTable1.getValueAt(0, i));
-                    listaSets.add((Integer)jTable1.getValueAt(1, i));
-                }
+            }
+            // Se guardan los valor de los sets en listaSets.
+            listaSets.add(set1participante1);
+            listaSets.add(set1participante2); 
+            if (cantSets >= 3) {
+                listaSets.add(set2participante1);
+                listaSets.add(set2participante2);
+                listaSets.add(set3participante1);
+                listaSets.add(set3participante2);
+            }
+            if (cantSets >= 5) {
+                listaSets.add(set4participante1);
+                listaSets.add(set4participante2);
+                listaSets.add(set5participante1);
+                listaSets.add(set5participante2);
+            }
+            if (cantSets >= 7) {
+                listaSets.add(set6participante1);
+                listaSets.add(set6participante2);
+                listaSets.add(set7participante1);
+                listaSets.add(set7participante2);
+            }
+            if (cantSets == 9) {
+                listaSets.add(set8participante1);
+                listaSets.add(set8participante2);
+                listaSets.add(set9participante1);
+                listaSets.add(set9participante2);
             }
             // Se recorre la listaSets y se compara los resultados para guardar el indice.
             for (int i=0; i<(cantSets*2); i+=2) {
@@ -222,14 +403,10 @@ public class GestionarResultados extends javax.swing.JPanel {
                 
             }
         }
-        else if ("Puntuacion".equals(compAux.getFormaPuntuacion())){
-            int PP1 = (int)jTable1.getValueAt(0, 1);
-            int PP2 = (int)jTable1.getValueAt(1, 1);
-            asispar1=(Boolean)jTable1.getValueAt(0, 2);
-            asispar2=(Boolean)jTable1.getValueAt(1, 2);
-            if(asispar1 == false && asispar2 == false){
-                cadenaError += "Debe haber presente al menos un Participante.\n";
-            }
+        else if ("Puntuacion".equals(formaPuntuacion)){
+            int PP1 = (int) jSpinner5.getValue();
+            int PP2 = (int) jSpinner14.getValue();
+
             if(PP1>PP2){
                 indiceGanador = 0;
             }
@@ -251,13 +428,9 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
         }
         else{
-            Boolean ganador1=(Boolean)jTable1.getValueAt(0, 1);
-            Boolean ganador2=(Boolean)jTable1.getValueAt(1, 1);
-            asispar1=(Boolean)jTable1.getValueAt(0, 2);
-            asispar2=(Boolean)jTable1.getValueAt(1, 2);
-            if(asispar1 == false && asispar2 == false){
-                cadenaError += "Debe haber presente al menos un Participante.\n";
-            }
+            Boolean ganador1 =(Boolean)jCheckBox3.isSelected();
+            Boolean ganador2 =(Boolean)jCheckBox4.isSelected();
+            
             if(ganador1 == true && ganador2 == false){
                 indiceGanador = 0;
             }
@@ -302,23 +475,254 @@ public class GestionarResultados extends javax.swing.JPanel {
         V.get().gestionarResultadosSalir();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
     private void crearYLlenarTabla(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
-
+        int cantSets = GestionarFixtureGestor.getCantSets(compAux);
+        
+        jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
+        jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
+        
+        
         if("Puntuacion".equals(formaPuntuacion)) {
             jLabel5.setText("Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos.");
             jLabel5.setVisible(true);
-            crearTablaPuntuacion();
+            jLabel14.setVisible(true);
+            jLabel14.setText("Puntuacion");
+            jSpinner5.setVisible(true);
+            jSpinner14.setVisible(true);
+            jCheckBox3.setVisible(false);
+            jCheckBox4.setVisible(false);
+            jSpinner1.setVisible(false);
+            jSpinner2.setVisible(false);
+            jSpinner3.setVisible(false);
+            jSpinner4.setVisible(false);
+            jSpinner6.setVisible(false);
+            jSpinner7.setVisible(false);
+            jSpinner8.setVisible(false);
+            jSpinner9.setVisible(false);
+            jSpinner10.setVisible(false);
+            jSpinner11.setVisible(false);
+            jSpinner12.setVisible(false);
+            jSpinner13.setVisible(false);
+            jSpinner15.setVisible(false);
+            jSpinner16.setVisible(false);
+            jSpinner17.setVisible(false);
+            jSpinner18.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel15.setVisible(false);
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jLabel18.setVisible(false);
             repaint();
         }
         else if ("Sets".equals(formaPuntuacion)) {
-            crearTablaSet();
+            if(cantSets == 1){
+                jLabel5.setVisible(false);
+                jLabel14.setVisible(false);
+                jLabel14.setText("5to Set");
+                jCheckBox3.setVisible(false);
+                jCheckBox4.setVisible(false);
+                jSpinner5.setVisible(false);
+                jSpinner14.setVisible(false);
+                jSpinner1.setVisible(true);
+                jSpinner2.setVisible(false);
+                jSpinner3.setVisible(false);
+                jSpinner4.setVisible(false);
+                jSpinner6.setVisible(false);
+                jSpinner7.setVisible(false);
+                jSpinner8.setVisible(false);
+                jSpinner9.setVisible(false);
+                jSpinner10.setVisible(true);
+                jSpinner11.setVisible(false);
+                jSpinner12.setVisible(false);
+                jSpinner13.setVisible(false);
+                jSpinner15.setVisible(false);
+                jSpinner16.setVisible(false);
+                jSpinner17.setVisible(false);
+                jSpinner18.setVisible(false);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(false);
+                jLabel12.setVisible(false);
+                jLabel13.setVisible(false);
+                jLabel15.setVisible(false);
+                jLabel16.setVisible(false);
+                jLabel17.setVisible(false);
+                jLabel18.setVisible(false);
+            }
+            else if(cantSets == 3){
+                jLabel5.setVisible(false);
+                jLabel14.setVisible(false);
+                jLabel14.setText("5to Set");
+                jCheckBox3.setVisible(false);
+                jCheckBox4.setVisible(false);
+                jSpinner5.setVisible(false);
+                jSpinner14.setVisible(false);
+                jSpinner1.setVisible(true);
+                jSpinner2.setVisible(true);
+                jSpinner3.setVisible(true);
+                jSpinner4.setVisible(false);
+                jSpinner6.setVisible(false);
+                jSpinner7.setVisible(false);
+                jSpinner8.setVisible(false);
+                jSpinner9.setVisible(false);
+                jSpinner10.setVisible(true);
+                jSpinner11.setVisible(true);
+                jSpinner12.setVisible(true);
+                jSpinner13.setVisible(false);
+                jSpinner15.setVisible(false);
+                jSpinner16.setVisible(false);
+                jSpinner17.setVisible(false);
+                jSpinner18.setVisible(false);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(true);
+                jLabel12.setVisible(true);
+                jLabel13.setVisible(false);
+                jLabel15.setVisible(false);
+                jLabel16.setVisible(false);
+                jLabel17.setVisible(false);
+                jLabel18.setVisible(false);
+            }
+            else if(cantSets == 5){
+                jLabel5.setVisible(false);
+                jLabel14.setVisible(true);
+                jLabel14.setText("5to Set");
+                jCheckBox3.setVisible(false);
+                jCheckBox4.setVisible(false);
+                jSpinner5.setVisible(true);
+                jSpinner14.setVisible(true);
+                jSpinner1.setVisible(true);
+                jSpinner2.setVisible(true);
+                jSpinner3.setVisible(true);
+                jSpinner4.setVisible(true);
+                jSpinner6.setVisible(false);
+                jSpinner7.setVisible(false);
+                jSpinner8.setVisible(false);
+                jSpinner9.setVisible(false);
+                jSpinner10.setVisible(true);
+                jSpinner11.setVisible(true);
+                jSpinner12.setVisible(true);
+                jSpinner13.setVisible(true);
+                jSpinner15.setVisible(false);
+                jSpinner16.setVisible(false);
+                jSpinner17.setVisible(false);
+                jSpinner18.setVisible(false);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(true);
+                jLabel12.setVisible(true);
+                jLabel13.setVisible(true);
+                jLabel15.setVisible(false);
+                jLabel16.setVisible(false);
+                jLabel17.setVisible(false);
+                jLabel18.setVisible(false);
+            }
+            else if(cantSets == 7){
+                jLabel5.setVisible(false);
+                jLabel14.setVisible(true);
+                jLabel14.setText("5to Set");
+                jCheckBox3.setVisible(false);
+                jCheckBox4.setVisible(false);
+                jSpinner5.setVisible(true);
+                jSpinner14.setVisible(true);
+                jSpinner1.setVisible(true);
+                jSpinner2.setVisible(true);
+                jSpinner3.setVisible(true);
+                jSpinner4.setVisible(true);
+                jSpinner6.setVisible(true);
+                jSpinner7.setVisible(true);
+                jSpinner8.setVisible(false);
+                jSpinner9.setVisible(false);
+                jSpinner10.setVisible(true);
+                jSpinner11.setVisible(true);
+                jSpinner12.setVisible(true);
+                jSpinner13.setVisible(true);
+                jSpinner15.setVisible(true);
+                jSpinner16.setVisible(true);
+                jSpinner17.setVisible(false);
+                jSpinner18.setVisible(false);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(true);
+                jLabel12.setVisible(true);
+                jLabel13.setVisible(true);
+                jLabel15.setVisible(true);
+                jLabel16.setVisible(true);
+                jLabel17.setVisible(false);
+                jLabel18.setVisible(false);
+            }
+            else if(cantSets == 9){
+                jLabel5.setVisible(false);
+                jLabel14.setVisible(true);
+                jLabel14.setText("5to Set");
+                jCheckBox3.setVisible(false);
+                jCheckBox4.setVisible(false);
+                jSpinner5.setVisible(true);
+                jSpinner14.setVisible(true);
+                jSpinner1.setVisible(true);
+                jSpinner2.setVisible(true);
+                jSpinner3.setVisible(true);
+                jSpinner4.setVisible(true);
+                jSpinner6.setVisible(true);
+                jSpinner7.setVisible(true);
+                jSpinner8.setVisible(true);
+                jSpinner9.setVisible(true);
+                jSpinner10.setVisible(true);
+                jSpinner11.setVisible(true);
+                jSpinner12.setVisible(true);
+                jSpinner13.setVisible(true);
+                jSpinner15.setVisible(true);
+                jSpinner16.setVisible(true);
+                jSpinner17.setVisible(true);
+                jSpinner18.setVisible(true);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(true);
+                jLabel12.setVisible(true);
+                jLabel13.setVisible(true);
+                jLabel15.setVisible(true);
+                jLabel16.setVisible(true);
+                jLabel17.setVisible(true);
+                jLabel18.setVisible(true);
+            }
             repaint();
         }
         else if ("Resultado Final".equals(formaPuntuacion)) {
             jLabel5.setText("Observacion: Si desea gestionar un empate marque ambas casillas o ninguna.");
             jLabel5.setVisible(true);
-            crearTablaResFinal();
+            jLabel14.setVisible(true);
+            jLabel14.setText("Ganador");
+            jCheckBox3.setVisible(true);
+            jCheckBox4.setVisible(true);
+            jSpinner5.setVisible(false);
+            jSpinner14.setVisible(false);
+            jSpinner1.setVisible(false);
+            jSpinner2.setVisible(false);
+            jSpinner3.setVisible(false);
+            jSpinner4.setVisible(false);
+            jSpinner6.setVisible(false);
+            jSpinner7.setVisible(false);
+            jSpinner8.setVisible(false);
+            jSpinner9.setVisible(false);
+            jSpinner10.setVisible(false);
+            jSpinner11.setVisible(false);
+            jSpinner12.setVisible(false);
+            jSpinner13.setVisible(false);
+            jSpinner15.setVisible(false);
+            jSpinner16.setVisible(false);
+            jSpinner17.setVisible(false);
+            jSpinner18.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel15.setVisible(false);
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jLabel18.setVisible(false);
             repaint();
         }
     }
@@ -327,191 +731,50 @@ public class GestionarResultados extends javax.swing.JPanel {
      jLabel3.setVisible(true);
      jLabel3.setText(compAux.getNombre());
     }
-    
-    
-    private void crearTablaSet(){
-        // voy a tener 1, 3, 5, 7, 9 sets.
-        int cantSets = GestionarFixtureGestor.getCantSets(compAux);
-        
-        
-        if (cantSets == 1){
-            String[] colNames = {"Participante1", "1er Set", "Asistio"};
-            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)},
-                {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
-            };
-            metodoModel(data, colNames);
-        }
-        if (cantSets == 3){
-            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "Asistio"};
-            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
-                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-            };
-            metodoModel(data, colNames);
-        }
-        if (cantSets == 5){
-            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "Asistio"};
-            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
-                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-            };
-            metodoModel(data, colNames);
-        }
-        if (cantSets == 7){
-            String[] colNames = {"Participante1", "1er Set", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "Asistio"};
-            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
-                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-            };
-            metodoModel(data, colNames);
-        }
-        if (cantSets == 9){
-            String[] colNames = {"Participante1", "1erSet", "2do Set", "3er Set", "4to Set", "5to Set", "6to Set", "7mo Set", "8vo Set", "9no Set", "Asistio"};
-            Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)},
-                {partidoAux.getParticipante2(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(true)}
-            };
-            metodoModel(data, colNames);
-        }
-        //}
-        
-
-    }
-    
-    private void crearTablaPuntuacion(){
-        String[] colNames = {"Participante1", "Puntuacion", "Asistio"};
-        Object[][] data = {{partidoAux.getParticipante1(), Integer.valueOf(0), Boolean.valueOf(true)}, 
-            {partidoAux.getParticipante2(), Integer.valueOf(0), Boolean.valueOf(true)}
-        };
-        
-        DefaultTableModel model = new DefaultTableModel(data, colNames) {
-
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public Class getColumnClass(int col) {
-                return data[0][col].getClass();
-            }
-        };
-        jTable1 = new JTable(model);
-        TableColumnModel colModel = jTable1.getColumnModel();
-        
-        colModel.getColumn(1).setCellRenderer(new SpinnerRenderer());
-        colModel.getColumn(1).setCellEditor(new SpinnerEditor());
-
-        jTable1.setCellSelectionEnabled(true);
-        Dimension d = jTable1.getPreferredSize();
-        jTable1.setPreferredScrollableViewportSize(d);
-    }
-    
-    private void crearTablaResFinal(){
-        String[] colNames = {"Participante1", "Ganador", "Asistio"};
-        Object[][] data = {{partidoAux.getParticipante1(), null, null}, 
-            {partidoAux.getParticipante2(), null, null}};
-        
-        Class[] types = new Class [] {
-        java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class
-        };
-
-        DefaultTableModel model = new DefaultTableModel(data, colNames) {
-
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public Class getColumnClass(int col) {
-                return types [col];
-            }
-        };
-        jTable1 = new JTable(model);
-        TableColumnModel colModel = jTable1.getColumnModel();
-
-        jTable1.setCellSelectionEnabled(true);
-        Dimension d = jTable1.getPreferredSize();
-        jTable1.setPreferredScrollableViewportSize(d);
-    }
-    
-    private void metodoModel(Object[][] data, String[] colNames){
-        int cantSets = GestionarFixtureGestor.getCantSets(compAux);
-        
-        DefaultTableModel model = new DefaultTableModel(data, colNames) {
-
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public Class getColumnClass(int col) {
-                return data[0][col].getClass();
-            }
-        };
-        jTable1 = new JTable(model);
-        TableColumnModel colModel = jTable1.getColumnModel();
-        for(int i=1;i<=cantSets;i++){
-            colModel.getColumn(i).setCellRenderer(new SpinnerRenderer());
-            colModel.getColumn(i).setCellEditor(new SpinnerEditor()); 
-        }
-
-        jTable1.setCellSelectionEnabled(true);
-        Dimension d = jTable1.getPreferredSize();
-        jTable1.setPreferredScrollableViewportSize(d);  
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner10;
+    private javax.swing.JSpinner jSpinner11;
+    private javax.swing.JSpinner jSpinner12;
+    private javax.swing.JSpinner jSpinner13;
+    private javax.swing.JSpinner jSpinner14;
+    private javax.swing.JSpinner jSpinner15;
+    private javax.swing.JSpinner jSpinner16;
+    private javax.swing.JSpinner jSpinner17;
+    private javax.swing.JSpinner jSpinner18;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinner5;
+    private javax.swing.JSpinner jSpinner6;
+    private javax.swing.JSpinner jSpinner7;
+    private javax.swing.JSpinner jSpinner8;
+    private javax.swing.JSpinner jSpinner9;
     // End of variables declaration//GEN-END:variables
-}
-
-class SpinnerEditor extends AbstractCellEditor implements TableCellEditor {
-
-    private static long serialVersionUID = 1L;
-    private SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 999, 1);
-    private JSpinner spinner = new JSpinner(model);
-    private int clickCountToStart = 1;
-
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        spinner.setValue(((Integer) value).intValue());
-        return spinner;
-    }
-
-    public Object getCellEditorValue() {
-        return (Integer) spinner.getValue();
-    }
-
-    @Override
-    public boolean isCellEditable(EventObject anEvent) {
-        if (anEvent instanceof MouseEvent) {
-            return ((MouseEvent) anEvent).getClickCount() >= clickCountToStart;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean shouldSelectCell(EventObject anEvent) {
-        return true;
-    }
-
-    @Override
-    public boolean stopCellEditing() {
-        return super.stopCellEditing();
-    }
-
-    @Override
-    public void cancelCellEditing() {
-        super.cancelCellEditing();
-    }
-}
-
-class SpinnerRenderer implements TableCellRenderer {
-
-    private SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 999, 1);
-    private JSpinner spinner = new JSpinner(model);
-
-    public Component getTableCellRendererComponent(JTable table,
-            Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        spinner.setValue(((Integer) value).intValue());
-        return spinner;
-    }
 }
