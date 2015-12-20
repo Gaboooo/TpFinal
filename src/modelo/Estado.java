@@ -1,22 +1,29 @@
 package modelo;
 
 public class Estado {
-    private int ID;
+   
+    private int id;
     private String nombre;
 
     public int getID() {
-        return ID; }
+        return id; 
+    }
     
     public String getNombre() {
-        return nombre; }
+        return nombre;
+    }
     
     public void setNombre(String nombre) {
-        this.nombre = nombre; }
+        this.nombre = nombre;
+    }
     
     public void setID(int unID) {
-        this.ID = unID; }
+        this.id = unID; 
+    }
     
     public Estado(int unID, String nombre) {
-        this.ID = unID;
-        this.nombre = nombre; } }
+        this.id = unID;
+        this.nombre = nombre; 
+    } 
+}
 

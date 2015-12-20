@@ -3,7 +3,8 @@ package modelo;
 import java.util.*;
 
 public class Usuario {
-    private int ID;
+    
+    private int id;
     private String correoElectronico;
     private String contraseña;
     private int numDocumento;
@@ -15,7 +16,7 @@ public class Usuario {
     ArrayList<Competencia> listaCompetencias;
 
     public void setId(int unID) {
-        this.ID = unID;
+        this.id = unID;
     }
 
     public void setCorreoElectronico(String unCorreo) {
@@ -55,7 +56,7 @@ public class Usuario {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public String getCorreoElectronico() {
@@ -111,7 +112,7 @@ public class Usuario {
     // Con ID
     public Usuario(int unID, String unCorreo, String unaContraseña, int unNumero, String unNombre, String unApellido,
         String unTipo, Localidad unaLocalidad, ArrayList<Ingreso> unaLI, ArrayList<Competencia> unaLC) {
-        this.ID = unID;
+        this.id = unID;
         this.correoElectronico = unCorreo;
         this.contraseña = unaContraseña;
         this.numDocumento = unNumero;

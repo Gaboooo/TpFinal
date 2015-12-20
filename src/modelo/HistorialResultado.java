@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class HistorialResultado {
     // Si la competencia es por SETS, la lista tiene tamaño unaCompetencia.getCantidadMaximaDeSets()
     // Si la competencia es por PUNTUACION/RESULTADOFINAL, la lista tiene tamaño 1
-    private int ID;
+    private int id;
     private final ArrayList<Resultado> listaResultados;
     private final Participante ganador;
     private final Boolean empate;
@@ -13,31 +13,38 @@ public class HistorialResultado {
     private final String horaModificacion;
     
     public int getID() {
-        return ID; }
+        return id; 
+    }
     
     public ArrayList<Resultado> getListaResultados() {
-        return listaResultados; }
+        return listaResultados; 
+    }
     
     public Participante getGanador() {
-        return ganador; }
+        return ganador; 
+    }
     
     public Boolean getEmpate() {
-        return empate; }
+        return empate; 
+    }
 
     public String getFechaModificacion() {
-        return fechaModificacion; }
+        return fechaModificacion; 
+    }
 
     public String getHoraModificacion() {
-        return horaModificacion; }
+        return horaModificacion; 
+    }
     
     // Con ID
     public HistorialResultado(int unID, ArrayList<Resultado> unaListaResultados, Participante unGanador, Boolean empate, String unaFecha, String unaHora) {
-        this.ID = unID;
+        this.id = unID;
         this.listaResultados = unaListaResultados;
         this.ganador = unGanador;
         this.empate = empate;
         this.fechaModificacion = unaFecha;
-        this.horaModificacion = unaHora; }
+        this.horaModificacion = unaHora; 
+    }
     
     // Sin ID
     public HistorialResultado(ArrayList<Resultado> unaListaResultados, Participante unGanador, Boolean empate, String unaFecha, String unaHora) {
@@ -45,4 +52,6 @@ public class HistorialResultado {
         this.ganador = unGanador;
         this.empate = empate;
         this.fechaModificacion = unaFecha;
-        this.horaModificacion = unaHora; } }
+        this.horaModificacion = unaHora; 
+    } 
+}

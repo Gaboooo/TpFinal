@@ -1,9 +1,8 @@
 package modelo;
 
-import java.util.ArrayList;
-
 public class ResultadoAux {
-    private int ID;
+    
+    private int id;
     private int numResultado;
     private int puntajeP0;
     private int puntajeP1;
@@ -12,7 +11,7 @@ public class ResultadoAux {
     private int indiceParticipante;
     
     public int getID(){
-        return ID;
+        return id;
     }   
     
     public int getNumero() {
@@ -41,7 +40,7 @@ public class ResultadoAux {
     
     // Con ID
     public ResultadoAux(int unID, int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, int unIndice) {
-        this.ID = unID;
+        this.id = unID;
         this.numResultado = unNumero;
         this.puntajeP0 = PP0;
         this.puntajeP1 = PP1;

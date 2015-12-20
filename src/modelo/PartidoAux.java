@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
-import java.util.logging.Logger;
-
-/**
- *
- * @author Martin
- */
 public class PartidoAux {
+    
     public int id;
     public String fecha="";
     public String participante1;
@@ -20,6 +11,7 @@ public class PartidoAux {
     public String resultado;
 
     public PartidoAux(int IDPartido, String participante1, String participante2, String resultado) {
+        
         this.id = IDPartido;
         this.participante1 = participante1;
         this.participante2 = participante2;

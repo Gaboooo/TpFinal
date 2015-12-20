@@ -1,12 +1,13 @@
 package modelo;
 
 public class ParticipanteAux {
-    private int ID;
+    
+    private int id;
     private String nombre;
     private String correo;
     
     public ParticipanteAux(int unID, String nombre, String correo) {
-        this.ID = unID;
+        this.id = unID;
         this.correo = correo;
         this.nombre = nombre;
     }
@@ -17,13 +18,18 @@ public class ParticipanteAux {
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo; }
+        this.correo = correo; 
+    }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre; }
+        this.nombre = nombre; 
+    }
 
     public String getCorreo() {
-        return correo; }
+        return correo; 
+    }
     
     public String getNombre() {
-        return nombre; } }
+        return nombre; 
+    } 
+}

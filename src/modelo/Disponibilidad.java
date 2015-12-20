@@ -1,35 +1,45 @@
 package modelo;
 
 public class Disponibilidad {
-   private int ID;
+   
+   private int id;
    private int cantidad;
-   private LugarRealizacion LR;
+   private LugarRealizacion lr;
 
     public void setID(int unID) {
-        this.ID = unID; }
+        this.id = unID; 
+    }
    
     public void setCantidad(int unaCantidad) {
-        this.cantidad = unaCantidad; }
+        this.cantidad = unaCantidad; 
+    }
 
-    public void setLR(LugarRealizacion LR) {
-        this.LR = LR; }
+    public void setLR(LugarRealizacion lr) {
+        this.lr = lr; 
+    }
 
     public int getID() {
-        return ID; }
+        return id; 
+    }
     
     public int getCantidad() {
-        return cantidad; }
+        return cantidad; 
+    }
 
     public LugarRealizacion getLR() {
-        return LR; }
+        return lr; 
+    }
     
-    // Con ID
-    public Disponibilidad(int unID, int unaCantidad, LugarRealizacion LR) {
-        this.ID = unID;
+    // Con id
+    public Disponibilidad(int unID, int unaCantidad, LugarRealizacion lr) {
+        this.id = unID;
         this.cantidad = unaCantidad;
-        this.LR = LR; }
+        this.lr = lr; 
+    }
     
-    // Sin ID
-    public Disponibilidad(int unaCantidad, LugarRealizacion LR) {
+    // Sin id
+    public Disponibilidad(int unaCantidad, LugarRealizacion lr) {
         this.cantidad = unaCantidad;
-        this.LR = LR; } }
+        this.lr = lr; 
+    } 
+}

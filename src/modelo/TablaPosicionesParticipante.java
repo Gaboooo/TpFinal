@@ -13,8 +13,7 @@ public class TablaPosicionesParticipante {
     private int tantoAFavor;
     
     
-    
-    public int getId() {
+     public int getId() {
         return id;
     }
 
@@ -45,9 +44,7 @@ public class TablaPosicionesParticipante {
     public void setTantoAFavor(int tantoAFavor) {
         this.tantoAFavor = tantoAFavor;
     }
-    
-    
-    
+     
     public int getPuntos() {
         return puntos;
     }

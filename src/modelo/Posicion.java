@@ -1,7 +1,8 @@
 package modelo;
 
 public class Posicion {
-    private int ID;
+   
+    private int id;
     private Participante participante;
     private int puntaje;
     private int partidosGanados;
@@ -11,61 +12,77 @@ public class Posicion {
     private int tantosAFavor;
 
     public void setParticipante(Participante unParticipante) {
-        this.participante = unParticipante; }
+        this.participante = unParticipante; 
+    }
 
     public void setPuntaje(int unPuntaje) {
-        this.puntaje = unPuntaje; }
+        this.puntaje = unPuntaje; 
+    }
 
     public void setPartidosGanados(int partidosGanados) {
-        this.partidosGanados = partidosGanados; }
+        this.partidosGanados = partidosGanados; 
+    }
 
     public void setPartidosPerdidos(int partidosPerdidos) {
-        this.partidosPerdidos = partidosPerdidos; }
+        this.partidosPerdidos = partidosPerdidos; 
+    }
 
     public void setPartidosEmpatados(int partidosEmpatados) {
-        this.partidosEmpatados = partidosEmpatados; }
+        this.partidosEmpatados = partidosEmpatados; 
+    }
 
     public void setTantosEnContra(int unaCantidad) {
-        this.tantosEnContra = unaCantidad; }
+        this.tantosEnContra = unaCantidad; 
+    }
 
     public void setTantosAFavor(int unaCantidad) {
-        this.tantosAFavor = unaCantidad; }
+        this.tantosAFavor = unaCantidad; 
+    }
 
     public int getID() {
-        return ID; }
+        return id; 
+    }
     
     public Participante getParticipante() {
-        return participante; }
+        return participante; 
+    }
     
     public int getPuntaje() {
-        return puntaje; }
+        return puntaje; 
+    }
 
     public int getPartidosGanados() {
-        return partidosGanados; }
+        return partidosGanados; 
+    }
 
     public int getPartidosPerdidos() {
-        return partidosPerdidos; }
+        return partidosPerdidos; 
+    }
 
     public int getPartidosEmpatados() {
-        return partidosEmpatados; }
+        return partidosEmpatados; 
+    }
 
     public int getTantosEnContra() {
-        return tantosEnContra; }
+        return tantosEnContra;
+    }
 
     public int getTantosAFavor() {
-        return tantosAFavor; }
+        return tantosAFavor; 
+    }
     
     // Con ID
     public Posicion(int unID, Participante unParticipante, int unPuntaje,
         int partidosGanados, int partidosPerdidos, int partidosEmpatados, int tantosAFavor, int tantosEnContra) {
-        this.ID = unID;
+        this.id = unID;
         this.participante = unParticipante;
         this.puntaje = unPuntaje;
         this.partidosGanados = partidosGanados;
         this.partidosPerdidos = partidosPerdidos;
         this.partidosEmpatados = partidosEmpatados;
         this.tantosAFavor = tantosAFavor;
-        this.tantosEnContra = tantosEnContra; }
+        this.tantosEnContra = tantosEnContra;
+    }
     
     // Sin ID
     public Posicion(Participante unParticipante, int unPuntaje,
@@ -76,4 +93,6 @@ public class Posicion {
         this.partidosPerdidos = partidosPerdidos;
         this.partidosEmpatados = partidosEmpatados;
         this.tantosAFavor = tantosAFavor;
-        this.tantosEnContra = tantosEnContra; } }
+        this.tantosEnContra = tantosEnContra; 
+    }
+}
