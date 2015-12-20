@@ -355,6 +355,65 @@ public class ListarCompetencias extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Ingrese un filtro de busqueda", "", JOptionPane.INFORMATION_MESSAGE);
     }
     
+    public void botonBuscar(){
+        if(comboBoxDeporte.getSelectedIndex()==0 && comboBoxModalidad.getSelectedIndex()==0 &&
+                comboBoxEstado.getSelectedIndex()==0 && textFieldCompetencia.getText().isEmpty()){
+            errorFiltros();
+        }
+        else{
+            
+            // Llamar a la funcion para rellenar la tabla (devuelve matriz)
+            Object estado = comboBoxEstado.getSelectedItem();
+            String textEstado = String.valueOf(estado);
+            Object deporte = comboBoxDeporte.getSelectedItem();
+            String textDeporte= String.valueOf(deporte);
+            Object modalidad = comboBoxModalidad.getSelectedItem();
+            String textModalidad= String.valueOf(modalidad);
+            
+            String nombre=textFieldCompetencia.getText();
+            
+            if("".equals(textDeporte)){textDeporte=null;}
+            if("".equals(textEstado)){textEstado=null;}
+            if("".equals(textModalidad)){textModalidad=null;}
+            
+            if("".equals(textFieldCompetencia.getText())){
+                nombre=null;
+            }
+            
+            // Se recuperan las competenciasAux de la base de datos
+            listaprueba = GestorCD.listarCD(nombre, textDeporte,textModalidad,textEstado);
+            
+            
+            // Eliminacion de la tabla actual
+            DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
+            int filas=jTable1.getRowCount();
+            int i;
+            for (i=0;filas>i; i++) {
+                modelo.removeRow(0);
+            }
+            
+            // Se le asignan las competencias recuperadas
+            for(i=0;i < listaprueba.size();i++){
+                
+                CompetenciaAux elem=listaprueba.get(i);
+                
+                String fila[]=new String[4];
+                
+                fila[0]= elem.getNombre();
+                fila[1]= elem.getDeporte();
+                fila[2]= elem.getModalidad();
+                fila[3]= elem.getEstado();
+                
+                modelo.addRow(fila);
+            }
+            jTable1.setModel(modelo);
+            
+            if(jTable1.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"No se han encontrado resultados.",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox comboBoxDeporte;
