@@ -74,7 +74,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTable1.setFocusable(false);&#xa;jTable1.setRowHeight(18);&#xa;jTable1.getTableHeader().setResizingAllowed(false);&#xa;jTable1.getTableHeader().setReorderingAllowed(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTable1.setFocusable(false);&#xa;jTable1.setRowHeight(18);&#xa;jTable1.getTableHeader().setResizingAllowed(false);&#xa;jTable1.getTableHeader().setReorderingAllowed(false);&#xa;jTable1.setRowSelectionAllowed(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>
