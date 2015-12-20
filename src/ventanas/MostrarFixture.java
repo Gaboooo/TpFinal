@@ -282,10 +282,9 @@ public class MostrarFixture extends javax.swing.JPanel {
             
             String fila[]=new String[4];
             
-            fila[0]= partAux.getFecha();
-            fila[1]= partAux.getParticipante1();
-            fila[2]= partAux.getParticipante2();
-            fila[3]= partAux.getResultado();
+            fila[0]= partAux.getParticipante1();
+            fila[1]= partAux.getParticipante2();
+            fila[2]= partAux.getResultado();
             
             modelo.addRow(fila);
         }
