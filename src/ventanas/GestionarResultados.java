@@ -506,6 +506,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         else if(asispar1 == true && asispar2 == false){
             indiceGanador = 0;
             ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
+            listaResultadosAux.add(unResultado);
             if("".equals(cadenaError)){
                 GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
