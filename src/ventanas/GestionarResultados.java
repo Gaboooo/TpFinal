@@ -201,6 +201,12 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel9.setText("Asistencia");
         add(jLabel9);
         jLabel9.setBounds(630, 134, 80, 40);
+
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
         add(jCheckBox3);
         jCheckBox3.setBounds(390, 170, 20, 21);
         add(jCheckBox4);
@@ -514,6 +520,10 @@ public class GestionarResultados extends javax.swing.JPanel {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void crearYLlenarTabla(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
