@@ -35,12 +35,13 @@ public class MostrarFixture extends javax.swing.JPanel {
         buscarRondas();
         int rondaAct=getRondaActual(compAux);
         if(rondaAct>rondas.size()){
-        modeloRondas= (new javax.swing.SpinnerNumberModel(rondas.size(), 1, rondas.size(), 1));
+            modeloRondas= (new javax.swing.SpinnerNumberModel(rondas.size(), 1, rondas.size(), 1));
         }
         else{
-             modeloRondas= (new javax.swing.SpinnerNumberModel(rondaAct, 1, rondas.size(), 1));
+            modeloRondas= (new javax.swing.SpinnerNumberModel(rondaAct, 1, rondas.size(), 1));
         }
         initComponents();
+        llenarTabla(rondaAct);
         
         verNombre();
     }
@@ -78,11 +79,11 @@ public class MostrarFixture extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Fecha", "Participante 1", "Participante 2", "Resultado"
+                "Participante 1", "Participante 2", "Resultado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -93,10 +94,8 @@ public class MostrarFixture extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(180);
         }
-        llenarTabla(1);
 
         add(jScrollPane1);
         jScrollPane1.setBounds(48, 182, 695, 290);
