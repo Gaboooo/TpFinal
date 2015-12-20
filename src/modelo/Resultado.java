@@ -10,7 +10,7 @@ public class Resultado {
     private Participante ganador;
     
     public String getResultadoString(){
-        return puntajeP0+"  -  "+puntajeP1;
+        return puntajeP0+" - "+puntajeP1;
     }
     
     public boolean esResultadoFinal(){
