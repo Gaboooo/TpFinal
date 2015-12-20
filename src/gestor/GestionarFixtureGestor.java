@@ -1,6 +1,7 @@
 package gestor;
 
 import DAO.*;
+import static DAO.CompetenciaDaoJDBC.cantRondas;
 import static DAO.CompetenciaDaoJDBC.cantidadPartidosCargados;
 import static DAO.CompetenciaDaoJDBC.cantidadPartidosPorRonda;
 import java.text.DateFormat;
@@ -468,7 +469,8 @@ public class GestionarFixtureGestor {
             int cantParticipantes = unaCompetencia.getListaParticipantes().size();
             int cantResultadosCargados = getCantResultadosCargados(unaRonda);
             /*numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2*/
-            if (cantidadPartidosCargados(unaCompetencia.getID())==cantidadPartidosPorRonda(unaCompetencia.getID())) {
+            if (cantidadPartidosCargados(unaCompetencia.getID()) ==
+                    cantidadPartidosPorRonda(unaCompetencia.getID())* cantRondas(unaCompetenciaAux.getId())) {
                 Estado nuevoEstado = GenerarFixtureDAO.getEstado("Finalizada");
                 unaCompetencia.setEstado(nuevoEstado);
                 GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado);
