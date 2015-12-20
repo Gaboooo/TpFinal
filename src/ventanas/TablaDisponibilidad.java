@@ -24,93 +24,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 public class TablaDisponibilidad extends JPanel{
-
+/*
     public static void main(String[] args) {
-        //public static void nueva(){
-        int tope=4;//modificar el numero de clubes
-        ArrayList <String> clubes=new ArrayList<String>();
-        for (int i=0; i<tope;i++){
-            clubes.add("equipo "+Integer.toString(i));
-        }
-        Collections.shuffle(clubes);
-        int cantClubes=clubes.size();
-        
-        boolean impar=cantClubes%2!=0;
-        if(impar){
-            cantClubes++;
-        }
-        int cantPartidos=(cantClubes*(cantClubes-1))/2;//total de partidos de una ronda
-        
-        ArrayList<String> listaPartidos=new ArrayList<>();
-        
-        int modIF=(cantClubes/2);//para hacer mod cada inicio de fecha
-        int indiceInverso=cantClubes-2;
-        
-        for(int i=0;i<cantPartidos;i++){
-            if (i%modIF==0){//seria el partido inicial de cada fecha
-                //si es impar el numero de clubes la primera fecha se borra poniendo null
-                if (impar){
-                    listaPartidos.add(null);/*
-                    local[i]=null;
-                    visita[i]=null;*/
-                }
-                else{
-                    //se pone uno local otro  visita al ultimo equipo
-                    if(i%2==0){
-                        listaPartidos.add(clubes.get(i%(cantClubes-1))+" vs "+
-                                clubes.get(cantClubes-1));/*
-                        local[i]=clubes.get(i%(cantClubes-1));
-                        visita[i]=clubes.get(cantClubes-1);*/
-                    }
-                    else{
-                        listaPartidos.add(clubes.get(i%(cantClubes-1))+" vs "+
-                                clubes.get(cantClubes-1));/*
-                        local[i]=clubes.get(cantClubes-1);
-                        visita[i]=clubes.get(i%(cantClubes-1));*/
-                    }
-                }
-            }
-            else{
-                listaPartidos.add(clubes.get(i%(cantClubes-1))+" vs "+
-                        clubes.get(indiceInverso));/*
-                local[i]=clubes.get(i%(cantClubes-1));
-                visita[i]=clubes.get(indiceInverso);*/
-                --indiceInverso;
-                if (indiceInverso<0){
-                    indiceInverso=cantClubes-2;
-                }
-            }
-        }
-        int cantRondas=0;
-        if(clubes.size()%2==0){
-                cantRondas=clubes.size()-1;
-            }
-            else{
-                cantRondas=clubes.size();
-            }
-        
-        int cantPartidosPorRonda=clubes.size()/2;
-        ArrayList<ArrayList<String>> rondas= new ArrayList<>();
-        
-        for(int i=0; i<cantRondas; i++){
-            
-            ArrayList<String> ronda= new ArrayList<>();
-            
-            for(int j=0; j<cantPartidosPorRonda; j++){
-                String partido=listaPartidos.remove(0);
-                ronda.add(partido);
-            }
-            
-            rondas.add(ronda);
-        }
-        System.out.println(listaPartidos.get(0));
-        /*
-        for(int i=0;i<cantPartidos;i++){
-            if(listaPartidos.get(i)!=null){
-                System.out.println(listaPartidos.get(i));
-            }
-        }*/
-    }/*//new TablaDisponibilidad();
+        TablaDisponibilidad();
+    }*/
+    /*//new TablaDisponibilidad();
         JFrame frame = new JFrame("Testing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
