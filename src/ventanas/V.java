@@ -85,6 +85,8 @@ public class V extends javax.swing.JFrame {
         menuVolver();
     }
     public void listarCompetenciasVolver(){
+        //ListarCompetencias.botonBuscar();
+        //listarCD.botonBuscar();
         listarCD.setVisible(true);
         revalidate();
         repaint();
