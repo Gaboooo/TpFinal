@@ -29,6 +29,8 @@ public class GestionarResultados extends javax.swing.JPanel {
     CompetenciaAux compAux;
     RondaAux rondaAux;
     PartidoAux partidoAux;
+    ArrayList<ResultadoAux> resultadosAnteriores;
+    
     /**
      * Creates new form GestionarResultados
      * @param param
@@ -41,7 +43,13 @@ public class GestionarResultados extends javax.swing.JPanel {
         rondaAux=param2;
         partidoAux=param3;
         
+        // AGREGADO
+        // Buscar resultados de la BD, si los hubiera
+        resultadosAnteriores= gestor.GestionarFixtureGestor.getResultados(partidoAux);
+        
+        
         initComponents();
+        
         
         verNombre();
         if(param3!=null){
@@ -562,15 +570,6 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
         jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
-        
-        
-        
-        
-        // AGREGADO
-        // Buscar resultados de la BD, si los hubiera
-        ArrayList<ResultadoAux> resultadosAnteriores=
-                gestor.GestionarFixtureGestor.getResultados(partidoAux);
-        
         
         if("Puntuacion".equals(formaPuntuacion)) {
             jLabel5.setText("Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos.");
