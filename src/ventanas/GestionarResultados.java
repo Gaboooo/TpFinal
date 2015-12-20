@@ -46,7 +46,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         // AGREGADO
         // Buscar resultados de la BD, si los hubiera
-        resultadosAnteriores= gestor.GestionarFixtureGestor.getResultados(partidoAux);
+        resultadosAnteriores = gestor.GestionarFixtureGestor.getResultados(partidoAux);
         cantSets = GestionarFixtureGestor.getCantSets(compAux);
         
         
@@ -203,22 +203,12 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jCheckBox1StateChanged(evt);
             }
         });
-        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox1MouseClicked(evt);
-            }
-        });
         add(jCheckBox1);
         jCheckBox1.setBounds(660, 171, 20, 20);
 
         jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jCheckBox2StateChanged(evt);
-            }
-        });
-        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox2MouseClicked(evt);
             }
         });
         add(jCheckBox2);
@@ -563,7 +553,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             crearYLlenarVentana();
         }
         else {
-            crearVentana();
+            vaciarVentana();
         }
     }//GEN-LAST:event_jCheckBox1StateChanged
 
@@ -572,27 +562,9 @@ public class GestionarResultados extends javax.swing.JPanel {
             crearYLlenarVentana();
         }
         else {
-            crearVentana();
+            vaciarVentana();
         }
     }//GEN-LAST:event_jCheckBox2StateChanged
-
-    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
-        if(jCheckBox1.isSelected()){
-            jCheckBox1.setSelected(false);
-        }
-        else{
-            jCheckBox1.setSelected(true);
-        }
-    }//GEN-LAST:event_jCheckBox1MouseClicked
-
-    private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
-        if(jCheckBox2.isSelected()){
-            jCheckBox2.setSelected(false);
-        }
-        else{
-            jCheckBox2.setSelected(true);
-        }
-    }//GEN-LAST:event_jCheckBox2MouseClicked
 
     private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
@@ -833,6 +805,39 @@ public class GestionarResultados extends javax.swing.JPanel {
             jLabel18.setVisible(false);
         }
         repaint();
+    }
+    
+    private void vaciarVentana(){
+            jLabel5.setVisible(false);
+            jLabel14.setVisible(false);
+            jSpinner5.setVisible(false);
+            jSpinner14.setVisible(false);
+            jCheckBox3.setVisible(false);
+            jCheckBox4.setVisible(false);
+            jSpinner1.setVisible(false);
+            jSpinner2.setVisible(false);
+            jSpinner3.setVisible(false);
+            jSpinner4.setVisible(false);
+            jSpinner6.setVisible(false);
+            jSpinner7.setVisible(false);
+            jSpinner8.setVisible(false);
+            jSpinner9.setVisible(false);
+            jSpinner10.setVisible(false);
+            jSpinner11.setVisible(false);
+            jSpinner12.setVisible(false);
+            jSpinner13.setVisible(false);
+            jSpinner15.setVisible(false);
+            jSpinner16.setVisible(false);
+            jSpinner17.setVisible(false);
+            jSpinner18.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel15.setVisible(false);
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jLabel18.setVisible(false);
     }
     
     private void verNombre(){
