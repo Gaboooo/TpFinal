@@ -17,7 +17,27 @@ public class Partido {
     // private String anterior2;
     
     public String getResultadoString(){
-        return "";
+        String retorno="";
+        Resultado res;
+        if(listaResultados.size()>1){
+            for(int i=0; i<listaResultados.size(); i++){
+                res= listaResultados.get(i);
+                retorno+="( "+res.getResultadoString()+" )  ";
+            }
+        }
+        else if(listaResultados.size()==1){
+            res= listaResultados.get(0);
+            if(res.esResultadoFinal()){
+                retorno="Ganó "+ res.getGanadorString();
+            }
+            else{
+                retorno= res.getResultadoString();
+            }
+        }
+        else if(listaResultados.isEmpty()){
+            retorno="";
+        }
+        return retorno;
     }
     
     public int getID() {

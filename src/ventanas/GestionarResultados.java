@@ -30,6 +30,7 @@ public class GestionarResultados extends javax.swing.JPanel {
     RondaAux rondaAux;
     PartidoAux partidoAux;
     ArrayList<ResultadoAux> resultadosAnteriores;
+    int cantSets;
     
     /**
      * Creates new form GestionarResultados
@@ -46,6 +47,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         // AGREGADO
         // Buscar resultados de la BD, si los hubiera
         resultadosAnteriores= gestor.GestionarFixtureGestor.getResultados(partidoAux);
+        cantSets = GestionarFixtureGestor.getCantSets(compAux);
         
         
         initComponents();
@@ -566,12 +568,17 @@ public class GestionarResultados extends javax.swing.JPanel {
 
     private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
-        int cantSets = GestionarFixtureGestor.getCantSets(compAux);
         
         jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
         jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
         
         if("Puntuacion".equals(formaPuntuacion)) {
+            
+            if(resultadosAnteriores != null){
+                ResultadoAux result = resultadosAnteriores.get(1);
+                jSpinner5.setValue(result.getPuntajeP0());
+                jSpinner14.setValue(result.getPuntajeP1());
+            }
             jLabel5.setText("Observacion: Si Desea Realizar Empate, ponga la misma puntuacion en ambos.");
             jLabel5.setVisible(true);
             jLabel14.setVisible(true);
@@ -607,172 +614,99 @@ public class GestionarResultados extends javax.swing.JPanel {
             repaint();
         }
         else if ("Sets".equals(formaPuntuacion)) {
-            if(cantSets == 1){
-                jLabel5.setVisible(false);
-                jLabel14.setVisible(false);
-                jLabel14.setText("5to Set");
-                jCheckBox3.setVisible(false);
-                jCheckBox4.setVisible(false);
-                jSpinner5.setVisible(false);
-                jSpinner14.setVisible(false);
+            jLabel14.setText("5to Set");
+            jCheckBox3.setVisible(false);
+            jCheckBox4.setVisible(false);
+            jLabel5.setVisible(false);
+            ResultadoAux set1 = null;
+            ResultadoAux set2 = null;
+            ResultadoAux set3 = null;
+            ResultadoAux set4 = null;
+            ResultadoAux set5 = null;
+            ResultadoAux set6 = null;
+            ResultadoAux set7 = null;
+            ResultadoAux set8 = null;
+            ResultadoAux set9 = null;
+            
+            
+            if(resultadosAnteriores != null){
+                set1 = resultadosAnteriores.get(0);
+                set2 = resultadosAnteriores.get(1);
+                set3 = resultadosAnteriores.get(2);
+                set4 = resultadosAnteriores.get(3);
+                set5 = resultadosAnteriores.get(4);
+                set6 = resultadosAnteriores.get(5);
+                set7 = resultadosAnteriores.get(6);
+                set8 = resultadosAnteriores.get(7);
+                set9 = resultadosAnteriores.get(8);
+            }
+            
+            if(cantSets >= 1){
+                if(set1 != null){
+                    jSpinner1.setValue(set1.getPuntajeP0());
+                    jSpinner10.setValue(set1.getPuntajeP1()); 
+                }
                 jSpinner1.setVisible(true);
-                jSpinner2.setVisible(false);
-                jSpinner3.setVisible(false);
-                jSpinner4.setVisible(false);
-                jSpinner6.setVisible(false);
-                jSpinner7.setVisible(false);
-                jSpinner8.setVisible(false);
-                jSpinner9.setVisible(false);
                 jSpinner10.setVisible(true);
-                jSpinner11.setVisible(false);
-                jSpinner12.setVisible(false);
-                jSpinner13.setVisible(false);
-                jSpinner15.setVisible(false);
-                jSpinner16.setVisible(false);
-                jSpinner17.setVisible(false);
-                jSpinner18.setVisible(false);
                 jLabel10.setVisible(true);
-                jLabel11.setVisible(false);
-                jLabel12.setVisible(false);
-                jLabel13.setVisible(false);
-                jLabel15.setVisible(false);
-                jLabel16.setVisible(false);
-                jLabel17.setVisible(false);
-                jLabel18.setVisible(false);
                 repaint();
             }
-            else if(cantSets == 3){
-                jLabel5.setVisible(false);
-                jLabel14.setVisible(false);
-                jLabel14.setText("5to Set");
-                jCheckBox3.setVisible(false);
-                jCheckBox4.setVisible(false);
-                jSpinner5.setVisible(false);
-                jSpinner14.setVisible(false);
-                jSpinner1.setVisible(true);
+            if(cantSets >= 3){
+                if(set2 != null && set3 != null){
+                    jSpinner2.setValue(set2.getPuntajeP0());
+                    jSpinner3.setValue(set3.getPuntajeP0());
+                    jSpinner11.setValue(set2.getPuntajeP1());
+                    jSpinner12.setValue(set3.getPuntajeP1());  
+                }
                 jSpinner2.setVisible(true);
                 jSpinner3.setVisible(true);
-                jSpinner4.setVisible(false);
-                jSpinner6.setVisible(false);
-                jSpinner7.setVisible(false);
-                jSpinner8.setVisible(false);
-                jSpinner9.setVisible(false);
-                jSpinner10.setVisible(true);
                 jSpinner11.setVisible(true);
                 jSpinner12.setVisible(true);
-                jSpinner13.setVisible(false);
-                jSpinner15.setVisible(false);
-                jSpinner16.setVisible(false);
-                jSpinner17.setVisible(false);
-                jSpinner18.setVisible(false);
-                jLabel10.setVisible(true);
                 jLabel11.setVisible(true);
                 jLabel12.setVisible(true);
-                jLabel13.setVisible(false);
-                jLabel15.setVisible(false);
-                jLabel16.setVisible(false);
-                jLabel17.setVisible(false);
-                jLabel18.setVisible(false);
                 repaint();
             }
-            else if(cantSets == 5){
-                jLabel5.setVisible(false);
-                jLabel14.setVisible(true);
-                jLabel14.setText("5to Set");
-                jCheckBox3.setVisible(false);
-                jCheckBox4.setVisible(false);
-                jSpinner5.setVisible(true);
-                jSpinner14.setVisible(true);
-                jSpinner1.setVisible(true);
-                jSpinner2.setVisible(true);
-                jSpinner3.setVisible(true);
+            if(cantSets >= 5){
+                if(set4 != null && set5 != null){
+                    jSpinner4.setValue(set4.getPuntajeP0());
+                    jSpinner5.setValue(set5.getPuntajeP0());
+                    jSpinner13.setValue(set4.getPuntajeP1());
+                    jSpinner14.setValue(set5.getPuntajeP1());
+                }
                 jSpinner4.setVisible(true);
-                jSpinner6.setVisible(false);
-                jSpinner7.setVisible(false);
-                jSpinner8.setVisible(false);
-                jSpinner9.setVisible(false);
-                jSpinner10.setVisible(true);
-                jSpinner11.setVisible(true);
-                jSpinner12.setVisible(true);
+                jSpinner5.setVisible(true);
                 jSpinner13.setVisible(true);
-                jSpinner15.setVisible(false);
-                jSpinner16.setVisible(false);
-                jSpinner17.setVisible(false);
-                jSpinner18.setVisible(false);
-                jLabel10.setVisible(true);
-                jLabel11.setVisible(true);
-                jLabel12.setVisible(true);
+                jSpinner14.setVisible(true);
                 jLabel13.setVisible(true);
-                jLabel15.setVisible(false);
-                jLabel16.setVisible(false);
-                jLabel17.setVisible(false);
-                jLabel18.setVisible(false);
+                jLabel14.setVisible(true);
                 repaint();
             }
-            else if(cantSets == 7){
-                jLabel5.setVisible(false);
-                jLabel14.setVisible(true);
-                jLabel14.setText("5to Set");
-                jCheckBox3.setVisible(false);
-                jCheckBox4.setVisible(false);
-                jSpinner5.setVisible(true);
-                jSpinner14.setVisible(true);
-                jSpinner1.setVisible(true);
-                jSpinner2.setVisible(true);
-                jSpinner3.setVisible(true);
-                jSpinner4.setVisible(true);
+            if(cantSets >= 7){
+                if(set6 != null && set7 != null){
+                    jSpinner6.setValue(set6.getPuntajeP0());
+                    jSpinner7.setValue(set7.getPuntajeP0());
+                    jSpinner15.setValue(set6.getPuntajeP1());
+                    jSpinner16.setValue(set7.getPuntajeP1());
+                }
                 jSpinner6.setVisible(true);
                 jSpinner7.setVisible(true);
-                jSpinner8.setVisible(false);
-                jSpinner9.setVisible(false);
-                jSpinner10.setVisible(true);
-                jSpinner11.setVisible(true);
-                jSpinner12.setVisible(true);
-                jSpinner13.setVisible(true);
                 jSpinner15.setVisible(true);
                 jSpinner16.setVisible(true);
-                jSpinner17.setVisible(false);
-                jSpinner18.setVisible(false);
-                jLabel10.setVisible(true);
-                jLabel11.setVisible(true);
-                jLabel12.setVisible(true);
-                jLabel13.setVisible(true);
                 jLabel15.setVisible(true);
                 jLabel16.setVisible(true);
-                jLabel17.setVisible(false);
-                jLabel18.setVisible(false);
                 repaint();
             }
-            else if(cantSets == 9){
-                jLabel5.setVisible(false);
-                jLabel14.setVisible(true);
-                jLabel14.setText("5to Set");
-                jCheckBox3.setVisible(false);
-                jCheckBox4.setVisible(false);
-                jSpinner5.setVisible(true);
-                jSpinner14.setVisible(true);
-                jSpinner1.setVisible(true);
-                jSpinner2.setVisible(true);
-                jSpinner3.setVisible(true);
-                jSpinner4.setVisible(true);
-                jSpinner6.setVisible(true);
-                jSpinner7.setVisible(true);
+            if(cantSets >= 9){
+                if(set8 != null && set9 != null){
+                    jSpinner8.setValue(set8.getPuntajeP0());
+                    jSpinner9.setValue(set9.getPuntajeP0());
+                    jSpinner17.setValue(set8.getPuntajeP1());
+                    jSpinner18.setValue(set9.getPuntajeP1());
+                }
                 jSpinner8.setVisible(true);
                 jSpinner9.setVisible(true);
-                jSpinner10.setVisible(true);
-                jSpinner11.setVisible(true);
-                jSpinner12.setVisible(true);
-                jSpinner13.setVisible(true);
-                jSpinner15.setVisible(true);
-                jSpinner16.setVisible(true);
                 jSpinner17.setVisible(true);
                 jSpinner18.setVisible(true);
-                jLabel10.setVisible(true);
-                jLabel11.setVisible(true);
-                jLabel12.setVisible(true);
-                jLabel13.setVisible(true);
-                jLabel15.setVisible(true);
-                jLabel16.setVisible(true);
                 jLabel17.setVisible(true);
                 jLabel18.setVisible(true);
                 repaint();
@@ -780,12 +714,25 @@ public class GestionarResultados extends javax.swing.JPanel {
             repaint();
         }
         else if ("Resultado Final".equals(formaPuntuacion)) {
+            ResultadoAux result = resultadosAnteriores.get(1);
             jLabel5.setText("Observacion: Si desea gestionar un empate marque ambas casillas o ninguna.");
             jLabel5.setVisible(true);
             jLabel14.setVisible(true);
             jLabel14.setText("Ganador");
             jCheckBox3.setVisible(true);
-            jCheckBox4.setVisible(true);
+            if(resultadosAnteriores != null){
+                if(result.getIndiceParticipante() == 0){
+                    jCheckBox3.setSelected(true);
+                }
+                else if(result.getIndiceParticipante() == 1){
+                    jCheckBox4.setSelected(true);
+                }
+                else if(result.getIndiceParticipante() == 2){
+                    jCheckBox3.setSelected(true);
+                    jCheckBox4.setSelected(true);
+                } 
+            }
+            jCheckBox4.setVisible(true);            
             jSpinner5.setVisible(false);
             jSpinner14.setVisible(false);
             jSpinner1.setVisible(false);
@@ -817,9 +764,12 @@ public class GestionarResultados extends javax.swing.JPanel {
     }
     
     private void vaciarVentana(){
+        ResultadoAux asistencia = resultadosAnteriores.get(1);
         jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
         jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
-        
+       
+        jCheckBox1.setSelected(asistencia.getAsistenciaP0());
+        jCheckBox2.setSelected(asistencia.getAsistenciaP1());
         
         jLabel5.setVisible(false);
         jLabel14.setVisible(false);

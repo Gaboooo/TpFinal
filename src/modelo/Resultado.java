@@ -9,6 +9,18 @@ public class Resultado {
     private Boolean asistenciaP1;
     private Participante ganador;
     
+    public String getResultadoString(){
+        return puntajeP0+"  -  "+puntajeP1;
+    }
+    
+    public boolean esResultadoFinal(){
+        return (puntajeP0==0 && puntajeP1==0 && ganador!=null);
+    }
+    
+    public String getGanadorString(){
+        return (ganador.getNombre());
+    }
+    
     public int getID(){
         return ID;
     }   
