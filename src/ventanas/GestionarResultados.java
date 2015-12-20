@@ -508,6 +508,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             if("".equals(cadenaError)){
                 GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                finVentana();
             }
             else{
                 V.get().alerta();
@@ -521,6 +522,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             if("".equals(cadenaError)){
                 GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                finVentana();
             }
         }
         else if(asispar1 == false && asispar2 == true){
@@ -530,6 +532,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             if("".equals(cadenaError)){
                 GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                finVentana();
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -566,6 +569,10 @@ public class GestionarResultados extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox2StateChanged
 
+    private void finVentana(){
+        V.get().remove(this);
+        V.get().mostrarFixtureVolver(compAux);
+    }
     private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
         
