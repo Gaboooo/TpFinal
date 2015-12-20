@@ -189,7 +189,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelCantidad.setBounds(200, 160, 50, 30);
 
         jSpinnerCantidad.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         jSpinnerCantidad.setMaximumSize(new java.awt.Dimension(29, 20));
         add(jSpinnerCantidad);
         jSpinnerCantidad.setBounds(200, 190, 50, 30);

@@ -191,12 +191,12 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel7.setText("Par. 1: Nombre Participante 1");
         add(jLabel7);
-        jLabel7.setBounds(20, 160, 170, 40);
+        jLabel7.setBounds(10, 160, 180, 40);
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel8.setText("Par. 2: Nombre Participante 2");
         add(jLabel8);
-        jLabel8.setBounds(20, 200, 160, 40);
+        jLabel8.setBounds(10, 200, 170, 40);
 
         jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -204,7 +204,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
         });
         add(jCheckBox1);
-        jCheckBox1.setBounds(660, 171, 20, 20);
+        jCheckBox1.setBounds(730, 171, 20, 20);
 
         jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -212,89 +212,89 @@ public class GestionarResultados extends javax.swing.JPanel {
             }
         });
         add(jCheckBox2);
-        jCheckBox2.setBounds(660, 210, 20, 21);
+        jCheckBox2.setBounds(730, 210, 20, 21);
 
         jLabel9.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Asistencia");
         add(jLabel9);
-        jLabel9.setBounds(630, 134, 80, 40);
+        jLabel9.setBounds(670, 134, 130, 40);
         add(jCheckBox3);
-        jCheckBox3.setBounds(390, 170, 20, 21);
+        jCheckBox3.setBounds(420, 170, 20, 21);
         add(jCheckBox4);
-        jCheckBox4.setBounds(390, 210, 20, 20);
+        jCheckBox4.setBounds(420, 210, 21, 20);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner1);
-        jSpinner1.setBounds(179, 170, 40, 20);
+        jSpinner1.setBounds(169, 170, 50, 20);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner2);
-        jSpinner2.setBounds(230, 170, 40, 20);
+        jSpinner2.setBounds(230, 170, 50, 20);
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner3);
-        jSpinner3.setBounds(280, 170, 40, 20);
+        jSpinner3.setBounds(290, 170, 50, 20);
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner4);
-        jSpinner4.setBounds(330, 170, 40, 20);
+        jSpinner4.setBounds(350, 170, 50, 20);
 
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner5);
-        jSpinner5.setBounds(380, 170, 40, 20);
+        jSpinner5.setBounds(410, 170, 50, 20);
 
         jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner6);
-        jSpinner6.setBounds(430, 170, 40, 20);
+        jSpinner6.setBounds(470, 170, 50, 20);
 
         jSpinner7.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner7);
-        jSpinner7.setBounds(480, 170, 40, 20);
+        jSpinner7.setBounds(530, 170, 50, 20);
 
         jSpinner8.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner8);
-        jSpinner8.setBounds(530, 170, 40, 20);
+        jSpinner8.setBounds(590, 170, 50, 20);
 
         jSpinner9.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner9);
-        jSpinner9.setBounds(580, 170, 40, 20);
+        jSpinner9.setBounds(650, 170, 50, 20);
 
         jSpinner10.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner10);
-        jSpinner10.setBounds(180, 210, 40, 20);
+        jSpinner10.setBounds(170, 210, 50, 20);
 
         jSpinner11.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner11);
-        jSpinner11.setBounds(230, 210, 40, 20);
+        jSpinner11.setBounds(230, 210, 47, 20);
 
         jSpinner12.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner12);
-        jSpinner12.setBounds(280, 210, 40, 20);
+        jSpinner12.setBounds(290, 210, 50, 20);
 
         jSpinner13.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner13);
-        jSpinner13.setBounds(330, 210, 40, 20);
+        jSpinner13.setBounds(350, 210, 50, 20);
 
         jSpinner14.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner14);
-        jSpinner14.setBounds(380, 210, 40, 20);
+        jSpinner14.setBounds(410, 210, 50, 20);
 
         jSpinner15.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner15);
-        jSpinner15.setBounds(430, 210, 40, 20);
+        jSpinner15.setBounds(470, 210, 50, 20);
 
         jSpinner16.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner16);
-        jSpinner16.setBounds(480, 210, 40, 20);
+        jSpinner16.setBounds(530, 210, 50, 20);
 
         jSpinner17.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner17);
-        jSpinner17.setBounds(530, 210, 40, 20);
+        jSpinner17.setBounds(590, 210, 50, 20);
 
         jSpinner18.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999, 1));
         add(jSpinner18);
-        jSpinner18.setBounds(580, 210, 40, 20);
+        jSpinner18.setBounds(650, 210, 50, 20);
 
         jLabel10.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -306,49 +306,49 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("2do Set");
         add(jLabel11);
-        jLabel11.setBounds(230, 134, 40, 40);
+        jLabel11.setBounds(230, 134, 50, 40);
 
         jLabel12.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("3er Set");
         add(jLabel12);
-        jLabel12.setBounds(280, 134, 40, 40);
+        jLabel12.setBounds(290, 134, 50, 40);
 
         jLabel13.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("4to Set");
         add(jLabel13);
-        jLabel13.setBounds(330, 134, 40, 40);
+        jLabel13.setBounds(350, 134, 50, 40);
 
         jLabel14.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("5to Set");
         add(jLabel14);
-        jLabel14.setBounds(330, 134, 140, 40);
+        jLabel14.setBounds(350, 140, 160, 30);
 
         jLabel15.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("6to Set");
         add(jLabel15);
-        jLabel15.setBounds(430, 134, 40, 40);
+        jLabel15.setBounds(470, 134, 50, 40);
 
         jLabel16.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("7mo Set");
         add(jLabel16);
-        jLabel16.setBounds(478, 134, 42, 40);
+        jLabel16.setBounds(528, 134, 50, 40);
 
         jLabel17.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("8vo Set");
         add(jLabel17);
-        jLabel17.setBounds(530, 134, 40, 40);
+        jLabel17.setBounds(590, 134, 50, 40);
 
         jLabel18.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("9no Set");
         add(jLabel18);
-        jLabel18.setBounds(580, 134, 40, 40);
+        jLabel18.setBounds(650, 134, 50, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
