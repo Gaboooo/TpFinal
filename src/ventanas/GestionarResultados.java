@@ -55,7 +55,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         verNombre();
         if(param3!=null){
-            vaciarVentana();
+            crearVentana();
         }
     }
 
@@ -203,12 +203,22 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jCheckBox1StateChanged(evt);
             }
         });
+        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox1MouseClicked(evt);
+            }
+        });
         add(jCheckBox1);
         jCheckBox1.setBounds(660, 171, 20, 20);
 
         jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jCheckBox2StateChanged(evt);
+            }
+        });
+        jCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox2MouseClicked(evt);
             }
         });
         add(jCheckBox2);
@@ -553,7 +563,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             crearYLlenarVentana();
         }
         else {
-            vaciarVentana();
+            crearVentana();
         }
     }//GEN-LAST:event_jCheckBox1StateChanged
 
@@ -562,9 +572,27 @@ public class GestionarResultados extends javax.swing.JPanel {
             crearYLlenarVentana();
         }
         else {
-            vaciarVentana();
+            crearVentana();
         }
     }//GEN-LAST:event_jCheckBox2StateChanged
+
+    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
+        if(jCheckBox1.isSelected()){
+            jCheckBox1.setSelected(false);
+        }
+        else{
+            jCheckBox1.setSelected(true);
+        }
+    }//GEN-LAST:event_jCheckBox1MouseClicked
+
+    private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
+        if(jCheckBox2.isSelected()){
+            jCheckBox2.setSelected(false);
+        }
+        else{
+            jCheckBox2.setSelected(true);
+        }
+    }//GEN-LAST:event_jCheckBox2MouseClicked
 
     private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
@@ -574,8 +602,8 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         if("Puntuacion".equals(formaPuntuacion)) {
             
-            if(resultadosAnteriores != null){
-                ResultadoAux result = resultadosAnteriores.get(1);
+            if(!resultadosAnteriores.isEmpty()){
+                ResultadoAux result = resultadosAnteriores.get(0);
                 jSpinner5.setValue(result.getPuntajeP0());
                 jSpinner14.setValue(result.getPuntajeP1());
             }
@@ -629,7 +657,7 @@ public class GestionarResultados extends javax.swing.JPanel {
             ResultadoAux set9 = null;
             
             
-            if(resultadosAnteriores != null){
+            if(!resultadosAnteriores.isEmpty()){
                 set1 = resultadosAnteriores.get(0);
                 set2 = resultadosAnteriores.get(1);
                 set3 = resultadosAnteriores.get(2);
@@ -714,13 +742,8 @@ public class GestionarResultados extends javax.swing.JPanel {
             repaint();
         }
         else if ("Resultado Final".equals(formaPuntuacion)) {
-            ResultadoAux result = resultadosAnteriores.get(1);
-            jLabel5.setText("Observacion: Si desea gestionar un empate marque ambas casillas o ninguna.");
-            jLabel5.setVisible(true);
-            jLabel14.setVisible(true);
-            jLabel14.setText("Ganador");
-            jCheckBox3.setVisible(true);
-            if(resultadosAnteriores != null){
+            if(!resultadosAnteriores.isEmpty()){
+                ResultadoAux result = resultadosAnteriores.get(0);
                 if(result.getIndiceParticipante() == 0){
                     jCheckBox3.setSelected(true);
                 }
@@ -730,8 +753,13 @@ public class GestionarResultados extends javax.swing.JPanel {
                 else if(result.getIndiceParticipante() == 2){
                     jCheckBox3.setSelected(true);
                     jCheckBox4.setSelected(true);
-                } 
+                }
             }
+            jLabel5.setText("Observacion: Si desea gestionar un empate marque ambas casillas o ninguna.");
+            jLabel5.setVisible(true);
+            jLabel14.setVisible(true);
+            jLabel14.setText("Ganador");
+            jCheckBox3.setVisible(true);
             jCheckBox4.setVisible(true);            
             jSpinner5.setVisible(false);
             jSpinner14.setVisible(false);
@@ -763,44 +791,47 @@ public class GestionarResultados extends javax.swing.JPanel {
         }
     }
     
-    private void vaciarVentana(){
-        ResultadoAux asistencia = resultadosAnteriores.get(1);
-        jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
-        jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
-       
-        jCheckBox1.setSelected(asistencia.getAsistenciaP0());
-        jCheckBox2.setSelected(asistencia.getAsistenciaP1());
-        
-        jLabel5.setVisible(false);
-        jLabel14.setVisible(false);
-        jSpinner5.setVisible(false);
-        jSpinner14.setVisible(false);
-        jCheckBox3.setVisible(false);
-        jCheckBox4.setVisible(false);
-        jSpinner1.setVisible(false);
-        jSpinner2.setVisible(false);
-        jSpinner3.setVisible(false);
-        jSpinner4.setVisible(false);
-        jSpinner6.setVisible(false);
-        jSpinner7.setVisible(false);
-        jSpinner8.setVisible(false);
-        jSpinner9.setVisible(false);
-        jSpinner10.setVisible(false);
-        jSpinner11.setVisible(false);
-        jSpinner12.setVisible(false);
-        jSpinner13.setVisible(false);
-        jSpinner15.setVisible(false);
-        jSpinner16.setVisible(false);
-        jSpinner17.setVisible(false);
-        jSpinner18.setVisible(false);
-        jLabel10.setVisible(false);
-        jLabel11.setVisible(false);
-        jLabel12.setVisible(false);
-        jLabel13.setVisible(false);
-        jLabel15.setVisible(false);
-        jLabel16.setVisible(false);
-        jLabel17.setVisible(false);
-        jLabel18.setVisible(false);
+    private void crearVentana(){
+        if(!resultadosAnteriores.isEmpty()){
+            ResultadoAux asistencia = resultadosAnteriores.get(0);
+            jCheckBox1.setSelected(asistencia.getAsistenciaP0());
+            jCheckBox2.setSelected(asistencia.getAsistenciaP1());
+            crearYLlenarVentana();
+        }
+        else{
+            jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
+            jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
+            jLabel5.setVisible(false);
+            jLabel14.setVisible(false);
+            jSpinner5.setVisible(false);
+            jSpinner14.setVisible(false);
+            jCheckBox3.setVisible(false);
+            jCheckBox4.setVisible(false);
+            jSpinner1.setVisible(false);
+            jSpinner2.setVisible(false);
+            jSpinner3.setVisible(false);
+            jSpinner4.setVisible(false);
+            jSpinner6.setVisible(false);
+            jSpinner7.setVisible(false);
+            jSpinner8.setVisible(false);
+            jSpinner9.setVisible(false);
+            jSpinner10.setVisible(false);
+            jSpinner11.setVisible(false);
+            jSpinner12.setVisible(false);
+            jSpinner13.setVisible(false);
+            jSpinner15.setVisible(false);
+            jSpinner16.setVisible(false);
+            jSpinner17.setVisible(false);
+            jSpinner18.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel15.setVisible(false);
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jLabel18.setVisible(false);
+        }
         repaint();
     }
     
