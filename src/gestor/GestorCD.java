@@ -59,7 +59,7 @@ public class GestorCD {
                     // Asignarle a TablaPosicionesAUX
                     tablaAux= new PosicionAux(tpp.getParticipante().getNombre(), tpp.getPuntaje(),
                         tpp.getPartidosGanados(),tpp.getPartidosPerdidos(),
-                        tpp.getPartidosEmpatados(), tpp.getTantosEnContra(), tpp.getTantosAFavor()  );         
+                        tpp.getPartidosEmpatados(), tpp.getTantosAFavor(), tpp.getTantosEnContra());         
                 }
                 
                 listaTablaAux.add(tablaAux);
