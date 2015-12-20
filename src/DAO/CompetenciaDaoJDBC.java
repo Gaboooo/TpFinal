@@ -218,7 +218,7 @@ public class CompetenciaDaoJDBC {
     public static int cantidadPartidosPorRonda(int id){
         int cantidad=1;
         Connection conn = null;
-        String SQL_CANT_PART_POR_RONDA ="SELECT count (DISTINCT p.id_ronda) AS total " +
+        String SQL_CANT_PART_POR_RONDA ="SELECT count (p.id_ronda) AS total " +
                                         "FROM partido AS p " +
                                         "JOIN ronda AS r ON r.id_ronda=p.id_ronda " +
                                         "JOIN fixture AS f ON f.id_fixture=r.id_fixture " +
