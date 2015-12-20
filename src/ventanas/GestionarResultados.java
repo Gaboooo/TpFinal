@@ -374,35 +374,78 @@ public class GestionarResultados extends javax.swing.JPanel {
                 int contador1 = 0;
                 int contador2 = 0;
                 int unNumero = 0;
-                int set1participante1 = (int) jSpinner1.getValue();
-                int set1participante2 = (int) jSpinner10.getValue();
-                int set2participante1 = (int) jSpinner2.getValue();
-                int set2participante2 = (int) jSpinner11.getValue();
-                int set3participante1 = (int) jSpinner3.getValue();
-                int set3participante2 = (int) jSpinner12.getValue();
-                int set4participante1 = (int) jSpinner4.getValue();
-                int set4participante2 = (int) jSpinner13.getValue();
-                int set5participante1 = (int) jSpinner5.getValue();
-                int set5participante2 = (int) jSpinner14.getValue();
-                int set6participante1 = (int) jSpinner6.getValue();
-                int set6participante2 = (int) jSpinner15.getValue();
-                int set7participante1 = (int) jSpinner7.getValue();
-                int set7participante2 = (int) jSpinner16.getValue();
-                int set8participante1 = (int) jSpinner8.getValue();
-                int set8participante2 = (int) jSpinner17.getValue();
-                int set9participante1 = (int) jSpinner9.getValue();
-                int set9participante2 = (int) jSpinner18.getValue();
+                int set1participante1 = 0;
+                int set1participante2 = 0;
+                int set2participante1 = 0;
+                int set2participante2 = 0;
+                int set3participante1 = 0;
+                int set3participante2 = 0;
+                int set4participante1 = 0;
+                int set4participante2 = 0;
+                int set5participante1 = 0;
+                int set5participante2 = 0;
+                int set6participante1 = 0;
+                int set6participante2 = 0;
+                int set7participante1 = 0;
+                int set7participante2 = 0;
+                int set8participante1 = 0;
+                int set8participante2 = 0;
+                int set9participante1 = 0;
+                int set9participante2 = 0;
                 
-                if(set1participante1 == set1participante2 ||
-                        set2participante1 == set2participante2 ||
-                        set3participante1 == set3participante2 ||
-                        set4participante1 == set4participante2 ||
-                        set5participante1 == set5participante2 ||
-                        set6participante1 == set6participante2 ||
-                        set7participante1 == set7participante2 ||
-                        set8participante1 == set8participante2 ||
-                        set9participante1 == set9participante2){
-                    cadenaError += "No se permite empate por sets.\n";
+                
+                if(cantSets >= 1){
+                    set1participante1 = (int) jSpinner1.getValue();
+                    set1participante2 = (int) jSpinner10.getValue();
+                    if(set1participante1 == set1participante2){
+                        if(!cadenaError.contains("No se permite empate por sets.")){
+                            cadenaError+= "No se permite empate por sets.\n";
+                        }
+                    }
+                }
+                if(cantSets >= 3){
+                    set2participante1 = (int) jSpinner2.getValue();
+                    set2participante2 = (int) jSpinner11.getValue();
+                    set3participante1 = (int) jSpinner3.getValue();
+                    set3participante2 = (int) jSpinner12.getValue();
+                    if(set2participante1 == set2participante2 || set3participante1 == set3participante2){
+                        if(!cadenaError.contains("No se permite empate por sets.")){
+                            cadenaError+= "No se permite empate por sets.\n";
+                        }
+                    }
+                }
+                if(cantSets >= 5){
+                    set4participante1 = (int) jSpinner4.getValue();
+                    set4participante2 = (int) jSpinner13.getValue();
+                    set5participante1 = (int) jSpinner5.getValue();
+                    set5participante2 = (int) jSpinner14.getValue();
+                    if(set4participante1 == set4participante2 || set5participante1 == set5participante2){
+                        if(!cadenaError.contains("No se permite empate por sets.")){
+                            cadenaError+= "No se permite empate por sets.\n";
+                        }
+                    }
+                }
+                if(cantSets >= 7){
+                    set6participante1 = (int) jSpinner6.getValue();
+                    set6participante2 = (int) jSpinner15.getValue();
+                    set7participante1 = (int) jSpinner7.getValue();
+                    set7participante2 = (int) jSpinner16.getValue();
+                    if(set6participante1 == set6participante2 || set7participante1 == set7participante2){
+                        if(!cadenaError.contains("No se permite empate por sets.")){
+                            cadenaError+= "No se permite empate por sets.\n";
+                        }
+                    }
+                }
+                if(cantSets >= 9){
+                    set8participante1 = (int) jSpinner8.getValue();
+                    set8participante2 = (int) jSpinner17.getValue();
+                    set9participante1 = (int) jSpinner9.getValue();
+                    set9participante2 = (int) jSpinner18.getValue();
+                    if(set8participante1 == set8participante2 || set9participante1 == set9participante2){
+                        if(!cadenaError.contains("No se permite empate por sets.")){
+                            cadenaError+= "No se permite empate por sets.\n";
+                        }
+                    }
                 }
                 // Se guardan los valor de los sets en listaSets.
                 listaSets.add(set1participante1);
