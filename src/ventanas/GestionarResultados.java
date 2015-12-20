@@ -357,150 +357,168 @@ public class GestionarResultados extends javax.swing.JPanel {
         if(asispar1 == false && asispar2 == false){
             cadenaError += "Debe haber presente al menos un Participante\n";
         }
-                    
-        if("Sets".equals(formaPuntuacion)){
-            ArrayList<Integer> listaSets = new ArrayList<>();
-            int contador1 = 0;
-            int contador2 = 0;
-            int unNumero = 0;
-            int set1participante1 = (int) jSpinner1.getValue();
-            int set1participante2 = (int) jSpinner10.getValue();
-            int set2participante1 = (int) jSpinner2.getValue();
-            int set2participante2 = (int) jSpinner11.getValue();
-            int set3participante1 = (int) jSpinner3.getValue();
-            int set3participante2 = (int) jSpinner12.getValue();
-            int set4participante1 = (int) jSpinner4.getValue();
-            int set4participante2 = (int) jSpinner13.getValue();
-            int set5participante1 = (int) jSpinner5.getValue();
-            int set5participante2 = (int) jSpinner14.getValue();
-            int set6participante1 = (int) jSpinner6.getValue();
-            int set6participante2 = (int) jSpinner15.getValue();
-            int set7participante1 = (int) jSpinner7.getValue();
-            int set7participante2 = (int) jSpinner16.getValue();
-            int set8participante1 = (int) jSpinner8.getValue();
-            int set8participante2 = (int) jSpinner17.getValue();
-            int set9participante1 = (int) jSpinner9.getValue();
-            int set9participante2 = (int) jSpinner18.getValue();
-            
-            if(set1participante1 == set1participante2 || 
-                   set2participante1 == set2participante2 || 
-                   set3participante1 == set3participante2 || 
-                   set4participante1 == set4participante2 || 
-                   set5participante1 == set5participante2 || 
-                   set6participante1 == set6participante2 || 
-                   set7participante1 == set7participante2 || 
-                   set8participante1 == set8participante2 || 
-                   set9participante1 == set9participante2){
+        else if(asispar1==true && asispar2 ==true){
+            if("Sets".equals(formaPuntuacion)){
+                ArrayList<Integer> listaSets = new ArrayList<>();
+                int contador1 = 0;
+                int contador2 = 0;
+                int unNumero = 0;
+                int set1participante1 = (int) jSpinner1.getValue();
+                int set1participante2 = (int) jSpinner10.getValue();
+                int set2participante1 = (int) jSpinner2.getValue();
+                int set2participante2 = (int) jSpinner11.getValue();
+                int set3participante1 = (int) jSpinner3.getValue();
+                int set3participante2 = (int) jSpinner12.getValue();
+                int set4participante1 = (int) jSpinner4.getValue();
+                int set4participante2 = (int) jSpinner13.getValue();
+                int set5participante1 = (int) jSpinner5.getValue();
+                int set5participante2 = (int) jSpinner14.getValue();
+                int set6participante1 = (int) jSpinner6.getValue();
+                int set6participante2 = (int) jSpinner15.getValue();
+                int set7participante1 = (int) jSpinner7.getValue();
+                int set7participante2 = (int) jSpinner16.getValue();
+                int set8participante1 = (int) jSpinner8.getValue();
+                int set8participante2 = (int) jSpinner17.getValue();
+                int set9participante1 = (int) jSpinner9.getValue();
+                int set9participante2 = (int) jSpinner18.getValue();
+                
+                if(set1participante1 == set1participante2 ||
+                        set2participante1 == set2participante2 ||
+                        set3participante1 == set3participante2 ||
+                        set4participante1 == set4participante2 ||
+                        set5participante1 == set5participante2 ||
+                        set6participante1 == set6participante2 ||
+                        set7participante1 == set7participante2 ||
+                        set8participante1 == set8participante2 ||
+                        set9participante1 == set9participante2){
                     cadenaError += "No se permite empate por sets.\n";
-            }
-            // Se guardan los valor de los sets en listaSets.
-            listaSets.add(set1participante1);
-            listaSets.add(set1participante2); 
-            if (cantSets >= 3) {
-                listaSets.add(set2participante1);
-                listaSets.add(set2participante2);
-                listaSets.add(set3participante1);
-                listaSets.add(set3participante2);
-            }
-            if (cantSets >= 5) {
-                listaSets.add(set4participante1);
-                listaSets.add(set4participante2);
-                listaSets.add(set5participante1);
-                listaSets.add(set5participante2);
-            }
-            if (cantSets >= 7) {
-                listaSets.add(set6participante1);
-                listaSets.add(set6participante2);
-                listaSets.add(set7participante1);
-                listaSets.add(set7participante2);
-            }
-            if (cantSets == 9) {
-                listaSets.add(set8participante1);
-                listaSets.add(set8participante2);
-                listaSets.add(set9participante1);
-                listaSets.add(set9participante2);
-            }
-            // Se recorre la listaSets y se compara los resultados para guardar el indice.
-            for (int i=0; i<(cantSets*2); i+=2) {
-                int PP1 = listaSets.get(i);
-                int PP2 = listaSets.get(i+1);
-                if(PP1 > PP2){
-                    contador1 += 1;
                 }
-                else{
-                    contador2 += 1;
+                // Se guardan los valor de los sets en listaSets.
+                listaSets.add(set1participante1);
+                listaSets.add(set1participante2);
+                if (cantSets >= 3) {
+                    listaSets.add(set2participante1);
+                    listaSets.add(set2participante2);
+                    listaSets.add(set3participante1);
+                    listaSets.add(set3participante2);
                 }
-                if(i == (cantSets*2)-1){
-                    if(contador1>contador2){
-                        indiceGanador = 0;
+                if (cantSets >= 5) {
+                    listaSets.add(set4participante1);
+                    listaSets.add(set4participante2);
+                    listaSets.add(set5participante1);
+                    listaSets.add(set5participante2);
+                }
+                if (cantSets >= 7) {
+                    listaSets.add(set6participante1);
+                    listaSets.add(set6participante2);
+                    listaSets.add(set7participante1);
+                    listaSets.add(set7participante2);
+                }
+                if (cantSets == 9) {
+                    listaSets.add(set8participante1);
+                    listaSets.add(set8participante2);
+                    listaSets.add(set9participante1);
+                    listaSets.add(set9participante2);
+                }
+                // Se recorre la listaSets y se compara los resultados para guardar el indice.
+                for (int i=0; i<(cantSets*2); i+=2) {
+                    int PP1 = listaSets.get(i);
+                    int PP2 = listaSets.get(i+1);
+                    if(PP1 > PP2){
+                        contador1 += 1;
                     }
                     else{
-                        indiceGanador = 1;
+                        contador2 += 1;
+                    }
+                    if(i == (cantSets*2)-1){
+                        if(contador1>contador2){
+                            indiceGanador = 0;
+                        }
+                        else{
+                            indiceGanador = 1;
+                        }
+                    }
+                    if("".equals(cadenaError)){
+                        unNumero = i/2;
+                        ResultadoAux unResultado = new ResultadoAux(unNumero, PP1, PP2, asispar1, asispar2, indiceGanador);
+                        listaResultadosAux.add(unResultado);
+                    }
+                    
+                }
+            }
+            else if ("Puntuacion".equals(formaPuntuacion)){
+                int PP1 = (int) jSpinner5.getValue();
+                int PP2 = (int) jSpinner14.getValue();
+                
+                if(PP1>PP2){
+                    indiceGanador = 0;
+                }
+                else if (PP2>PP1){
+                    indiceGanador = 1;
+                }
+                else if(PP1 == PP2){
+                    if(empatePermitido == false){
+                        cadenaError += "La competencia no permite empate.\n";
+                    }
+                    else{
+                        indiceGanador = 2;
+                    }
+                }
+                
+                if("".equals(cadenaError)){
+                    ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
+                    listaResultadosAux.add(unResultado);
+                }
+            }
+            else{
+                Boolean ganador1 =(Boolean)jCheckBox3.isSelected();
+                Boolean ganador2 =(Boolean)jCheckBox4.isSelected();
+                
+                if(ganador1 == true && ganador2 == false){
+                    indiceGanador = 0;
+                }
+                else if(ganador2 == true && ganador1 == false){
+                    indiceGanador = 1;
+                }
+                else{
+                    if(empatePermitido == false){
+                        cadenaError += "La competencia no permite empate.\n";
+                    }
+                    else{
+                        indiceGanador = 2;
                     }
                 }
                 if("".equals(cadenaError)){
-                    unNumero = i/2;
-                    ResultadoAux unResultado = new ResultadoAux(unNumero, PP1, PP2, asispar1, asispar2, indiceGanador);
+                    ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
                     listaResultadosAux.add(unResultado);
                 }
                 
             }
-        }
-        else if ("Puntuacion".equals(formaPuntuacion)){
-            int PP1 = (int) jSpinner5.getValue();
-            int PP2 = (int) jSpinner14.getValue();
-
-            if(PP1>PP2){
-                indiceGanador = 0;
-            }
-            else if (PP2>PP1){
-                indiceGanador = 1;
-            }
-            else if(PP1 == PP2){
-                if(empatePermitido == false){
-                    cadenaError += "La competencia no permite empate.\n";
-                }
-                else{
-                    indiceGanador = 2;
-                }
-            }
-            
             if("".equals(cadenaError)){
-                ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
-                listaResultadosAux.add(unResultado);
-            }
-        }
-        else{
-            Boolean ganador1 =(Boolean)jCheckBox3.isSelected();
-            Boolean ganador2 =(Boolean)jCheckBox4.isSelected();
-            
-            if(ganador1 == true && ganador2 == false){
-                indiceGanador = 0;
-            }
-            else if(ganador2 == true && ganador1 == false){
-                indiceGanador = 1;
+                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
-                if(empatePermitido == false){
-                    cadenaError += "La competencia no permite empate.\n";
-                }
-                else{
-                    indiceGanador = 2;
-                }
+                V.get().alerta();
+                JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
             }
+        }
+        else if(asispar1 == true && asispar2 == false){
+            indiceGanador = 0;
+            ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
             if("".equals(cadenaError)){
-                ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
-                listaResultadosAux.add(unResultado);
+                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             }
-            
         }
-        if("".equals(cadenaError)){
-            GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
-            JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-            V.get().alerta();
-            JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
+        else if(asispar1 == false && asispar2 == true){
+            indiceGanador = 1;
+            ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
+            listaResultadosAux.add(unResultado);
+            if("".equals(cadenaError)){
+                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
