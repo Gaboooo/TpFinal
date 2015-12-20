@@ -138,6 +138,15 @@ public class V extends javax.swing.JFrame {
         repaint();
     }
     
+    public void mostrarFixtureVolver(CompetenciaAux compAux){
+        remove(aux);
+        aux = new MostrarFixture(compAux);
+        aux.setVisible(true);
+        add(aux);
+        revalidate();
+        repaint();
+    }
+    
     public void gestionarResultados(CompetenciaAux compAux, RondaAux rondaAux, PartidoAux partidoAux){
         aux.setVisible(false);
         aux2 = new GestionarResultados(compAux, rondaAux, partidoAux);

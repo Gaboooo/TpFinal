@@ -9,7 +9,7 @@ import modelo.*;
 
 public class GenerarFixtureDAO {
     
-        public static ArrayList<Integer> getIDParticipantesJugandoRonda(int unIDRonda) {
+    public static ArrayList<Integer> getIDParticipantesJugandoRonda(int unIDRonda) {
         ArrayList<Integer> listaIDParticipantes = new ArrayList<>();
         Connection conn = null;
         try {
@@ -22,13 +22,23 @@ public class GenerarFixtureDAO {
                 int IDP0 = rs.getInt("id_participante0");
                 int IDP1 = rs.getInt("id_participante1");
                 listaIDParticipantes.add(IDP0);
-                listaIDParticipantes.add(IDP1); }
+                listaIDParticipantes.add(IDP1);
+            }
             rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaIDParticipantes; }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+                catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+        }
+        return listaIDParticipantes;
+    }
     
 
     public static void deletePartidos(int unIDRonda) {
@@ -37,12 +47,18 @@ public class GenerarFixtureDAO {
             conn = DBConnection.get();
             Statement statement = conn.createStatement();
             String deletePartidos = "DELETE FROM partido WHERE id_ronda = " + unIDRonda;
-            statement.executeUpdate(deletePartidos); }
+            statement.executeUpdate(deletePartidos);
+        }
         catch (SQLException ex) {
-            System.out.println(ex.getMessage()); }
+            System.out.println(ex.getMessage());
+        }
         finally {
             if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
     
 
     public static void deleteRondas(int unIDFixture) {

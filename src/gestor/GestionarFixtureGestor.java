@@ -463,19 +463,18 @@ public class GestionarFixtureGestor {
             // ... Y creo las posiciones de tablaPosiciones
             crearPosiciones(unaCompetencia);
         }
+        
         // Si es el ULTIMO resultado, el estado pasa a finalizada
-        else if ("En disputa".equals(unaCompetencia.getEstado().getNombre())) {
-            int numRonda = unaRonda.getNumero();
-            int cantParticipantes = unaCompetencia.getListaParticipantes().size();
-            int cantResultadosCargados = getCantResultadosCargados(unaRonda);
-            /*numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2*/
-            if (cantidadPartidosCargados(unaCompetencia.getID()) ==
-                    cantidadPartidosPorRonda(unaCompetencia.getID())* cantRondas(unaCompetenciaAux.getId())) {
-                Estado nuevoEstado = GenerarFixtureDAO.getEstado("Finalizada");
-                unaCompetencia.setEstado(nuevoEstado);
-                GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado);
-            }
+        int cantPartidosCargados = cantidadPartidosCargados(unaCompetencia.getID());
+        int cantPartidosTotal=cantidadPartidosPorRonda(unaCompetencia.getID())*
+                cantRondas(unaCompetenciaAux.getId());
+        /*numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2*/
+        if (cantPartidosCargados == cantPartidosTotal) {
+            Estado nuevoEstado = GenerarFixtureDAO.getEstado("Finalizada");
+            unaCompetencia.setEstado(nuevoEstado);
+            GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado);
         }
+        
         // Aplicar cambios de nuevoResultado a tablaPosiciones
         aplicarCambiosATablaPosiciones(unaCompetencia, unPartido, listaNuevosResultados);
     }
