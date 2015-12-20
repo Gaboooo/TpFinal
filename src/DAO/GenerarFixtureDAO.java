@@ -380,14 +380,25 @@ public class GenerarFixtureDAO {
             // El ResultSet tiene un solo resultado
             while (rs.next()) {
                 IDEstado = rs.getInt("id_estado");
-                nombreEstado = rs.getString("nombre"); }
+                nombreEstado = rs.getString("nombre");
+            }
             unEstado = new Estado(IDEstado, nombreEstado);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+            rs.close();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unEstado; }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+                catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+        }
+        return unEstado;
+    }
     
 
     public static FormaPuntuacion getFormaPuntuacion(int unID) {
@@ -402,14 +413,25 @@ public class GenerarFixtureDAO {
             // El ResultSet tiene un solo resultado
             while (rs.next()) {
                 IDFormaPuntuacion = rs.getInt("id_forma_puntuacion");
-                nombreFormaPuntuacion = rs.getString("nombre"); }
+                nombreFormaPuntuacion = rs.getString("nombre");
+            }
             unaFormaPuntuacion = new FormaPuntuacion(IDFormaPuntuacion, nombreFormaPuntuacion);
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+            rs.close();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaFormaPuntuacion; }        
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return unaFormaPuntuacion;
+    }        
     
 
     public static Competencia getCompetencia(CompetenciaAux unaCDAUX) {
@@ -435,7 +457,8 @@ public class GenerarFixtureDAO {
                 unNombre = rs.getString("nombre"); unReglamento = rs.getString("reglamento");
                 cantMaxSets = rs.getInt("cantidad_maxima_de_sets"); tantosAusenciaRival = rs.getInt("tantos_por_ausencia_rival"); 
                 ptosPresentacion = rs.getInt("puntos_por_presentacion"); ptosVictoria = rs.getInt("puntos_por_victoria");
-                permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate"); }
+                permisoEmpate = rs.getBoolean("empate_permitido"); ptosEmpate = rs.getInt("puntos_por_empate");
+            }
             unDeporte = getDeporte(IDDeporte);
             unaModalidad = getModalidad(IDModalidad);
             unEstado = getEstado(IDEstado);
@@ -447,13 +470,20 @@ public class GenerarFixtureDAO {
             unaCompetencia = new Competencia(IDCompetencia, unNombre, unReglamento, unDeporte, unaModalidad, unEstado, unaFormaPuntuacion,
                 listaDisponibilidades, listaParticipantes, tablaPosiciones,
                 cantMaxSets, tantosAusenciaRival, ptosPresentacion, ptosVictoria, permisoEmpate, ptosEmpate);
-            rs.close(); }
+            rs.close();
+        }
         catch (SQLException e) {
-            System.out.println(e.getMessage()); }
+            System.out.println(e.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaCompetencia; }
+            if (conn != null) try { conn.close();
+            }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return unaCompetencia;
+    }
 
 
     public static void setEstado(Competencia unaCompetencia, Estado unEstado) {
@@ -468,5 +498,14 @@ public class GenerarFixtureDAO {
             rs.close(); }
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } } }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+                catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+        }
+    }
+
+}

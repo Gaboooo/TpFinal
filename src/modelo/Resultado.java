@@ -12,6 +12,9 @@ public class Resultado {
     public int getID(){
         return ID;
     }   
+    public int getId(){
+        return ID;
+    }
     
     public int getNumero() {
         return numResultado;

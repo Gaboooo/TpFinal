@@ -20,7 +20,8 @@ public class GestorCD {
     
     // Usado en Ventanas:listarCompetencias.java
     public static int obtenerIDCD (String nombre){
-        return CompetenciaDaoJDBC.getIdCompetencia(nombre); }
+        return CompetenciaDaoJDBC.getIdCompetencia(nombre);
+    }
     
     public static boolean sePuedeCargarRonda(int id, int ronda){
         int partidosCargados = cantidadPartidosCargados(id);
@@ -69,7 +70,8 @@ public class GestorCD {
     }
   
     // LISTAR COMPETENCIAS DEPORTIVAS
-    public static ArrayList<CompetenciaAux> listarCD (String nombreCD, String nombreDeporte, String nombreModalidad, String nombreEstado) {
+    public static ArrayList<CompetenciaAux> listarCD (String nombreCD,
+            String nombreDeporte, String nombreModalidad, String nombreEstado) {
         
         // Se recuperan las competencias que coincidan con los filtros
         ArrayList<Competencia> competencias = CompetenciaDaoJDBC.getCompetencias(nombreCD,
@@ -100,7 +102,8 @@ public class GestorCD {
     // VERIFICAR QUE EL NOMBRE DE LA COMPETENCIA ES UNICO
     public static boolean verificarNombre(String nombreCD) {
         boolean nombreUsado = CompetenciaDaoJDBC.nombreUsado(nombreCD);
-        return nombreUsado; }    
+        return nombreUsado;
+    }    
     
     
     // LISTAS DE STRINGS PARA LLENAR LOS COMBOBOX EN LISTAR COMPETENCIAS
@@ -109,25 +112,29 @@ public class GestorCD {
         ArrayList<String> deportes = CompetenciaDaoJDBC.getListaDeportes();
         String[] vectorNombreDeportes = new String[deportes.size()];
         vectorNombreDeportes = deportes.toArray(vectorNombreDeportes);
-        return vectorNombreDeportes; }
+        return vectorNombreDeportes;
+    }
     
     public static String[] getListaLugares(String deporte) {
         ArrayList<String> lugares = CompetenciaDaoJDBC.getListaLugares(deporte);
         String[] vectorNombreLugares = new String[lugares.size()];
         vectorNombreLugares = lugares.toArray(vectorNombreLugares);
-        return vectorNombreLugares; }
+        return vectorNombreLugares;
+    }
     
     public static String[] getListaModalidades () {
         ArrayList<String> modalidades = CompetenciaDaoJDBC.getListaModalidades();
         String[] vectorNombreModalidades = new String[modalidades.size()];
         vectorNombreModalidades = modalidades.toArray(vectorNombreModalidades);
-        return vectorNombreModalidades; }
+        return vectorNombreModalidades;
+    }
         
     public static String[] getListaPuntuaciones () {
         ArrayList<String> puntuaciones = CompetenciaDaoJDBC.getListaPuntuaciones();
         String[] vectorNombrePuntuaciones = new String[puntuaciones.size()];
         vectorNombrePuntuaciones = puntuaciones.toArray(vectorNombrePuntuaciones);
-        return vectorNombrePuntuaciones; }
+        return vectorNombrePuntuaciones;
+    }
     
     // DAR DE ALTA COMPETENCIA DEPORTIVA
 
@@ -161,7 +168,8 @@ public class GestorCD {
             String unNombreLR = (String)matrizLugares[i][0];
             LugarRealizacion unLR = GenerarFixtureDAO.getLR(unNombreLR);
             Disponibilidad unaDisponibilidad = new Disponibilidad(Integer.parseInt(matrizLugares[i][1]), unLR);
-            listaDisponibilidades.add(unaDisponibilidad); }
+            listaDisponibilidades.add(unaDisponibilidad);
+        }
         
         // CD
         Competencia nuevaCD = null;
@@ -188,10 +196,13 @@ public class GestorCD {
                     puntosPorVictoria, empatePermitido, puntosPorEmpate); }
             else if ("Eliminatoria Simple".equals(nombreModalidad) || "Eliminatoria Doble".equals(nombreModalidad)) {
                 nuevaCD = new Competencia(nombre, reglamento, unDeporte, unaModalidad, unEstado, listaDisponibilidades,
-                    unaFormaPuntuacion, 0, 0, 0, 0, false, 0); } }
+                    unaFormaPuntuacion, 0, 0, 0, 0, false, 0);
+            }
+        }
         
         // Persistencia
-        CompetenciaDaoJDBC.persistirCD(nuevaCD); }
+        CompetenciaDaoJDBC.persistirCD(nuevaCD);
+    }
     
     
     

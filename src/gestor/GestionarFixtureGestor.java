@@ -1,6 +1,8 @@
 package gestor;
 
 import DAO.*;
+import static DAO.CompetenciaDaoJDBC.cantidadPartidosCargados;
+import static DAO.CompetenciaDaoJDBC.cantidadPartidosPorRonda;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import modelo.*;
@@ -20,15 +22,13 @@ public class GestionarFixtureGestor {
         
         Posicion unaPosicion1=null; 
         
-        
         for (Posicion unaPosicion:tablaPosiciones) {
             // NOTA: Lo va a encontrar SI O SI
-            
-            
-            if (unaPosicion.getParticipante().getID() == unParticipante.getID()) { unaPosicion1= unaPosicion; }
-            else{unaPosicion1=null;}
+            if (unaPosicion.getParticipante().getID() == unParticipante.getID()) {
+                unaPosicion1= unaPosicion;
+            }
         }
-            return unaPosicion1; 
+            return unaPosicion1;
         }    
     
     /* public static void deleteListaResultadosAnteriores(ArrayList<Resultado> listaResultados) {
@@ -37,7 +37,6 @@ public class GestionarFixtureGestor {
             GestionarFixtureDAO.deleteResultado(unResultado); } } */
     
     public static void deshacerCambiosEnTablaPosiciones(Competencia unaCompetencia, Partido unPartido) {
-        System.out.println("Che pero entro aca o no? I");
         ArrayList<HistorialResultado> listaHistorialResultados = unPartido.getHistorialResultado();
         HistorialResultado unHR = listaHistorialResultados.get(listaHistorialResultados.size()-1);
         ArrayList<Resultado> listaResultadosAnteriores = unHR.getListaResultados();
@@ -50,17 +49,14 @@ public class GestionarFixtureGestor {
         
         // Asistencia: P0 ^ P1
         if (AP0 && AP1) {
-            System.out.println("Che pero entro aca o no? II");
             // Empate
             if (unGanador == null) {
-                System.out.println("Che pero entro aca o no? III");
                 posicionP0.setPuntaje(posicionP0.getPuntaje() - unaCompetencia.getPuntosPorEmpate());
                 posicionP1.setPuntaje(posicionP1.getPuntaje() - unaCompetencia.getPuntosPorEmpate());
                 posicionP0.setPartidosEmpatados(posicionP0.getPartidosEmpatados() - 1);
                 posicionP1.setPartidosEmpatados(posicionP1.getPartidosEmpatados() - 1);
                 // formaPuntuacion: SETS - No puede haber empate
                 if ("Puntuacion".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
-                    System.out.println("Che pero entro aca o no? IV");
                     Resultado unResultado = listaResultadosAnteriores.get(0);
                     System.out.println("tantosAFavorP0: " + unResultado.getPuntajeP0());
                     System.out.println("tantosAFavorP1: " + unResultado.getPuntajeP1());
@@ -72,13 +68,11 @@ public class GestionarFixtureGestor {
             else {
                 // Ganador: P0
                 if (unGanador.getID() == P0.getID()) {
-                    System.out.println("Che pero entro aca o no? III");
                     posicionP0.setPuntaje(posicionP0.getPuntaje() - unaCompetencia.getPuntosPorVictoria());
                     posicionP0.setPartidosGanados(posicionP0.getPartidosGanados() - 1);
                     posicionP1.setPartidosPerdidos(posicionP1.getPartidosPerdidos() - 1);
                     // formaPuntuacion: SETS
                     if ("Sets".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
-                        System.out.println("Che pero entro aca o no? IV");
                         for (Resultado unResultado:listaResultadosAnteriores) {
                             Participante ganadorSet = unResultado.getGanador();
                             if (ganadorSet.getID() == P0.getID()) {
@@ -89,14 +83,14 @@ public class GestionarFixtureGestor {
                                 posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() - 1); } } }
                     // formaPuntuacion: PUNTOS
                     else if ("Puntuacion".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
-                        System.out.println("Che pero entro aca o no? IV");
                         Resultado unResultado = listaResultadosAnteriores.get(0);
                         System.out.println("tantosAFavorP0: " + unResultado.getPuntajeP0());
                         System.out.println("tantosAFavorP1: " + unResultado.getPuntajeP1());
                         posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() - unResultado.getPuntajeP0());
                         posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() - unResultado.getPuntajeP1());
                         posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() - unResultado.getPuntajeP1());
-                        posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() - unResultado.getPuntajeP0()); }
+                        posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() - unResultado.getPuntajeP0());
+                    }
                     /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */ }
                 // Ganador: P1
                 else if (unGanador.getID() == P1.getID()) {
@@ -185,13 +179,15 @@ public class GestionarFixtureGestor {
     public static String obtenerFechaActual() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
-        return dateFormat.format(date); }
+        return dateFormat.format(date);
+    }
     
     
     public static String obtenerHoraActual() {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
-        return dateFormat.format(date); }
+        return dateFormat.format(date);
+    }
     
     
     public static void addResultadoToHistorial(Partido unPartido, ArrayList<Resultado> listaResultadosAnteriores) {
@@ -212,8 +208,12 @@ public class GestionarFixtureGestor {
         int cant = 0;
         ArrayList<Partido> listaPartidos = unaRonda.getListaPartidos();
         for (Partido unPartido:listaPartidos) {
-            if (!unPartido.getListaResultados().isEmpty()) { cant++; } }
-        return cant; }
+            if (!unPartido.getListaResultados().isEmpty()) {
+                cant++;
+            }
+        }
+        return cant;
+    }
     
     
     public static void crearPosiciones(Competencia unaCompetencia) {
@@ -222,8 +222,10 @@ public class GestionarFixtureGestor {
         for (Participante unParticipante:listaParticipantes) {
             Posicion unaPosicion = new Posicion(unParticipante, 0, 0, 0, 0, 0, 0);
             tablaPosiciones.add(unaPosicion);
-            GestionarFixtureDAO.persistirPosicion(unaCompetencia, unaPosicion); } 
-        unaCompetencia.setTablaPosiciones(tablaPosiciones);}
+            GestionarFixtureDAO.persistirPosicion(unaCompetencia, unaPosicion);
+        } 
+        unaCompetencia.setTablaPosiciones(tablaPosiciones);
+    }
     
     
     public static void aplicarCambiosATablaPosiciones(Competencia unaCompetencia, Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
@@ -249,18 +251,24 @@ public class GestionarFixtureGestor {
                         Participante ganadorSet = unResultado.getGanador();
                         if (ganadorSet == P0) {
                             posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() + 1);
-                            posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + 1); }
+                            posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + 1);
+                        }
                         else {
                             posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() + 1);
-                            posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + 1); } } }
+                            posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + 1);
+                        }
+                    }
+                }
                 // formaPuntuacion: PUNTOS
                 else if ("Puntuacion".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
                     Resultado unResultado = listaNuevosResultados.get(0); 
                     posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() + unResultado.getPuntajeP0());
                     posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() + unResultado.getPuntajeP1());
                     posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + unResultado.getPuntajeP1());
-                    posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unResultado.getPuntajeP0()); }
-                /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */ }
+                    posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unResultado.getPuntajeP0());
+                }
+                /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */
+            }
             // Ganador: P1
             else if (unGanador == P1) {
                 posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorVictoria());
@@ -272,18 +280,24 @@ public class GestionarFixtureGestor {
                         Participante ganadorSet = unResultado.getGanador();
                         if (ganadorSet == P0) {
                             posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() + 1);
-                            posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + 1); }
+                            posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + 1);
+                        }
                         else {
                             posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() + 1);
-                            posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + 1); } } }
+                            posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + 1);
+                        }
+                    }
+                }
                 // formaPuntuacion: PUNTOS
                 else if ("Puntuacion".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
                     Resultado unResultado = listaNuevosResultados.get(0);
                     posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() + unResultado.getPuntajeP0());
                     posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() + unResultado.getPuntajeP1());
                     posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + unResultado.getPuntajeP1());
-                    posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unResultado.getPuntajeP0()); }
-                /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */ }
+                    posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unResultado.getPuntajeP0());
+                }
+                /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */
+            }
             // Empate
             else if (unGanador == null) {
                 posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorEmpate());
@@ -296,8 +310,11 @@ public class GestionarFixtureGestor {
                     posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() + unResultado.getPuntajeP0());
                     posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() + unResultado.getPuntajeP1());
                     posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + unResultado.getPuntajeP1());
-                    posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unResultado.getPuntajeP0()); }
-                /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */ } }
+                    posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unResultado.getPuntajeP0());
+                }
+                /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */
+            }
+        }
         // Asistencia: P0
         else if (asistenciaP0 && !asistenciaP1) {
             posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
@@ -307,8 +324,10 @@ public class GestionarFixtureGestor {
             // formaPuntuacion: PUNTOS
             if ("Puntuacion".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
                 posicionP0.setTantosAFavor(posicionP0.getTantosAFavor() + unaCompetencia.getTantosPorAusenciaDeRival());
-                posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unaCompetencia.getTantosPorAusenciaDeRival()); }
-            /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */ }    
+                posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unaCompetencia.getTantosPorAusenciaDeRival());
+            }
+            /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */
+        }    
         // Asistencia: P1
         else if (!asistenciaP0 && asistenciaP1) {
             posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
@@ -398,7 +417,10 @@ public class GestionarFixtureGestor {
     public static void gestionarFixture(CompetenciaAux unaCompetenciaAux,
             RondaAux unaRondaAux, PartidoAux unPartidoAux,
             ArrayList<ResultadoAux> listaNuevosResultadosAux) {
+        //Se obtiene la competencia y su tabla de posiciones
         Competencia unaCompetencia = GenerarFixtureDAO.getCompetencia(unaCompetenciaAux);
+        ArrayList<Posicion> posiciones=DAO.CompetenciaDaoJDBC.getTablaPosiciones(unaCompetencia.getID());
+        unaCompetencia.setTablaPosiciones(posiciones);
         Ronda unaRonda = GestionarFixtureDAO.getRonda(unaRondaAux);
         Partido unPartido = GestionarFixtureDAO.getPartido(unPartidoAux);
         ArrayList<Resultado> listaResultadosAnteriores = unPartido.getListaResultados();
@@ -420,14 +442,16 @@ public class GestionarFixtureGestor {
                 unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
             }
             
-            listaNuevosResultados.add(unResultado); }
+            listaNuevosResultados.add(unResultado);
+        }
         // Si ya tengo resultados cargados
         if (!listaResultadosAnteriores.isEmpty()) {
             System.out.println("listaResultadosAnteriores != empty");
             // Agregar viejoResultado a historial
             addResultadoToHistorial(unPartido, listaResultadosAnteriores);
             // Deshacer cambios de viejoResultado en tablaPosiciones
-            deshacerCambiosEnTablaPosiciones(unaCompetencia, unPartido); }
+            deshacerCambiosEnTablaPosiciones(unaCompetencia, unPartido);
+        }
         // Agregar nuevoResultado a partido
         addResultadoToPartido(unaCompetencia, unaRonda, unPartido, listaNuevosResultados);
         // Si es el PRIMER resultado, el estado pasa a enDisputa...
@@ -436,15 +460,54 @@ public class GestionarFixtureGestor {
             unaCompetencia.setEstado(nuevoEstado);
             GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado);
             // ... Y creo las posiciones de tablaPosiciones
-            crearPosiciones(unaCompetencia); }
+            crearPosiciones(unaCompetencia);
+        }
         // Si es el ULTIMO resultado, el estado pasa a finalizada
         else if ("En disputa".equals(unaCompetencia.getEstado().getNombre())) {
             int numRonda = unaRonda.getNumero();
             int cantParticipantes = unaCompetencia.getListaParticipantes().size();
             int cantResultadosCargados = getCantResultadosCargados(unaRonda);
-            if (numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2) {
+            /*numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2*/
+            if (cantidadPartidosCargados(unaCompetencia.getID())==cantidadPartidosPorRonda(unaCompetencia.getID())) {
                 Estado nuevoEstado = GenerarFixtureDAO.getEstado("Finalizada");
                 unaCompetencia.setEstado(nuevoEstado);
-                GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado); } }
+                GenerarFixtureDAO.setEstado(unaCompetencia, nuevoEstado);
+            }
+        }
         // Aplicar cambios de nuevoResultado a tablaPosiciones
-        aplicarCambiosATablaPosiciones(unaCompetencia, unPartido, listaNuevosResultados); } }
+        aplicarCambiosATablaPosiciones(unaCompetencia, unPartido, listaNuevosResultados);
+    }
+    
+    
+    public static ArrayList<ResultadoAux> getResultados(PartidoAux partidoAux){
+        ArrayList<ResultadoAux> retorno= new ArrayList<>();
+        
+        ArrayList<Resultado> resultados=DAO.GestionarFixtureDAO.getResultados(partidoAux.getId());
+        Resultado resI;
+        ResultadoAux aux;
+        for(int i=0; i<resultados.size(); i++){
+            resI=resultados.get(i);
+            
+            //Verificacion del ganador (en caso de resultado final)
+            int indiceGanador;
+            if(partidoAux.getParticipante1().equals(resI.getGanador().getNombre())){
+                indiceGanador=0;
+            }
+            else if(partidoAux.getParticipante2().equals(resI.getGanador().getNombre())){
+                indiceGanador=1;
+            }
+            else indiceGanador=2;
+            
+            //(int unID, int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, int unIndice)
+            aux= new ResultadoAux(resI.getId(), resI.getNumero(), resI.getPuntajeP0(),
+                    resI.getPuntajeP1(), resI.getAsistenciaP0(), resI.getAsistenciaP1(), indiceGanador);
+            
+            retorno.add(aux);
+        }
+        
+        return retorno;
+        
+        
+    }
+    
+}

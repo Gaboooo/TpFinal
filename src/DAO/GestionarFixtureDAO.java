@@ -19,13 +19,21 @@ public class GestionarFixtureDAO {
             ResultSet rs = statement.executeQuery(getCantSets);
             // El ResultSet tiene un solo resultado
             while (rs.next()) {
-                cantSets = rs.getInt("cantidad_maxima_de_sets"); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+                cantSets = rs.getInt("cantidad_maxima_de_sets");
+            }
+            rs.close();
+        }
+        catch (SQLException ex) { System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return cantSets; }
+            if (conn != null) try {
+                conn.close();
+            }
+            catch (SQLException ex) { System.out.println(ex.getMessage());
+            }
+        }
+        return cantSets;
+    }
     
     public static Boolean getEmpatePermitido(CompetenciaAux unaCDAUX) {
         Boolean empatePermitido = false;
@@ -38,13 +46,23 @@ public class GestionarFixtureDAO {
             ResultSet rs = statement.executeQuery(getCantSets);
             // El ResultSet tiene un solo resultado
             while (rs.next()) {
-                empatePermitido = rs.getBoolean("empate_permitido"); }
+                empatePermitido = rs.getBoolean("empate_permitido");
+            }
             rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return empatePermitido; }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+                catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+        }
+        return empatePermitido;
+    }
     
     public static void persistirPosicion(Competencia unaCompetencia, Posicion unaPosicion) {
         Connection conn = null;
@@ -61,11 +79,20 @@ public class GestionarFixtureDAO {
             int tantosEnContra = unaPosicion.getTantosEnContra();
             String persistirPosicion = "INSERT INTO posicion VALUES (default, " + IDCD + ", " + IDParticipante + ", " + puntaje + ", " 
                 + partidosGanados + ", " + partidosPerdidos + ", " + partidosEmpatados + ", " + tantosAFavor + ", " + tantosEnContra + ")";
-            statement.executeUpdate(persistirPosicion); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+            statement.executeUpdate(persistirPosicion);
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) { System.out.println(ex.getMessage());
+            }
+        }
+    }
     
     public static Partido getPartido(PartidoAux unPartidoAux) {
         Partido unPartido = null;
@@ -88,17 +115,30 @@ public class GestionarFixtureDAO {
                 int IDGanador = rs.getInt("id_ganador_partido");
                 if (rs.wasNull()) {
                     Boolean huboEmpate = true;
-                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, null, huboEmpate); }
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, null, huboEmpate);
+                }
                 else {
                     Participante unGanador = getParticipante(IDGanador);
                     Boolean huboEmpate = false;
-                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, unGanador, huboEmpate); } }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, unGanador, huboEmpate);
+                }
+            }
+            rs.close();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unPartido; }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return unPartido;
+    }
     
 
     public static Ronda getRonda(RondaAux unaRondaAux) {
@@ -122,7 +162,8 @@ public class GestionarFixtureDAO {
         finally {
             if (conn != null) try { conn.close(); }
             catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unaRonda; }
+        return unaRonda;
+    }
     
 
     public static void persistirHistorialResultado(Partido unPartido, HistorialResultado unHR) {
@@ -152,7 +193,10 @@ public class GestionarFixtureDAO {
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+            catch (SQLException ex) { System.out.println(ex.getMessage());
+            }
+        }
+    }
     
 
     public static void updatePosicion(Competencia unaCompetencia, Participante unParticipante, Posicion unaPosicion) {
@@ -176,7 +220,10 @@ public class GestionarFixtureDAO {
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } } 
+            catch (SQLException ex) { System.out.println(ex.getMessage());
+            }
+        }
+    } 
     
 
     public static void setGanadorAndEmpate(Partido unPartido) {
@@ -197,7 +244,10 @@ public class GestionarFixtureDAO {
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
             if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+            catch (SQLException ex) { System.out.println(ex.getMessage());
+            }
+        }
+    }
     
 
     public static void persistirResultado(Partido unPartido, Resultado unResultado) {
@@ -214,15 +264,26 @@ public class GestionarFixtureDAO {
             Participante unGanador = unResultado.getGanador();
             String persistirResultado = "INSERT INTO resultado VALUES (default, " + IDPartido + ", " + numResultado + ", " + PP0 + ", " + PP1 + ", " + AP0 + ", " + AP1 + ", ";
             if (unGanador == null) {
-                persistirResultado = persistirResultado + "null)"; }
+                persistirResultado = persistirResultado + "null)";
+            }
             else {
                 int IDGanador = unGanador.getID();
-                persistirResultado = persistirResultado + IDGanador + ")"; }
-            statement.executeUpdate(persistirResultado); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+                persistirResultado = persistirResultado + IDGanador + ")";
+            }
+            statement.executeUpdate(persistirResultado);
+        }
+        catch (SQLException ex) { System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } } }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
     
 
     public static ArrayList<Resultado> getResultados(int unIDPartido) {
@@ -246,17 +307,30 @@ public class GestionarFixtureDAO {
                 int IDGanador = rs.getInt("id_ganador");
                 Resultado unResultado = null;
                 if (rs.wasNull()) {
-                    unResultado = new Resultado(IDResultado, numero, RP0, RP1, PP0, PP1, null); }
+                    unResultado = new Resultado(IDResultado, numero, RP0, RP1, PP0, PP1, null);
+                }
                 else {
                     Participante unGanador = getParticipante(IDGanador);
-                    unResultado = new Resultado(IDResultado, numero, RP0, RP1, PP0, PP1, unGanador); }
-                listaResultados.add(unResultado); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+                    unResultado = new Resultado(IDResultado, numero, RP0, RP1, PP0, PP1, unGanador);
+                }
+                listaResultados.add(unResultado);
+            }
+            rs.close();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return listaResultados; }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return listaResultados;
+    }
     
 
     public static Participante getParticipante(int unID) {
@@ -272,14 +346,25 @@ public class GestionarFixtureDAO {
             while (rs.next()) {
                 unIDParticipante = rs.getInt("id_participante");
                 unNombre = rs.getString("nombre");
-                unCorreoElectronico = rs.getString("correo_electronico"); }
+                unCorreoElectronico = rs.getString("correo_electronico");
+            }
             rs.close();
-            unParticipante = new Participante(unIDParticipante, unNombre, unCorreoElectronico, null); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+            unParticipante = new Participante(unIDParticipante, unNombre, unCorreoElectronico, null);
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
-        return unParticipante; }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return unParticipante;
+    }
     
 
     public static ArrayList<Partido> getPartidos(int unIDRonda) {
@@ -303,17 +388,29 @@ public class GestionarFixtureDAO {
                 int IDGanador = rs.getInt("id_ganador_partido");
                 if (rs.wasNull()) {
                     Boolean huboEmpate = true;
-                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, null, huboEmpate); }
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, null, huboEmpate);
+                }
                 else {
                     Participante unGanador = getParticipante(IDGanador);
                     Boolean huboEmpate = false;
-                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, unGanador, huboEmpate); }
-                listaPartidos.add(unPartido); }
-            rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+                    unPartido = new Partido(IDPartido, P0, P1, LR, listaResultados, unGanador, huboEmpate);
+                }
+                listaPartidos.add(unPartido);
+            }
+            rs.close();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
         return listaPartidos;
     }
     
@@ -340,12 +437,21 @@ public class GestionarFixtureDAO {
                 listaRondas.add(rondaAux);
             }
             rs.close(); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
         return listaRondas;
     }
+    
     
     public static Fixture getFixture(int idCD) {
         Fixture unFixture = null;
@@ -361,11 +467,22 @@ public class GestionarFixtureDAO {
                 idFixture = rs.getInt("id_fixture");}
             rs.close();
             ArrayList<Ronda> rondas=getRondas(idFixture);
-            unFixture = new Fixture(idFixture, rondas); }
-        catch (SQLException ex) { System.out.println(ex.getMessage()); }
+            unFixture = new Fixture(idFixture, rondas);
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         finally {
-            if (conn != null) try { conn.close(); }
-            catch (SQLException ex) { System.out.println(ex.getMessage()); } }
+            if (conn != null)
+                try {
+                    conn.close();
+                }
+            catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
         return unFixture;
     }
+    
+    
 }
