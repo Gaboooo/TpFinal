@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import javax.swing.*;
 import javax.swing.table.*;
+import modelo.Resultado;
 import modelo.ResultadoAux;
 
 /**
@@ -521,6 +522,12 @@ public class GestionarResultados extends javax.swing.JPanel {
         
         jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
         jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
+        
+        
+        // AGREGADO
+        // Buscar resultados de la BD, si los hubiera
+        ArrayList<ResultadoAux> resultadosAnteriores=
+                gestor.GestionarFixtureGestor.getResultados(partidoAux);
         
         
         if("Puntuacion".equals(formaPuntuacion)) {
