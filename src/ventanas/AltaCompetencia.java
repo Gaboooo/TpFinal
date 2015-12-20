@@ -664,6 +664,11 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jLabelFormaPuntuacion.setVisible(false);
         jSpinnerPuntuacion.setVisible(false);
         jSpinnerSets.setVisible(false);
+        if("Liga".equals((String)jComboBoxModalidad.getSelectedItem())){
+            jLabelEmpate.setVisible(true);
+            jCheckBoxEmpate.setVisible(true);
+            verEmpate();
+        }
         repaint();
     }
     

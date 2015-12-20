@@ -85,6 +85,8 @@ public class V extends javax.swing.JFrame {
         menuVolver();
     }
     public void listarCompetenciasVolver(){
+        //ListarCompetencias.botonBuscar();
+        //listarCD.botonBuscar();
         listarCD.setVisible(true);
         revalidate();
         repaint();
@@ -137,6 +139,14 @@ public class V extends javax.swing.JFrame {
         revalidate();
         repaint();
     }
+    public void mostrarFixtureVolver(CompetenciaAux compAux){
+        remove(aux);
+        aux = new MostrarFixture(compAux);
+        aux.setVisible(true);
+        add(aux);
+        revalidate();
+        repaint();
+    }
     
     public void gestionarResultados(CompetenciaAux compAux, RondaAux rondaAux, PartidoAux partidoAux){
         aux.setVisible(false);
@@ -149,10 +159,6 @@ public class V extends javax.swing.JFrame {
         aux.setVisible(true);
         revalidate();
         repaint();
-    }
-    public void gestionarResultadosVolver2(CompetenciaAux compAux, RondaAux rondaAux, PartidoAux partidoAux){
-        remove(aux);
-        gestionarResultados(compAux, rondaAux, partidoAux);
     }
     public void gestionarResultadosSalir(){
         remove(aux);
