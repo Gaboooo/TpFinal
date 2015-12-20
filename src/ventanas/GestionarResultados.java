@@ -41,9 +41,10 @@ public class GestionarResultados extends javax.swing.JPanel {
         partidoAux=param3;
         
         initComponents();
+        
         verNombre();
         if(param3!=null){
-            crearYLlenarTabla();
+            vaciarVentana();
         }
     }
 
@@ -56,7 +57,6 @@ public class GestionarResultados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -65,6 +65,7 @@ public class GestionarResultados extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -104,11 +105,6 @@ public class GestionarResultados extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(null);
-
-        jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel6.setText("Participantes:");
-        add(jLabel6);
-        jLabel6.setBounds(10, 140, 160, 30);
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,6 +172,11 @@ public class GestionarResultados extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(274, 294, 490, 30);
 
+        jLabel6.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel6.setText("Participantes:");
+        add(jLabel6);
+        jLabel6.setBounds(10, 140, 160, 30);
+
         jLabel7.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jLabel7.setText("Par. 1: Nombre Participante 1");
         add(jLabel7);
@@ -186,13 +187,19 @@ public class GestionarResultados extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(20, 200, 160, 40);
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox1StateChanged(evt);
             }
         });
         add(jCheckBox1);
         jCheckBox1.setBounds(660, 171, 20, 20);
+
+        jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox2StateChanged(evt);
+            }
+        });
         add(jCheckBox2);
         jCheckBox2.setBounds(660, 210, 20, 21);
 
@@ -348,158 +355,177 @@ public class GestionarResultados extends javax.swing.JPanel {
         Boolean empatePermitido = GestionarFixtureGestor.getEmpatePermitido(compAux);
         ArrayList<ResultadoAux> listaResultadosAux = new ArrayList<>();
         int indiceGanador = 0;
-        Boolean asispar1= jCheckBox1.isSelected();
-        Boolean asispar2= jCheckBox2.isSelected();
+        Boolean asispar1 = jCheckBox1.isSelected();
+        Boolean asispar2 = jCheckBox2.isSelected();
         String cadenaError = "";
         String formaPuntuacion = compAux.getFormaPuntuacion();
         
         if(asispar1 == false && asispar2 == false){
             cadenaError += "Debe haber presente al menos un Participante\n";
         }
-                    
-        if("Sets".equals(formaPuntuacion)){
-            ArrayList<Integer> listaSets = new ArrayList<>();
-            int contador1 = 0;
-            int contador2 = 0;
-            int unNumero = 0;
-            int set1participante1 = (int) jSpinner1.getValue();
-            int set1participante2 = (int) jSpinner10.getValue();
-            int set2participante1 = (int) jSpinner2.getValue();
-            int set2participante2 = (int) jSpinner11.getValue();
-            int set3participante1 = (int) jSpinner3.getValue();
-            int set3participante2 = (int) jSpinner12.getValue();
-            int set4participante1 = (int) jSpinner4.getValue();
-            int set4participante2 = (int) jSpinner13.getValue();
-            int set5participante1 = (int) jSpinner5.getValue();
-            int set5participante2 = (int) jSpinner14.getValue();
-            int set6participante1 = (int) jSpinner6.getValue();
-            int set6participante2 = (int) jSpinner15.getValue();
-            int set7participante1 = (int) jSpinner7.getValue();
-            int set7participante2 = (int) jSpinner16.getValue();
-            int set8participante1 = (int) jSpinner8.getValue();
-            int set8participante2 = (int) jSpinner17.getValue();
-            int set9participante1 = (int) jSpinner9.getValue();
-            int set9participante2 = (int) jSpinner18.getValue();
-            
-            if(set1participante1 == set1participante2 || 
-                   set2participante1 == set2participante2 || 
-                   set3participante1 == set3participante2 || 
-                   set4participante1 == set4participante2 || 
-                   set5participante1 == set5participante2 || 
-                   set6participante1 == set6participante2 || 
-                   set7participante1 == set7participante2 || 
-                   set8participante1 == set8participante2 || 
-                   set9participante1 == set9participante2){
+        else if(asispar1==true && asispar2 ==true){
+            if("Sets".equals(formaPuntuacion)){
+                ArrayList<Integer> listaSets = new ArrayList<>();
+                int contador1 = 0;
+                int contador2 = 0;
+                int unNumero = 0;
+                int set1participante1 = (int) jSpinner1.getValue();
+                int set1participante2 = (int) jSpinner10.getValue();
+                int set2participante1 = (int) jSpinner2.getValue();
+                int set2participante2 = (int) jSpinner11.getValue();
+                int set3participante1 = (int) jSpinner3.getValue();
+                int set3participante2 = (int) jSpinner12.getValue();
+                int set4participante1 = (int) jSpinner4.getValue();
+                int set4participante2 = (int) jSpinner13.getValue();
+                int set5participante1 = (int) jSpinner5.getValue();
+                int set5participante2 = (int) jSpinner14.getValue();
+                int set6participante1 = (int) jSpinner6.getValue();
+                int set6participante2 = (int) jSpinner15.getValue();
+                int set7participante1 = (int) jSpinner7.getValue();
+                int set7participante2 = (int) jSpinner16.getValue();
+                int set8participante1 = (int) jSpinner8.getValue();
+                int set8participante2 = (int) jSpinner17.getValue();
+                int set9participante1 = (int) jSpinner9.getValue();
+                int set9participante2 = (int) jSpinner18.getValue();
+                
+                if(set1participante1 == set1participante2 ||
+                        set2participante1 == set2participante2 ||
+                        set3participante1 == set3participante2 ||
+                        set4participante1 == set4participante2 ||
+                        set5participante1 == set5participante2 ||
+                        set6participante1 == set6participante2 ||
+                        set7participante1 == set7participante2 ||
+                        set8participante1 == set8participante2 ||
+                        set9participante1 == set9participante2){
                     cadenaError += "No se permite empate por sets.\n";
-            }
-            // Se guardan los valor de los sets en listaSets.
-            listaSets.add(set1participante1);
-            listaSets.add(set1participante2); 
-            if (cantSets >= 3) {
-                listaSets.add(set2participante1);
-                listaSets.add(set2participante2);
-                listaSets.add(set3participante1);
-                listaSets.add(set3participante2);
-            }
-            if (cantSets >= 5) {
-                listaSets.add(set4participante1);
-                listaSets.add(set4participante2);
-                listaSets.add(set5participante1);
-                listaSets.add(set5participante2);
-            }
-            if (cantSets >= 7) {
-                listaSets.add(set6participante1);
-                listaSets.add(set6participante2);
-                listaSets.add(set7participante1);
-                listaSets.add(set7participante2);
-            }
-            if (cantSets == 9) {
-                listaSets.add(set8participante1);
-                listaSets.add(set8participante2);
-                listaSets.add(set9participante1);
-                listaSets.add(set9participante2);
-            }
-            // Se recorre la listaSets y se compara los resultados para guardar el indice.
-            for (int i=0; i<(cantSets*2); i+=2) {
-                int PP1 = listaSets.get(i);
-                int PP2 = listaSets.get(i+1);
-                if(PP1 > PP2){
-                    contador1 += 1;
                 }
-                else{
-                    contador2 += 1;
+                // Se guardan los valor de los sets en listaSets.
+                listaSets.add(set1participante1);
+                listaSets.add(set1participante2);
+                if (cantSets >= 3) {
+                    listaSets.add(set2participante1);
+                    listaSets.add(set2participante2);
+                    listaSets.add(set3participante1);
+                    listaSets.add(set3participante2);
                 }
-                if(i == (cantSets*2)-1){
-                    if(contador1>contador2){
-                        indiceGanador = 0;
+                if (cantSets >= 5) {
+                    listaSets.add(set4participante1);
+                    listaSets.add(set4participante2);
+                    listaSets.add(set5participante1);
+                    listaSets.add(set5participante2);
+                }
+                if (cantSets >= 7) {
+                    listaSets.add(set6participante1);
+                    listaSets.add(set6participante2);
+                    listaSets.add(set7participante1);
+                    listaSets.add(set7participante2);
+                }
+                if (cantSets == 9) {
+                    listaSets.add(set8participante1);
+                    listaSets.add(set8participante2);
+                    listaSets.add(set9participante1);
+                    listaSets.add(set9participante2);
+                }
+                // Se recorre la listaSets y se compara los resultados para guardar el indice.
+                for (int i=0; i<(cantSets*2); i+=2) {
+                    int PP1 = listaSets.get(i);
+                    int PP2 = listaSets.get(i+1);
+                    if(PP1 > PP2){
+                        contador1 += 1;
                     }
                     else{
-                        indiceGanador = 1;
+                        contador2 += 1;
+                    }
+                    if(i == (cantSets*2)-1){
+                        if(contador1>contador2){
+                            indiceGanador = 0;
+                        }
+                        else{
+                            indiceGanador = 1;
+                        }
+                    }
+                    if("".equals(cadenaError)){
+                        unNumero = i/2;
+                        ResultadoAux unResultado = new ResultadoAux(unNumero, PP1, PP2, asispar1, asispar2, indiceGanador);
+                        listaResultadosAux.add(unResultado);
+                    }
+                    
+                }
+            }
+            else if ("Puntuacion".equals(formaPuntuacion)){
+                int PP1 = (int) jSpinner5.getValue();
+                int PP2 = (int) jSpinner14.getValue();
+                
+                if(PP1>PP2){
+                    indiceGanador = 0;
+                }
+                else if (PP2>PP1){
+                    indiceGanador = 1;
+                }
+                else if(PP1 == PP2){
+                    if(empatePermitido == false){
+                        cadenaError += "La competencia no permite empate.\n";
+                    }
+                    else{
+                        indiceGanador = 2;
+                    }
+                }
+                
+                if("".equals(cadenaError)){
+                    ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
+                    listaResultadosAux.add(unResultado);
+                }
+            }
+            else{
+                Boolean ganador1 =(Boolean)jCheckBox3.isSelected();
+                Boolean ganador2 =(Boolean)jCheckBox4.isSelected();
+                
+                if(ganador1 == true && ganador2 == false){
+                    indiceGanador = 0;
+                }
+                else if(ganador2 == true && ganador1 == false){
+                    indiceGanador = 1;
+                }
+                else{
+                    if(empatePermitido == false){
+                        cadenaError += "La competencia no permite empate.\n";
+                    }
+                    else{
+                        indiceGanador = 2;
                     }
                 }
                 if("".equals(cadenaError)){
-                    unNumero = i/2;
-                    ResultadoAux unResultado = new ResultadoAux(unNumero, PP1, PP2, asispar1, asispar2, indiceGanador);
+                    ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
                     listaResultadosAux.add(unResultado);
                 }
                 
             }
-        }
-        else if ("Puntuacion".equals(formaPuntuacion)){
-            int PP1 = (int) jSpinner5.getValue();
-            int PP2 = (int) jSpinner14.getValue();
-
-            if(PP1>PP2){
-                indiceGanador = 0;
-            }
-            else if (PP2>PP1){
-                indiceGanador = 1;
-            }
-            else if(PP1 == PP2){
-                if(empatePermitido == false){
-                    cadenaError += "La competencia no permite empate.\n";
-                }
-                else{
-                    indiceGanador = 2;
-                }
-            }
-            
             if("".equals(cadenaError)){
-                ResultadoAux unResultado = new ResultadoAux(0, PP1, PP2, asispar1, asispar2, indiceGanador);
-                listaResultadosAux.add(unResultado);
-            }
-        }
-        else{
-            Boolean ganador1 =(Boolean)jCheckBox3.isSelected();
-            Boolean ganador2 =(Boolean)jCheckBox4.isSelected();
-            
-            if(ganador1 == true && ganador2 == false){
-                indiceGanador = 0;
-            }
-            else if(ganador2 == true && ganador1 == false){
-                indiceGanador = 1;
+                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
-                if(empatePermitido == false){
-                    cadenaError += "La competencia no permite empate.\n";
-                }
-                else{
-                    indiceGanador = 2;
-                }
+                V.get().alerta();
+                JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
             }
+        }
+        else if(asispar1 == true && asispar2 == false){
+            indiceGanador = 0;
+            ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
+            listaResultadosAux.add(unResultado);
             if("".equals(cadenaError)){
-                ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
-                listaResultadosAux.add(unResultado);
+                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             }
-            
         }
-        if("".equals(cadenaError)){
-            GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
-            JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-            V.get().alerta();
-            JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
+        else if(asispar1 == false && asispar2 == true){
+            indiceGanador = 1;
+            ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
+            listaResultadosAux.add(unResultado);
+            if("".equals(cadenaError)){
+                GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
+                JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -517,20 +543,32 @@ public class GestionarResultados extends javax.swing.JPanel {
         V.get().gestionarResultadosSalir();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
+        if(jCheckBox1.isSelected() == true && jCheckBox2.isSelected() == true){
+            crearYLlenarVentana();
+        }
+        else {
+            vaciarVentana();
+        }
+    }//GEN-LAST:event_jCheckBox1StateChanged
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    private void jCheckBox2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox2StateChanged
+        if(jCheckBox1.isSelected() == true && jCheckBox2.isSelected() == true){
+            crearYLlenarVentana();
+        }
+        else {
+            vaciarVentana();
+        }
+    }//GEN-LAST:event_jCheckBox2StateChanged
 
-    private void crearYLlenarTabla(){
+    private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
         int cantSets = GestionarFixtureGestor.getCantSets(compAux);
         
         jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
         jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
+        
+        
         
         
         if("Puntuacion".equals(formaPuntuacion)) {
@@ -601,6 +639,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jLabel16.setVisible(false);
                 jLabel17.setVisible(false);
                 jLabel18.setVisible(false);
+                repaint();
             }
             else if(cantSets == 3){
                 jLabel5.setVisible(false);
@@ -634,6 +673,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jLabel16.setVisible(false);
                 jLabel17.setVisible(false);
                 jLabel18.setVisible(false);
+                repaint();
             }
             else if(cantSets == 5){
                 jLabel5.setVisible(false);
@@ -667,6 +707,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jLabel16.setVisible(false);
                 jLabel17.setVisible(false);
                 jLabel18.setVisible(false);
+                repaint();
             }
             else if(cantSets == 7){
                 jLabel5.setVisible(false);
@@ -700,6 +741,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jLabel16.setVisible(true);
                 jLabel17.setVisible(false);
                 jLabel18.setVisible(false);
+                repaint();
             }
             else if(cantSets == 9){
                 jLabel5.setVisible(false);
@@ -733,6 +775,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jLabel16.setVisible(true);
                 jLabel17.setVisible(true);
                 jLabel18.setVisible(true);
+                repaint();
             }
             repaint();
         }
@@ -772,6 +815,45 @@ public class GestionarResultados extends javax.swing.JPanel {
             repaint();
         }
     }
+    
+    private void vaciarVentana(){
+        jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
+        jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
+        
+        
+        jLabel5.setVisible(false);
+        jLabel14.setVisible(false);
+        jSpinner5.setVisible(false);
+        jSpinner14.setVisible(false);
+        jCheckBox3.setVisible(false);
+        jCheckBox4.setVisible(false);
+        jSpinner1.setVisible(false);
+        jSpinner2.setVisible(false);
+        jSpinner3.setVisible(false);
+        jSpinner4.setVisible(false);
+        jSpinner6.setVisible(false);
+        jSpinner7.setVisible(false);
+        jSpinner8.setVisible(false);
+        jSpinner9.setVisible(false);
+        jSpinner10.setVisible(false);
+        jSpinner11.setVisible(false);
+        jSpinner12.setVisible(false);
+        jSpinner13.setVisible(false);
+        jSpinner15.setVisible(false);
+        jSpinner16.setVisible(false);
+        jSpinner17.setVisible(false);
+        jSpinner18.setVisible(false);
+        jLabel10.setVisible(false);
+        jLabel11.setVisible(false);
+        jLabel12.setVisible(false);
+        jLabel13.setVisible(false);
+        jLabel15.setVisible(false);
+        jLabel16.setVisible(false);
+        jLabel17.setVisible(false);
+        jLabel18.setVisible(false);
+        repaint();
+    }
+    
     private void verNombre(){
     
      jLabel3.setVisible(true);
