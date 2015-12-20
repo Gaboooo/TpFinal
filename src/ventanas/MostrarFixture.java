@@ -272,6 +272,9 @@ public class MostrarFixture extends javax.swing.JPanel {
         
         // LLenado de la tabla actual
         
+        if(ronda > rondas.size()){
+            ronda--;
+        }
         RondaAux rondaActual=rondas.get(ronda-1); //-1 porque la interfaz va de 1 a N
         
         ArrayList<PartidoAux> listaPartidos=rondaActual.getPartidos();
