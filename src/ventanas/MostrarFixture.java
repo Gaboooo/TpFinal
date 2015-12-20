@@ -280,7 +280,7 @@ public class MostrarFixture extends javax.swing.JPanel {
             
             PartidoAux partAux=listaPartidos.get(i);
             
-            String fila[]=new String[4];
+            String fila[]=new String[3];
             
             fila[0]= partAux.getParticipante1();
             fila[1]= partAux.getParticipante2();
