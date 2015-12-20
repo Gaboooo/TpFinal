@@ -1,12 +1,13 @@
 package modelo;
 
 public class Provincia {
-    private int ID;
+    
+    private int id;
     private String nombre;
     private Pais pais;
 
     public int getId() {
-        return ID;
+        return id;
     }
 
     public String getNombre() {
@@ -18,7 +19,7 @@ public class Provincia {
     }
 
     public void setID(int unID) {
-        this.ID = unID;
+        this.id = unID;
     }
 
     public void setNombre(String unNombre) {
@@ -37,7 +38,7 @@ public class Provincia {
     
     // Con ID
     public Provincia(int unaID, String unNombre, Pais unPais) {
-        this.ID = unaID;
+        this.id = unaID;
         this.nombre = unNombre;
         this.pais = unPais;
     }

@@ -1,7 +1,6 @@
 
 package modelo;
 
-
 public class TablaPosicionesAux {
     
     private String nombreParticipante;

@@ -1,11 +1,12 @@
 package modelo;
 
 public class TipoDoc {
-    private int ID;
+   
+    private int id;
     private String nombre;
 
     public void setID(int unID) {
-        this.ID = unID;
+        this.id = unID;
     }
 
     public void setNombre(String unNombre) {
@@ -13,7 +14,7 @@ public class TipoDoc {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public String getNombre() {
@@ -27,7 +28,7 @@ public class TipoDoc {
     
     // Con ID
     public TipoDoc(int unID, String unNombre) {
-        this.ID = unID;
+        this.id = unID;
         this.nombre = unNombre;
     }
 }

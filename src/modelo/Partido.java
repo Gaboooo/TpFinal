@@ -3,7 +3,8 @@ package modelo;
 import java.util.*;
 
 public class Partido {
-    int IDPartido;
+    
+    int id;
     private final Participante P0;
     private final Participante P1;
     private final LugarRealizacion lugarRealizacion;
@@ -40,54 +41,68 @@ public class Partido {
     }
     
     public int getID() {
-        return IDPartido; }
+        return id; 
+    }
     
     public Participante getP0() {
-        return P0; }
+        return P0; 
+    }
     
     public Participante getP1() {
-        return P1; }
+        return P1; 
+    }
     
     public LugarRealizacion getLR() {
-        return lugarRealizacion; }
+        return lugarRealizacion; 
+    }
     
     public ArrayList<Resultado> getListaResultados() {
-        return listaResultados; }
+        return listaResultados; 
+    }
     
     public ArrayList<HistorialResultado> getHistorialResultado() {
-        return historialRes; }
+        return historialRes; 
+    }
     
     public Participante getGanador() {
-        return ganador; }
+        return ganador; 
+    }
     
     public Boolean getEmpate() {
-        return empate; }
+        return empate; 
+    }
     
     public void setID(int unaID) {
-        this.IDPartido = unaID; }
+        this.id = unaID; 
+    }
     
     public void setGanador(Participante unParticipante) {
-        this.ganador = unParticipante; }
+        this.ganador = unParticipante; 
+    }
     
     public void setEmpate(Boolean unBooleano){
-        this.empate = unBooleano; }
+        this.empate = unBooleano; 
+    }
     
     public void setListaResultados(ArrayList<Resultado> unaLista) {
-        this.listaResultados = unaLista; }
+        this.listaResultados = unaLista; 
+    }
     
     public void setHistorialResultado(ArrayList<HistorialResultado> unaLista) {
-        this.historialRes = unaLista; }
+        this.historialRes = unaLista; 
+    }
     
     // Con ID
     public Partido(int unaID, Participante P0, Participante P1, LugarRealizacion LR, ArrayList<Resultado> unaLista, Participante unGanador, Boolean huboEmpate) {
-        this.IDPartido = unaID;
+        this.id = unaID;
         this.P0 = P0;
         this.P1 = P1; 
         this.lugarRealizacion = LR;
         this.listaResultados = unaLista;
         this.historialRes = new ArrayList<>();
         this.ganador = unGanador;
-        this.empate = huboEmpate; }
+        this.empate = huboEmpate; 
+    }
         
     // Sin ID - REVISAR!
     public Partido(Participante P0, Participante P1, LugarRealizacion LR) {
@@ -97,4 +112,6 @@ public class Partido {
         this.listaResultados = new ArrayList<>();
         this.historialRes = new ArrayList<>();
         this.ganador = null;
-        this.empate = null; } }
+        this.empate = null; 
+    } 
+}

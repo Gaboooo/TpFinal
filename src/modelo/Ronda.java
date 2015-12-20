@@ -3,14 +3,15 @@ package modelo;
 import java.util.*;
 
 public class Ronda {
-    private int ID;
+    
+    private int id;
     private int numRonda;
     private Boolean rondaPerdedores; 
     private String fecha;
     ArrayList<Partido> listaPartidos;  
     
     public void setID(int unID) {
-        this.ID = unID;
+        this.id = unID;
     }
     
     public void setNumeroRonda(int unNumero) {
@@ -30,7 +31,7 @@ public class Ronda {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
     
     public int getNumero() {
@@ -59,7 +60,7 @@ public class Ronda {
     
     // Con ID
     public Ronda(int unaID, int unNumero, Boolean esRP, String unaFecha, ArrayList<Partido> unaLista) {
-        this.ID = unaID; 
+        this.id = unaID; 
         this.numRonda = unNumero;
         this.rondaPerdedores = esRP;
         this.fecha = unaFecha;

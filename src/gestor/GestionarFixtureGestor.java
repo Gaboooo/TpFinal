@@ -349,7 +349,7 @@ public class GestionarFixtureGestor {
             Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
         Participante P0 = unPartido.getP0(); Participante P1 = unPartido.getP1();
         Boolean AP0 = listaNuevosResultados.get(0).getAsistenciaP0(); Boolean AP1 = listaNuevosResultados.get(0).getAsistenciaP1();
-        
+      
         if ("Sets".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
             if (AP0 && AP1) {
                 int setsGanadosP0 = 0; int setsGanadosP1 = 0;
