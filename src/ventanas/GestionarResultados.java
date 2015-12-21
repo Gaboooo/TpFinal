@@ -31,7 +31,8 @@ public class GestionarResultados extends javax.swing.JPanel {
     PartidoAux partidoAux;
     ArrayList<ResultadoAux> resultadosAnteriores;
     int cantSets;
-    
+    Boolean empatePermitido;
+   
     /**
      * Creates new form GestionarResultados
      * @param param
@@ -47,7 +48,8 @@ public class GestionarResultados extends javax.swing.JPanel {
         // AGREGADO
         // Buscar resultados de la BD, si los hubiera
         resultadosAnteriores = gestor.GestionarFixtureGestor.getResultados(partidoAux);
-        cantSets = GestionarFixtureGestor.getCantSets(compAux);
+        cantSets = (int) GestionarFixtureGestor.getCantSets(compAux);
+        empatePermitido = GestionarFixtureGestor.getEmpatePermitido(compAux);
         
         
         initComponents();
@@ -356,8 +358,6 @@ public class GestionarResultados extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int cantidadSets = GestionarFixtureGestor.getCantSets(compAux);
-        Boolean empatePermitido = GestionarFixtureGestor.getEmpatePermitido(compAux);
         ArrayList<ResultadoAux> listaResultadosAux = new ArrayList<>();
         int indiceGanador = 0;
         Boolean asispar1 = jCheckBox1.isSelected();
@@ -394,7 +394,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 int set9participante2 = 0;
                 
                 
-                if(cantidadSets >= 1){
+                if(cantSets >= 1){
                     set1participante1 = (int) jSpinner1.getValue();
                     set1participante2 = (int) jSpinner10.getValue();
                     if(set1participante1 == set1participante2){
@@ -403,7 +403,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantidadSets >= 3){
+                if(cantSets >= 3){
                     set2participante1 = (int) jSpinner2.getValue();
                     set2participante2 = (int) jSpinner11.getValue();
                     set3participante1 = (int) jSpinner3.getValue();
@@ -414,7 +414,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantidadSets >= 5){
+                if(cantSets >= 5){
                     set4participante1 = (int) jSpinner4.getValue();
                     set4participante2 = (int) jSpinner13.getValue();
                     set5participante1 = (int) jSpinner5.getValue();
@@ -425,7 +425,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantidadSets >= 7){
+                if(cantSets >= 7){
                     set6participante1 = (int) jSpinner6.getValue();
                     set6participante2 = (int) jSpinner15.getValue();
                     set7participante1 = (int) jSpinner7.getValue();
@@ -436,7 +436,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantidadSets >= 9){
+                if(cantSets >= 9){
                     set8participante1 = (int) jSpinner8.getValue();
                     set8participante2 = (int) jSpinner17.getValue();
                     set9participante1 = (int) jSpinner9.getValue();
@@ -450,32 +450,32 @@ public class GestionarResultados extends javax.swing.JPanel {
                 // Se guardan los valor de los sets en listaSets.
                 listaSets.add(set1participante1);
                 listaSets.add(set1participante2);
-                if (cantidadSets >= 3) {
+                if (cantSets >= 3) {
                     listaSets.add(set2participante1);
                     listaSets.add(set2participante2);
                     listaSets.add(set3participante1);
                     listaSets.add(set3participante2);
                 }
-                if (cantidadSets >= 5) {
+                if (cantSets >= 5) {
                     listaSets.add(set4participante1);
                     listaSets.add(set4participante2);
                     listaSets.add(set5participante1);
                     listaSets.add(set5participante2);
                 }
-                if (cantidadSets >= 7) {
+                if (cantSets >= 7) {
                     listaSets.add(set6participante1);
                     listaSets.add(set6participante2);
                     listaSets.add(set7participante1);
                     listaSets.add(set7participante2);
                 }
-                if (cantidadSets == 9) {
+                if (cantSets == 9) {
                     listaSets.add(set8participante1);
                     listaSets.add(set8participante2);
                     listaSets.add(set9participante1);
                     listaSets.add(set9participante2);
                 }
                 // Se recorre la listaSets y se compara los resultados para guardar el indice.
-                for (int i=0; i<(cantidadSets*2); i+=2) {
+                for (int i=0; i<(cantSets*2); i+=2) {
                     int PP1 = listaSets.get(i);
                     int PP2 = listaSets.get(i+1);
                     if(PP1 > PP2){
@@ -484,7 +484,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                     else{
                         contador2 += 1;
                     }
-                    if(i == (cantidadSets*2)-1){
+                    if(i == (cantSets*2)-1){
                         if(contador1>contador2){
                             indiceGanador = 0;
                         }
@@ -686,7 +686,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jSpinner1.setVisible(true);
                 jSpinner10.setVisible(true);
                 jLabel10.setVisible(true);
-                repaint();
             }
             if(cantSets >= 3){
                 if(set2 != null && set3 != null){
@@ -701,7 +700,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jSpinner12.setVisible(true);
                 jLabel11.setVisible(true);
                 jLabel12.setVisible(true);
-                repaint();
             }
             if(cantSets >= 5){
                 if(set4 != null && set5 != null){
@@ -716,7 +714,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jSpinner14.setVisible(true);
                 jLabel13.setVisible(true);
                 jLabel14.setVisible(true);
-                repaint();
             }
             if(cantSets >= 7){
                 if(set6 != null && set7 != null){
@@ -731,7 +728,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jSpinner16.setVisible(true);
                 jLabel15.setVisible(true);
                 jLabel16.setVisible(true);
-                repaint();
             }
             if(cantSets >= 9){
                 if(set8 != null && set9 != null){
@@ -746,7 +742,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 jSpinner18.setVisible(true);
                 jLabel17.setVisible(true);
                 jLabel18.setVisible(true);
-                repaint();
             }
             repaint();
         }
