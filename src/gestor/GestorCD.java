@@ -235,7 +235,7 @@ public class GestorCD {
                 int id=partidoActual.getID();
                 String p1 = partidoActual.getP0().getNombre();
                 String p2 = partidoActual.getP1().getNombre();
-                String res= partidoActual.getResultadoString();
+                String res= partidoActual.getResultadoString(compAux.getFormaPuntuacion());
                 PartidoAux partAux= new PartidoAux(id, p1, p2, res);
                 partidosAux.add(partAux);
             }

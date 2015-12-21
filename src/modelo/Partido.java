@@ -16,26 +16,30 @@ public class Partido {
     // private String anterior1;
     // private String anterior2;
     
-    public String getResultadoString(){
+    public String getResultadoString(String formaP){
         String retorno=" ";
         Resultado res;
-        if(listaResultados.size()>1){
-            for(int i=0; i<listaResultados.size(); i++){
-                res= listaResultados.get(i);
-                retorno+="("+res.getResultadoString()+") ";
-            }
-        }
-        else if(listaResultados.size()==1){
-            res= listaResultados.get(0);
-            if(res.esResultadoFinal()){
-                retorno+="Ganó "+ res.getGanadorString();
-            }
-            else{
-                retorno+=res.getResultadoString();
-            }
-        }
-        else if(listaResultados.isEmpty()){
-            retorno="";
+        if(null != formaP)switch (formaP) {
+            case "Sets":
+                for(int i=0; i<listaResultados.size(); i++){
+                    res= listaResultados.get(i);
+                    retorno+="("+res.getResultadoString()+") ";
+                }
+                break;
+            case "Resultado Final":
+                String aux= listaResultados.get(0).getGanadorString();
+                if(aux==null){
+                    retorno+= "Empate";
+                }
+                else{
+                    retorno+="Ganó "+ listaResultados.get(0).getGanadorString();
+                }
+                break;
+            case "Puntuacion":
+                retorno+=listaResultados.get(0).getResultadoString();
+                break;
+            default:
+                break;
         }
         return retorno;
     }
