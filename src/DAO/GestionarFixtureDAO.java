@@ -181,14 +181,18 @@ public class GestionarFixtureDAO {
                 ArrayList<Resultado> listaResultados = unHR.getListaResultados();
                 for (Resultado unResultado:listaResultados) {
                     int IDResultado = unResultado.getID();
-                    persistirHR = "INSERT INTO historial_resultado VALUES (default, " + IDPartido + ", " + IDResultado + ", null, " + huboEmpate + ", '" + fechaModificacion + "', '" + horaModificacion + "')";
+                    persistirHR = "INSERT INTO historial_resultado VALUES (default, " + IDPartido +
+                            ", " + IDResultado + ", null, " + huboEmpate + ", '" + fechaModificacion +
+                            "', '" + horaModificacion + "')";
                     statement.executeUpdate(persistirHR); } }
             else {
                 Object IDGanador = ganador.getID();
                 ArrayList<Resultado> listaResultados = unHR.getListaResultados(); 
                 for (Resultado unResultado:listaResultados) {
                     int IDResultado = unResultado.getID();
-                    persistirHR = "INSERT INTO historial_resultado VALUES (default, " + IDPartido + ", " + IDResultado + ", " + IDGanador + ", " + huboEmpate + ", '" + fechaModificacion + "', '" + horaModificacion + "')";
+                    persistirHR = "INSERT INTO historial_resultado VALUES (default, " + IDPartido +
+                            ", " + IDResultado + ", " + IDGanador + ", " + huboEmpate + ", '" +
+                            fechaModificacion + "', '" + horaModificacion + "')";
                     statement.executeUpdate(persistirHR); } } }
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
         finally {
@@ -235,10 +239,12 @@ public class GestionarFixtureDAO {
             int IDPartido = unPartido.getID();
             Boolean huboEmpate = unPartido.getEmpate();
             if (huboEmpate) { 
-                updateGanador = "UPDATE partido SET id_ganador_partido = null, empate = " + huboEmpate + " WHERE id_partido = '" + IDPartido + "'"; }
+                updateGanador = "UPDATE partido SET id_ganador_partido = null, empate = " +
+                        huboEmpate + " WHERE id_partido = '" + IDPartido + "'"; }
             else {
                 int IDGanador = unPartido.getGanador().getID();
-                updateGanador = "UPDATE partido SET id_ganador_partido = " + IDGanador + ", empate = " + huboEmpate + " WHERE id_partido = '" + IDPartido + "'"; }
+                updateGanador = "UPDATE partido SET id_ganador_partido = " + IDGanador +
+                        ", empate = " + huboEmpate + " WHERE id_partido = '" + IDPartido + "'"; }
             ResultSet rs = statement.executeQuery(updateGanador);
             rs.close(); }
         catch (SQLException ex) { System.out.println(ex.getMessage()); }
@@ -262,7 +268,8 @@ public class GestionarFixtureDAO {
             Boolean AP0 = unResultado.getAsistenciaP0();
             Boolean AP1 = unResultado.getAsistenciaP1();
             Participante unGanador = unResultado.getGanador();
-            String persistirResultado = "INSERT INTO resultado VALUES (default, " + IDPartido + ", " + numResultado + ", " + PP0 + ", " + PP1 + ", " + AP0 + ", " + AP1 + ", ";
+            String persistirResultado = "INSERT INTO resultado VALUES (default, " + IDPartido + ", " +
+                    numResultado + ", " + PP0 + ", " + PP1 + ", " + AP0 + ", " + AP1 + ", ";
             if (unGanador == null) {
                 persistirResultado = persistirResultado + "null)";
             }

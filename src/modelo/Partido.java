@@ -45,6 +45,17 @@ public class Partido {
         return retorno;
     }
     
+    public Participante getParticipantePorIndice(int indiceParticipante){
+        switch (indiceParticipante) {
+            case 0:
+                return P0;
+            case 1:
+                return P1;
+            default:
+                return null;
+        }
+    }
+    
     public int getID() {
         return id; 
     }

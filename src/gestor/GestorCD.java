@@ -7,6 +7,8 @@ import static DAO.CompetenciaDaoJDBC.getCompetenciaMostrarFixt;
 import static DAO.CompetenciaDaoJDBC.getCompetenciaPorId;
 import static DAO.CompetenciaDaoJDBC.getProximosEncuentros;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import modelo.*;
 
 public class GestorCD {
@@ -65,8 +67,71 @@ public class GestorCD {
                 listaTablaAux.add(tablaAux);
             }    
         }
-  
+        
+        
+        ordenar(listaTablaAux, c.getFormaPuntuacion().getNombre());
+        
         return listaTablaAux;
+    }
+    //Ordena la tabla de posiciones
+    public static void ordenar(ArrayList<PosicionAux> tabla, String formaP){
+        if("Resultado Final".equals(formaP)){
+            Collections.sort(tabla, new Comparator<PosicionAux>() {
+            @Override
+            public int compare(PosicionAux pos1, PosicionAux pos2) {
+                if (pos1.getPuntos() > pos2.getPuntos()){
+                    return -1;
+                }
+                else if(pos2.getPuntos() > pos1.getPuntos()){
+                    return 1;
+                }
+                else{
+                    if (pos1.getPartidosEmpatados() > pos2.getTantosEnContra()){
+                        return -1;
+                    }
+                    else if(pos2.getPartidosEmpatados() > pos1.getTantosEnContra()){
+                        return 1;
+                    }
+                    else return 1;
+                }
+            }
+            });
+        }
+        else{
+            Collections.sort(tabla, new Comparator<PosicionAux>() {
+            @Override
+            public int compare(PosicionAux pos1, PosicionAux pos2) {
+                if (pos1.getPuntos() > pos2.getPuntos()){
+                    return -1;
+                }
+                else if(pos2.getPuntos() > pos1.getPuntos()){
+                    return 1;
+                }
+                else{
+                    if (pos1.getTantosAFavor() > pos2.getTantosAFavor()){
+                        return -1;
+                    }
+                    else if (pos2.getTantosAFavor() > pos1.getTantosAFavor()){
+                        return 1;
+                    }
+                    else{
+                        if (pos1.getTantosEnContra() < pos2.getTantosEnContra()){
+                            return -1;
+                        }
+                        else if (pos2.getTantosEnContra() < pos1.getTantosEnContra()){
+                            return 1;
+                        }
+                        else{
+                            if (pos1.getPartidosEmpatados() > pos2.getPartidosEmpatados()){
+                                return -1;
+                            }
+                            else return 1;
+                        }
+                    }
+                }
+            }
+        });
+        }
     }
   
     // LISTAR COMPETENCIAS DEPORTIVAS

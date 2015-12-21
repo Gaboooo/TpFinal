@@ -239,6 +239,8 @@ public class GestionarFixtureGestor {
         
         // Asistencia: P0 ^ P1
         if (asistenciaP0 && asistenciaP1) {
+            posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
+            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
             // Ganador: P0
             if (unGanador == P0) {
                 posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorVictoria());
@@ -316,7 +318,8 @@ public class GestionarFixtureGestor {
         }
         // Asistencia: P0
         else if (asistenciaP0 && !asistenciaP1) {
-            posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
+            posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion() +
+                    unaCompetencia.getPuntosPorVictoria());
             posicionP0.setPartidosGanados(posicionP0.getPartidosGanados() + 1);
             posicionP1.setPartidosPerdidos(posicionP1.getPartidosPerdidos() + 1);
             // formaPuntuacion: SETS - No tiene tantos
@@ -326,17 +329,19 @@ public class GestionarFixtureGestor {
                 posicionP1.setTantosEnContra(posicionP1.getTantosEnContra() + unaCompetencia.getTantosPorAusenciaDeRival());
             }
             /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */
-        }    
+        }
         // Asistencia: P1
         else if (!asistenciaP0 && asistenciaP1) {
-            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
+            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion()+
+                    unaCompetencia.getPuntosPorVictoria());
             posicionP1.setPartidosGanados(posicionP1.getPartidosGanados() + 1);
             posicionP0.setPartidosPerdidos(posicionP0.getPartidosPerdidos() + 1);
             // formaPuntuacion: SETS - No tiene tantos
             // formaPuntuacion: PUNTOS
             if ("Puntuacion".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
                 posicionP1.setTantosAFavor(posicionP1.getTantosAFavor() + unaCompetencia.getTantosPorAusenciaDeRival());
-                posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + unaCompetencia.getTantosPorAusenciaDeRival()); }
+                posicionP0.setTantosEnContra(posicionP0.getTantosEnContra() + unaCompetencia.getTantosPorAusenciaDeRival());
+            }
             /* formaPuntuacion: RESULTADOFINAL - No tiene tantos */ }
         // NO existe un caso donde no asista ningun participante
         // DAO: Update de posiciones en DB
@@ -372,45 +377,60 @@ public class GestionarFixtureGestor {
             Resultado unResultado = listaNuevosResultados.get(0);
             int puntajeP0 = unResultado.getPuntajeP0(); int puntajeP1 = unResultado.getPuntajeP1();
             if (AP0 && AP1) {
-                if (puntajeP0 > puntajeP1) { 
+                if (puntajeP0 > puntajeP1) {
                     unPartido.setGanador(P0);
-                    unPartido.setEmpate(Boolean.FALSE); }
-                else if (puntajeP1 > puntajeP0) { 
+                    unPartido.setEmpate(Boolean.FALSE);
+                }
+                else if (puntajeP1 > puntajeP0) {
                     unPartido.setGanador(P1);
-                    unPartido.setEmpate(Boolean.FALSE); }
-                else if (puntajeP0 == puntajeP1) { 
+                    unPartido.setEmpate(Boolean.FALSE);
+                }
+                else if (puntajeP0 == puntajeP1) {
                     unPartido.setGanador(null);
-                    unPartido.setEmpate(Boolean.TRUE); } }
-            else if (AP0 && !AP1) { 
+                    unPartido.setEmpate(Boolean.TRUE);
+                }
+            }
+            else if (AP0 && !AP1) {
                 unPartido.setGanador(P0);
-                unPartido.setEmpate(Boolean.FALSE); }
-            else if (!AP0 && AP1) { 
+                unPartido.setEmpate(Boolean.FALSE);
+            }
+            else if (!AP0 && AP1) {
                 unPartido.setGanador(P1);
-                unPartido.setEmpate(Boolean.FALSE); } }
+                unPartido.setEmpate(Boolean.FALSE);
+            }
+        }
         // Control de empatePermitido se realiza en INTERFAZ
         if ("Resultado Final".equals(unaCompetencia.getFormaPuntuacion().getNombre())) {
             Resultado unResultado = listaNuevosResultados.get(0);
             Participante ganador = unResultado.getGanador();
             if (AP0 && AP1) {
-                if (ganador == null) { 
+                if (ganador == null) {
                     unPartido.setGanador(null);
-                    unPartido.setEmpate(Boolean.TRUE); }
-                else { 
+                    unPartido.setEmpate(Boolean.TRUE);
+                }
+                else {
                     unPartido.setGanador(ganador);
-                    unPartido.setEmpate(Boolean.FALSE); } }
-            else if (AP0 && !AP1) { 
+                    unPartido.setEmpate(Boolean.FALSE);
+                }
+            }
+            else if (AP0 && !AP1) {
                 unPartido.setGanador(P0);
-                unPartido.setEmpate(Boolean.FALSE); }
-            else if (!AP0 && AP1) { 
+                unPartido.setEmpate(Boolean.FALSE);
+            }
+            else if (!AP0 && AP1) {
                 unPartido.setGanador(P1);
-                unPartido.setEmpate(Boolean.FALSE); } }
+                unPartido.setEmpate(Boolean.FALSE);
+            }
+       }
         // JAVA: Asigno listaNuevosResultados como nuevo resultado del partido
         unPartido.setListaResultados(listaNuevosResultados);
         // DAO: Persisto listaNuevosResultados
         for (Resultado unResultado:listaNuevosResultados) {
-            GestionarFixtureDAO.persistirResultado(unPartido, unResultado); } 
+            GestionarFixtureDAO.persistirResultado(unPartido, unResultado);
+        }
         // DAO: Update de Partido. Cambio el ganador/empate
-        GestionarFixtureDAO.setGanadorAndEmpate(unPartido); }
+        GestionarFixtureDAO.setGanadorAndEmpate(unPartido);
+    }
     
     // Modalidad: LIGA
     public static void gestionarFixture(CompetenciaAux unaCompetenciaAux,
@@ -437,7 +457,7 @@ public class GestionarFixtureGestor {
                 unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, null); 
             }
             else{
-                Participante ganador = unaCompetencia.getListaParticipantes().get(indiceGanador);
+                Participante ganador = unPartido.getParticipantePorIndice(indiceGanador);
                 unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
             }
             
@@ -488,13 +508,16 @@ public class GestionarFixtureGestor {
             
             //Verificacion del ganador (en caso de resultado final)
             int indiceGanador;
-            if(partidoAux.getParticipante1().equals(resI.getGanador().getNombre())){
+            if(resI.getGanador()==null){
+                indiceGanador=2;
+            }
+            else if(partidoAux.getParticipante1().equals(resI.getGanador().getNombre())){
                 indiceGanador=0;
             }
             else if(partidoAux.getParticipante2().equals(resI.getGanador().getNombre())){
                 indiceGanador=1;
             }
-            else indiceGanador=2;
+            else indiceGanador=-1;
             
             //(int unID, int unNumero, int PP0, int PP1, Boolean AP0, Boolean AP1, int unIndice)
             aux= new ResultadoAux(resI.getId(), resI.getNumero(), resI.getPuntajeP0(),
