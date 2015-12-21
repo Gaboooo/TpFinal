@@ -656,7 +656,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         jSpinnerPuntuacion.setVisible(false);
         jLabelEmpate.setVisible(false);
         jCheckBoxEmpate.setVisible(false);
-        jLabelFormaPuntuacion.setText("Cant. max. de sets");
+        jLabelFormaPuntuacion.setText("Cant. de sets");
         repaint();
     }
     //Habilitacion de campos para forma de puntuacion, Resultado final

@@ -680,15 +680,25 @@ public class GestionarResultados extends javax.swing.JPanel {
             
             
             if(!resultadosAnteriores.isEmpty()){
-                set1 = resultadosAnteriores.get(0);
-                set2 = resultadosAnteriores.get(1);
-                set3 = resultadosAnteriores.get(2);
-                set4 = resultadosAnteriores.get(3);
-                set5 = resultadosAnteriores.get(4);
-                set6 = resultadosAnteriores.get(5);
-                set7 = resultadosAnteriores.get(6);
-                set8 = resultadosAnteriores.get(7);
-                set9 = resultadosAnteriores.get(8);
+                if(cantSets >= 1){
+                    set1 = resultadosAnteriores.get(0);
+                }
+                if(cantSets >= 3){
+                    set2 = resultadosAnteriores.get(1);
+                    set3 = resultadosAnteriores.get(2);
+                }
+                if(cantSets >= 5){
+                    set4 = resultadosAnteriores.get(3);
+                    set5 = resultadosAnteriores.get(4);
+                }
+                if(cantSets >= 7){
+                    set6 = resultadosAnteriores.get(5);
+                    set7 = resultadosAnteriores.get(6);
+                }
+                if(cantSets >= 9){
+                    set8 = resultadosAnteriores.get(7);
+                    set9 = resultadosAnteriores.get(8);
+                }
             }
             
             if(cantSets >= 1){
@@ -814,15 +824,18 @@ public class GestionarResultados extends javax.swing.JPanel {
     }
     
     private void crearVentana(){
+        jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
+        jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
+        
         if(!resultadosAnteriores.isEmpty()){
             ResultadoAux asistencia = resultadosAnteriores.get(0);
             jCheckBox1.setSelected(asistencia.getAsistenciaP0());
             jCheckBox2.setSelected(asistencia.getAsistenciaP1());
-            crearYLlenarVentana();
+            if(asistencia.getAsistenciaP0() == true && asistencia.getAsistenciaP1() == true){
+                crearYLlenarVentana();
+            }
         }
         else{
-            jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
-            jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
             jLabel5.setVisible(false);
             jLabel14.setVisible(false);
             jSpinner5.setVisible(false);
