@@ -546,15 +546,11 @@ public class GestionarResultados extends javax.swing.JPanel {
                     ResultadoAux unResultado = new ResultadoAux(0, 0, 0, asispar1, asispar2, indiceGanador);
                     listaResultadosAux.add(unResultado);
                 }
-                
             }
             if("".equals(cadenaError)){
                 GestionarFixtureGestor.gestionarFixture(compAux, rondaAux, partidoAux, listaResultadosAux);
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                 finVentana();
-            }
-            else{
-                Error(cadenaError);
             }
         }
         else if(asispar1 == true && asispar2 == false){
@@ -566,9 +562,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                 finVentana();
             }
-            else{
-                Error(cadenaError);
-            }
         }
         else if(asispar1 == false && asispar2 == true){
             indiceGanador = 1;
@@ -579,12 +572,12 @@ public class GestionarResultados extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                 finVentana();
             }
-            else{
-                Error(cadenaError);
-            }
         }
         if(!("".equals(cadenaError))){
             Error(cadenaError);
+        }
+        else{
+            finVentana();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -630,7 +623,6 @@ public class GestionarResultados extends javax.swing.JPanel {
     }
     private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();
-        
         jLabel7.setText("Par. 1:" + partidoAux.getParticipante1());
         jLabel8.setText("Par. 2:" + partidoAux.getParticipante2());
         
@@ -690,26 +682,28 @@ public class GestionarResultados extends javax.swing.JPanel {
             ResultadoAux set8 = null;
             ResultadoAux set9 = null;
             
-            
             if(!resultadosAnteriores.isEmpty()){
-                if(cantSets >= 1){
-                    set1 = resultadosAnteriores.get(0);
-                }
-                if(cantSets >= 3){
-                    set2 = resultadosAnteriores.get(1);
-                    set3 = resultadosAnteriores.get(2);
-                }
-                if(cantSets >= 5){
-                    set4 = resultadosAnteriores.get(3);
-                    set5 = resultadosAnteriores.get(4);
-                }
-                if(cantSets >= 7){
-                    set6 = resultadosAnteriores.get(5);
-                    set7 = resultadosAnteriores.get(6);
-                }
-                if(cantSets >= 9){
-                    set8 = resultadosAnteriores.get(7);
-                    set9 = resultadosAnteriores.get(8);
+                
+                set1 = resultadosAnteriores.get(0);
+                Boolean asisP0 = set1.getAsistenciaP0();
+                Boolean asisP1 = set1.getAsistenciaP1();
+                if(asisP0 == true && asisP1 == true){
+                    if(cantSets >= 3){
+                        set2 = resultadosAnteriores.get(1);
+                        set3 = resultadosAnteriores.get(2);
+                    }
+                    if(cantSets >= 5){
+                        set4 = resultadosAnteriores.get(3);
+                        set5 = resultadosAnteriores.get(4);
+                    }
+                    if(cantSets >= 7){
+                        set6 = resultadosAnteriores.get(5);
+                        set7 = resultadosAnteriores.get(6);
+                    }
+                    if(cantSets >= 9){
+                        set8 = resultadosAnteriores.get(7);
+                        set9 = resultadosAnteriores.get(8);
+                    }
                 }
             }
             
