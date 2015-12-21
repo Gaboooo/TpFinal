@@ -356,7 +356,7 @@ public class GestionarResultados extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int cantSets = GestionarFixtureGestor.getCantSets(compAux);
+        int cantidadSets = GestionarFixtureGestor.getCantSets(compAux);
         Boolean empatePermitido = GestionarFixtureGestor.getEmpatePermitido(compAux);
         ArrayList<ResultadoAux> listaResultadosAux = new ArrayList<>();
         int indiceGanador = 0;
@@ -394,7 +394,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 int set9participante2 = 0;
                 
                 
-                if(cantSets >= 1){
+                if(cantidadSets >= 1){
                     set1participante1 = (int) jSpinner1.getValue();
                     set1participante2 = (int) jSpinner10.getValue();
                     if(set1participante1 == set1participante2){
@@ -403,7 +403,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantSets >= 3){
+                if(cantidadSets >= 3){
                     set2participante1 = (int) jSpinner2.getValue();
                     set2participante2 = (int) jSpinner11.getValue();
                     set3participante1 = (int) jSpinner3.getValue();
@@ -414,7 +414,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantSets >= 5){
+                if(cantidadSets >= 5){
                     set4participante1 = (int) jSpinner4.getValue();
                     set4participante2 = (int) jSpinner13.getValue();
                     set5participante1 = (int) jSpinner5.getValue();
@@ -425,7 +425,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantSets >= 7){
+                if(cantidadSets >= 7){
                     set6participante1 = (int) jSpinner6.getValue();
                     set6participante2 = (int) jSpinner15.getValue();
                     set7participante1 = (int) jSpinner7.getValue();
@@ -436,7 +436,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                         }
                     }
                 }
-                if(cantSets >= 9){
+                if(cantidadSets >= 9){
                     set8participante1 = (int) jSpinner8.getValue();
                     set8participante2 = (int) jSpinner17.getValue();
                     set9participante1 = (int) jSpinner9.getValue();
@@ -450,32 +450,32 @@ public class GestionarResultados extends javax.swing.JPanel {
                 // Se guardan los valor de los sets en listaSets.
                 listaSets.add(set1participante1);
                 listaSets.add(set1participante2);
-                if (cantSets >= 3) {
+                if (cantidadSets >= 3) {
                     listaSets.add(set2participante1);
                     listaSets.add(set2participante2);
                     listaSets.add(set3participante1);
                     listaSets.add(set3participante2);
                 }
-                if (cantSets >= 5) {
+                if (cantidadSets >= 5) {
                     listaSets.add(set4participante1);
                     listaSets.add(set4participante2);
                     listaSets.add(set5participante1);
                     listaSets.add(set5participante2);
                 }
-                if (cantSets >= 7) {
+                if (cantidadSets >= 7) {
                     listaSets.add(set6participante1);
                     listaSets.add(set6participante2);
                     listaSets.add(set7participante1);
                     listaSets.add(set7participante2);
                 }
-                if (cantSets == 9) {
+                if (cantidadSets == 9) {
                     listaSets.add(set8participante1);
                     listaSets.add(set8participante2);
                     listaSets.add(set9participante1);
                     listaSets.add(set9participante2);
                 }
                 // Se recorre la listaSets y se compara los resultados para guardar el indice.
-                for (int i=0; i<(cantSets*2); i+=2) {
+                for (int i=0; i<(cantidadSets*2); i+=2) {
                     int PP1 = listaSets.get(i);
                     int PP2 = listaSets.get(i+1);
                     if(PP1 > PP2){
@@ -484,7 +484,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                     else{
                         contador2 += 1;
                     }
-                    if(i == (cantSets*2)-1){
+                    if(i == (cantidadSets*2)-1){
                         if(contador1>contador2){
                             indiceGanador = 0;
                         }
@@ -554,8 +554,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                 finVentana();
             }
             else{
-                V.get().alerta();
-                JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
+                Error(cadenaError);
             }
         }
         else if(asispar1 == true && asispar2 == false){
@@ -567,6 +566,9 @@ public class GestionarResultados extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                 finVentana();
             }
+            else{
+                Error(cadenaError);
+            }
         }
         else if(asispar1 == false && asispar2 == true){
             indiceGanador = 1;
@@ -577,6 +579,12 @@ public class GestionarResultados extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Resultado guardado exitosamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                 finVentana();
             }
+            else{
+                Error(cadenaError);
+            }
+        }
+        if(!("".equals(cadenaError))){
+            Error(cadenaError);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -612,6 +620,10 @@ public class GestionarResultados extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox2StateChanged
 
+    private void Error(String cadenaError){
+        V.get().alerta();
+        JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
+    }
     private void finVentana(){
         V.get().remove(this);
         V.get().mostrarFixtureVolver(compAux);
