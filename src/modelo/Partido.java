@@ -27,8 +27,7 @@ public class Partido {
                 }
                 break;
             case "Resultado Final":
-                String aux= listaResultados.get(0).getGanadorString();
-                if(aux==null){
+                if(listaResultados.get(0).getGanador()==null){
                     retorno+= "Empate";
                 }
                 else{
