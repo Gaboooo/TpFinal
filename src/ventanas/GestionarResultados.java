@@ -397,9 +397,11 @@ public class GestionarResultados extends javax.swing.JPanel {
                 if(cantSets >= 1){
                     set1participante1 = (int) jSpinner1.getValue();
                     set1participante2 = (int) jSpinner10.getValue();
-                    if(set1participante1 == set1participante2){
-                        if(!cadenaError.contains("No se permite empate por sets.")){
-                            cadenaError+= "No se permite empate por sets.\n";
+                    if(set1participante1 != 0 && set1participante2 != 0){
+                        if(set1participante1 == set1participante2){
+                            if(!cadenaError.contains("No se permite empate por sets.")){
+                                cadenaError+= "No se permite empate por sets.\n";
+                            }
                         }
                     }
                 }
@@ -408,9 +410,11 @@ public class GestionarResultados extends javax.swing.JPanel {
                     set2participante2 = (int) jSpinner11.getValue();
                     set3participante1 = (int) jSpinner3.getValue();
                     set3participante2 = (int) jSpinner12.getValue();
-                    if(set2participante1 == set2participante2 || set3participante1 == set3participante2){
-                        if(!cadenaError.contains("No se permite empate por sets.")){
-                            cadenaError+= "No se permite empate por sets.\n";
+                    if(((set2participante1 != 0) && (set2participante2 != 0)) || ((set3participante1 != 0) && (set3participante2 != 0))){
+                        if(set2participante1 == set2participante2 || set3participante1 == set3participante2){
+                            if(!cadenaError.contains("No se permite empate por sets.")){
+                                cadenaError+= "No se permite empate por sets.\n";
+                            }
                         }
                     }
                 }
@@ -419,9 +423,11 @@ public class GestionarResultados extends javax.swing.JPanel {
                     set4participante2 = (int) jSpinner13.getValue();
                     set5participante1 = (int) jSpinner5.getValue();
                     set5participante2 = (int) jSpinner14.getValue();
-                    if(set4participante1 == set4participante2 || set5participante1 == set5participante2){
-                        if(!cadenaError.contains("No se permite empate por sets.")){
-                            cadenaError+= "No se permite empate por sets.\n";
+                    if(((set4participante1 != 0) && (set4participante2 != 0)) || ((set5participante1 != 0) && (set5participante2 != 0))){
+                        if(set4participante1 == set4participante2 || set5participante1 == set5participante2){
+                            if(!cadenaError.contains("No se permite empate por sets.")){
+                                cadenaError+= "No se permite empate por sets.\n";
+                            }
                         }
                     }
                 }
@@ -430,9 +436,11 @@ public class GestionarResultados extends javax.swing.JPanel {
                     set6participante2 = (int) jSpinner15.getValue();
                     set7participante1 = (int) jSpinner7.getValue();
                     set7participante2 = (int) jSpinner16.getValue();
-                    if(set6participante1 == set6participante2 || set7participante1 == set7participante2){
-                        if(!cadenaError.contains("No se permite empate por sets.")){
-                            cadenaError+= "No se permite empate por sets.\n";
+                    if(((set6participante1 != 0) && (set6participante2 != 0)) || ((set7participante1 != 0) && (set7participante2 != 0))){
+                        if(set6participante1 == set6participante2 || set7participante1 == set7participante2){
+                            if(!cadenaError.contains("No se permite empate por sets.")){
+                                cadenaError+= "No se permite empate por sets.\n";
+                            }
                         }
                     }
                 }
@@ -441,9 +449,11 @@ public class GestionarResultados extends javax.swing.JPanel {
                     set8participante2 = (int) jSpinner17.getValue();
                     set9participante1 = (int) jSpinner9.getValue();
                     set9participante2 = (int) jSpinner18.getValue();
-                    if(set8participante1 == set8participante2 || set9participante1 == set9participante2){
-                        if(!cadenaError.contains("No se permite empate por sets.")){
-                            cadenaError+= "No se permite empate por sets.\n";
+                    if(((set8participante1 != 0) && (set8participante2 != 0)) || ((set9participante1 != 0) && (set9participante2 != 0))){
+                        if(set8participante1 == set8participante2 || set9participante1 == set9participante2){
+                            if(!cadenaError.contains("No se permite empate por sets.")){
+                                cadenaError+= "No se permite empate por sets.\n";
+                            }
                         }
                     }
                 }
