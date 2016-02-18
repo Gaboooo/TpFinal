@@ -174,20 +174,17 @@ public class GestionarFixtureGestor {
         GestionarFixtureDAO.updatePosicion(unaCompetencia, P1, posicionP1);
     }
     
-    
     public static String obtenerFechaActual() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         return dateFormat.format(date);
     }
     
-    
     public static String obtenerHoraActual() {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
     }
-    
     
     public static void addResultadoToHistorial(Partido unPartido, ArrayList<Resultado> listaResultadosAnteriores) {
         ArrayList<HistorialResultado> listaHRs = unPartido.getHistorialResultado();
@@ -202,7 +199,6 @@ public class GestionarFixtureGestor {
         // DAO: Persisto unHR;
         GestionarFixtureDAO.persistirHistorialResultado(unPartido, unHR); }
     
-    
     public static int getCantResultadosCargados(Ronda unaRonda) {
         int cant = 0;
         ArrayList<Partido> listaPartidos = unaRonda.getListaPartidos();
@@ -214,7 +210,6 @@ public class GestionarFixtureGestor {
         return cant;
     }
     
-    
     public static void crearPosiciones(Competencia unaCompetencia) {
         ArrayList<Posicion> tablaPosiciones = new ArrayList<>();
         ArrayList<Participante> listaParticipantes = unaCompetencia.getListaParticipantes();
@@ -225,7 +220,6 @@ public class GestionarFixtureGestor {
         } 
         unaCompetencia.setTablaPosiciones(tablaPosiciones);
     }
-    
     
     public static void aplicarCambiosATablaPosiciones(Competencia unaCompetencia, Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
         ArrayList<Posicion> tablaPosiciones = unaCompetencia.getTablaPosiciones();
@@ -239,8 +233,9 @@ public class GestionarFixtureGestor {
         
         // Asistencia: P0 ^ P1
         if (asistenciaP0 && asistenciaP1) {
-            posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
-            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
+            // 17.02: FIX1
+            /* posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
+            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion()); */
             // Ganador: P0
             if (unGanador == P0) {
                 posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorVictoria());
@@ -318,8 +313,7 @@ public class GestionarFixtureGestor {
         }
         // Asistencia: P0
         else if (asistenciaP0 && !asistenciaP1) {
-            posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion() +
-                    unaCompetencia.getPuntosPorVictoria());
+            posicionP0.setPuntaje(posicionP0.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
             posicionP0.setPartidosGanados(posicionP0.getPartidosGanados() + 1);
             posicionP1.setPartidosPerdidos(posicionP1.getPartidosPerdidos() + 1);
             // formaPuntuacion: SETS - No tiene tantos
@@ -332,8 +326,7 @@ public class GestionarFixtureGestor {
         }
         // Asistencia: P1
         else if (!asistenciaP0 && asistenciaP1) {
-            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion()+
-                    unaCompetencia.getPuntosPorVictoria());
+            posicionP1.setPuntaje(posicionP1.getPuntaje() + unaCompetencia.getPuntosPorPresentacion());
             posicionP1.setPartidosGanados(posicionP1.getPartidosGanados() + 1);
             posicionP0.setPartidosPerdidos(posicionP0.getPartidosPerdidos() + 1);
             // formaPuntuacion: SETS - No tiene tantos
@@ -348,7 +341,6 @@ public class GestionarFixtureGestor {
         GestionarFixtureDAO.updatePosicion(unaCompetencia, P0, posicionP0);
         GestionarFixtureDAO.updatePosicion(unaCompetencia, P1, posicionP1);
     }
-    
     
     public static void addResultadoToPartido(Competencia unaCompetencia, Ronda unaRonda,
             Partido unPartido, ArrayList<Resultado> listaNuevosResultados) {
@@ -436,15 +428,17 @@ public class GestionarFixtureGestor {
     public static void gestionarFixture(CompetenciaAux unaCompetenciaAux,
             RondaAux unaRondaAux, PartidoAux unPartidoAux,
             ArrayList<ResultadoAux> listaNuevosResultadosAux) {
-        //Se obtiene la competencia y su tabla de posiciones
+        // Se obtiene la competencia y su tabla de posiciones
         Competencia unaCompetencia = GenerarFixtureDAO.getCompetencia(unaCompetenciaAux);
-        ArrayList<Posicion> posiciones=DAO.CompetenciaDaoJDBC.getTablaPosiciones(unaCompetencia.getID());
+        ArrayList<Posicion> posiciones = DAO.CompetenciaDaoJDBC.getTablaPosiciones(unaCompetencia.getID());
         unaCompetencia.setTablaPosiciones(posiciones);
         Ronda unaRonda = GestionarFixtureDAO.getRonda(unaRondaAux);
         Partido unPartido = GestionarFixtureDAO.getPartido(unPartidoAux);
         ArrayList<Resultado> listaResultadosAnteriores = unPartido.getListaResultados();
         ArrayList<Resultado> listaNuevosResultados = new ArrayList<>();
+        
         // Creo la lista de nuevos resultados (NO auxiliares)
+        // Si formaPuntuacion: PUNTUACION, la lista solo contiene 1 resultado
         for (ResultadoAux unResultadoAux:listaNuevosResultadosAux) {
             int unNumero = unResultadoAux.getNumero();
             int PP0 = unResultadoAux.getPuntajeP0();
@@ -453,16 +447,19 @@ public class GestionarFixtureGestor {
             Boolean AP1 = unResultadoAux.getAsistenciaP1();
             int indiceGanador = unResultadoAux.getIndiceParticipante();
             Resultado unResultado;
-            if(indiceGanador == 2){
+            // Si hay empate
+            if(indiceGanador == 2) {
                 unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, null); 
             }
-            else{
+            // Si NO hay empate -> Hay un ganador
+            else {
                 Participante ganador = unPartido.getParticipantePorIndice(indiceGanador);
                 unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
             }
             
             listaNuevosResultados.add(unResultado);
         }
+        
         // Si ya tengo resultados cargados
         if (!listaResultadosAnteriores.isEmpty()) {
             // Agregar viejoResultado a historial
@@ -470,8 +467,10 @@ public class GestionarFixtureGestor {
             // Deshacer cambios de viejoResultado en tablaPosiciones
             deshacerCambiosEnTablaPosiciones(unaCompetencia, unPartido);
         }
+        
         // Agregar nuevoResultado a partido
         addResultadoToPartido(unaCompetencia, unaRonda, unPartido, listaNuevosResultados);
+        
         // Si es el PRIMER resultado, el estado pasa a enDisputa...
         if ("Planificada".equals(unaCompetencia.getEstado().getNombre())) {
             Estado nuevoEstado = GenerarFixtureDAO.getEstado("En disputa");
@@ -485,7 +484,7 @@ public class GestionarFixtureGestor {
         int cantPartidosCargados = cantidadPartidosCargados(unaCompetencia.getID());
         int cantPartidosTotal=cantidadPartidosPorRonda(unaCompetencia.getID())*
                 cantRondas(unaCompetenciaAux.getId());
-        /*numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2*/
+        // numRonda == cantParticipantes-1 && cantResultadosCargados == cantParticipantes/2
         if (cantPartidosCargados == cantPartidosTotal) {
             Estado nuevoEstado = GenerarFixtureDAO.getEstado("Finalizada");
             unaCompetencia.setEstado(nuevoEstado);
@@ -495,7 +494,6 @@ public class GestionarFixtureGestor {
         // Aplicar cambios de nuevoResultado a tablaPosiciones
         aplicarCambiosATablaPosiciones(unaCompetencia, unPartido, listaNuevosResultados);
     }
-    
     
     public static ArrayList<ResultadoAux> getResultados(PartidoAux partidoAux){
         ArrayList<ResultadoAux> retorno= new ArrayList<>();
@@ -530,5 +528,4 @@ public class GestionarFixtureGestor {
         
         
     }
-    
 }

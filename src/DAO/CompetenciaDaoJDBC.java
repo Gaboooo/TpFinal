@@ -100,10 +100,10 @@ public class CompetenciaDaoJDBC {
                 partidosGanados=rs.getInt("partidos_ganados");
                 partidosPerdidos=rs.getInt("partidos_perdidos");
                 partidosEmpatados=rs.getInt("partidos_empatados");
-                tantoEnContra=rs.getInt("tantos_en_contra");
                 tantoAFavor=rs.getInt("tantos_a_favor");
+                tantoEnContra=rs.getInt("tantos_en_contra");
                 Participante unParticipante = getParticipante(rs.getInt("id_participante"));
-                Posicion pp= new Posicion(id,unParticipante,puntos,partidosGanados,partidosPerdidos,partidosEmpatados,tantoEnContra,tantoAFavor);
+                Posicion pp= new Posicion(id,unParticipante,puntos,partidosGanados,partidosPerdidos,partidosEmpatados,tantoAFavor,tantoEnContra);
                 
                 tps.add(pp);
             }

@@ -10,7 +10,7 @@ public class PosicionAux {
     private int tantosEnContra;
     private int tantosAFavor;
    
-    public PosicionAux(String NombreParticipante, int puntos, int partidosGanados, int partidosPerdidos, int partidosEmpatados, int tantosEnContra, int tantosAFavor) {
+    public PosicionAux(String NombreParticipante, int puntos, int partidosGanados, int partidosPerdidos, int partidosEmpatados, int tantosAFavor, int tantosEnContra) {
         
         this.nombreParticipante = NombreParticipante;
         this.puntos = puntos;
