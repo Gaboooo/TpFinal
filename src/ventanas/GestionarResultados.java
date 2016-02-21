@@ -486,14 +486,14 @@ public class GestionarResultados extends javax.swing.JPanel {
                     set9participante2 = (int) jSpinner18.getValue();
                     
                     if(set1participante1 == 0 && set1participante2 == 0
-                       && set2participante1 == 0 && set2participante2 == 0
-                       && set3participante1 == 0 && set3participante2 == 0
+                        && set2participante1 == 0 && set2participante2 == 0
+                        && set3participante1 == 0 && set3participante2 == 0
                         && set4participante1 == 0 && set4participante2 == 0
-                       && set5participante1 == 0 && set5participante2 == 0
+                        && set5participante1 == 0 && set5participante2 == 0
                         && set6participante1 == 0 && set6participante2 == 0
-                       && set7participante1 == 0 && set7participante2 == 0
+                        && set7participante1 == 0 && set7participante2 == 0
                         && set8participante1 == 0 && set8participante2 == 0
-                       && set9participante1 == 0 && set9participante2 == 0){
+                        && set9participante1 == 0 && set9participante2 == 0){
                         cadenaError+= "Debe Ingresar un resultado.\n";
                     }
                 }
