@@ -393,6 +393,111 @@ public class GestionarResultados extends javax.swing.JPanel {
                 int set9participante1 = 0;
                 int set9participante2 = 0;
                 
+                if(cantSets == 1){
+                    set1participante1 = (int) jSpinner1.getValue();
+                    set1participante2 = (int) jSpinner10.getValue();
+                    
+                    if(set1participante1 == 0 && set1participante2 == 0){
+                        cadenaError+= "Debe Ingresar un resultado.\n";
+                    }
+                }
+                
+                if(cantSets == 3){
+                    set1participante1 = (int) jSpinner1.getValue();
+                    set1participante2 = (int) jSpinner10.getValue();
+                    set2participante1 = (int) jSpinner2.getValue();
+                    set2participante2 = (int) jSpinner11.getValue();
+                    set3participante1 = (int) jSpinner3.getValue();
+                    set3participante2 = (int) jSpinner12.getValue();
+                    
+                    if(set1participante1 == 0 && set1participante2 == 0
+                       && set2participante1 == 0 && set2participante2 == 0
+                       && set3participante1 == 0 && set3participante2 == 0){
+                        cadenaError+= "Debe Ingresar un resultado.\n";
+                    }
+                }
+                
+                if(cantSets == 5){
+                    set1participante1 = (int) jSpinner1.getValue();
+                    set1participante2 = (int) jSpinner10.getValue();
+                    set2participante1 = (int) jSpinner2.getValue();
+                    set2participante2 = (int) jSpinner11.getValue();
+                    set3participante1 = (int) jSpinner3.getValue();
+                    set3participante2 = (int) jSpinner12.getValue();
+                    set4participante1 = (int) jSpinner4.getValue();
+                    set4participante2 = (int) jSpinner13.getValue();
+                    set5participante1 = (int) jSpinner5.getValue();
+                    set5participante2 = (int) jSpinner14.getValue();
+                    
+                    if(set1participante1 == 0 && set1participante2 == 0
+                       && set2participante1 == 0 && set2participante2 == 0
+                       && set3participante1 == 0 && set3participante2 == 0
+                        && set4participante1 == 0 && set4participante2 == 0
+                       && set5participante1 == 0 && set5participante2 == 0){
+                        cadenaError+= "Debe Ingresar un resultado.\n";
+                    }
+                }
+                
+                if(cantSets == 7){
+                    set1participante1 = (int) jSpinner1.getValue();
+                    set1participante2 = (int) jSpinner10.getValue();
+                    set2participante1 = (int) jSpinner2.getValue();
+                    set2participante2 = (int) jSpinner11.getValue();
+                    set3participante1 = (int) jSpinner3.getValue();
+                    set3participante2 = (int) jSpinner12.getValue();
+                    set4participante1 = (int) jSpinner4.getValue();
+                    set4participante2 = (int) jSpinner13.getValue();
+                    set5participante1 = (int) jSpinner5.getValue();
+                    set5participante2 = (int) jSpinner14.getValue();
+                    set6participante1 = (int) jSpinner6.getValue();
+                    set6participante2 = (int) jSpinner15.getValue();
+                    set7participante1 = (int) jSpinner7.getValue();
+                    set7participante2 = (int) jSpinner16.getValue();
+                    
+                    if(set1participante1 == 0 && set1participante2 == 0
+                       && set2participante1 == 0 && set2participante2 == 0
+                       && set3participante1 == 0 && set3participante2 == 0
+                        && set4participante1 == 0 && set4participante2 == 0
+                       && set5participante1 == 0 && set5participante2 == 0
+                        && set6participante1 == 0 && set6participante2 == 0
+                       && set7participante1 == 0 && set7participante2 == 0){
+                        cadenaError+= "Debe Ingresar un resultado.\n";
+                    }
+                }
+                
+                if(cantSets == 9){
+                    set1participante1 = (int) jSpinner1.getValue();
+                    set1participante2 = (int) jSpinner10.getValue();
+                    set2participante1 = (int) jSpinner2.getValue();
+                    set2participante2 = (int) jSpinner11.getValue();
+                    set3participante1 = (int) jSpinner3.getValue();
+                    set3participante2 = (int) jSpinner12.getValue();
+                    set4participante1 = (int) jSpinner4.getValue();
+                    set4participante2 = (int) jSpinner13.getValue();
+                    set5participante1 = (int) jSpinner5.getValue();
+                    set5participante2 = (int) jSpinner14.getValue();
+                    set6participante1 = (int) jSpinner6.getValue();
+                    set6participante2 = (int) jSpinner15.getValue();
+                    set7participante1 = (int) jSpinner7.getValue();
+                    set7participante2 = (int) jSpinner16.getValue();
+                    set8participante1 = (int) jSpinner8.getValue();
+                    set8participante2 = (int) jSpinner17.getValue();
+                    set9participante1 = (int) jSpinner9.getValue();
+                    set9participante2 = (int) jSpinner18.getValue();
+                    
+                    if(set1participante1 == 0 && set1participante2 == 0
+                       && set2participante1 == 0 && set2participante2 == 0
+                       && set3participante1 == 0 && set3participante2 == 0
+                        && set4participante1 == 0 && set4participante2 == 0
+                       && set5participante1 == 0 && set5participante2 == 0
+                        && set6participante1 == 0 && set6participante2 == 0
+                       && set7participante1 == 0 && set7participante2 == 0
+                        && set8participante1 == 0 && set8participante2 == 0
+                       && set9participante1 == 0 && set9participante2 == 0){
+                        cadenaError+= "Debe Ingresar un resultado.\n";
+                    }
+                }
+                
                 
                 if(cantSets >= 1){
                     set1participante1 = (int) jSpinner1.getValue();
