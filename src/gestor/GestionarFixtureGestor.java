@@ -433,7 +433,10 @@ public class GestionarFixtureGestor {
         ArrayList<Posicion> posiciones = DAO.CompetenciaDaoJDBC.getTablaPosiciones(unaCompetencia.getID());
         unaCompetencia.setTablaPosiciones(posiciones);
         Ronda unaRonda = GestionarFixtureDAO.getRonda(unaRondaAux);
-        Partido unPartido = GestionarFixtureDAO.getPartido(unPartidoAux);
+        Partido unPartido = null;
+        // NOTA: Lo encuentra si o si :)
+        for (Partido otroPartido:unaRonda.getListaPartidos()) {
+            if (otroPartido.getID() == unPartidoAux.getId()) { unPartido = otroPartido; } }
         ArrayList<Resultado> listaResultadosAnteriores = unPartido.getListaResultados();
         ArrayList<Resultado> listaNuevosResultados = new ArrayList<>();
         
@@ -456,7 +459,6 @@ public class GestionarFixtureGestor {
                 Participante ganador = unPartido.getParticipantePorIndice(indiceGanador);
                 unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
             }
-            
             listaNuevosResultados.add(unResultado);
         }
         

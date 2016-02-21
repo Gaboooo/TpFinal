@@ -589,7 +589,8 @@ public class GestionarResultados extends javax.swing.JPanel {
                     listaSets.add(set9participante1);
                     listaSets.add(set9participante2);
                 }
-                // Se recorre la listaSets y se compara los resultados para guardar el indice.
+                // Se recorre la listaSets y se compara los resultados para guardar el indice
+                // Deberia arrancar desde 1 en vez de desde 0?
                 for (int i=0; i<(cantSets*2); i+=2) {
                     int PP1 = listaSets.get(i);
                     int PP2 = listaSets.get(i+1);
@@ -599,7 +600,9 @@ public class GestionarResultados extends javax.swing.JPanel {
                     else{
                         contador2 += 1;
                     }
-                    if(i == (cantSets*2)-1){
+                    // Posibles valores de (cantSets*2)-1: 1, 5, 9, 13, 17
+                    // NOTA: Cambie -1 por -2. NO puedo modificar 'i' arriba
+                    if(i == (cantSets*2)-2){
                         if(contador1>contador2){
                             indiceGanador = 0;
                         }
