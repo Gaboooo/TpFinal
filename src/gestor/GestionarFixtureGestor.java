@@ -457,7 +457,13 @@ public class GestionarFixtureGestor {
             // Si NO hay empate -> Hay un ganador
             else {
                 Participante ganador = unPartido.getParticipantePorIndice(indiceGanador);
-                unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador);
+                // Si solo asiste uno
+                if (AP0 && !AP1) {
+                    unResultado = new Resultado(unNumero, unaCompetencia.getTantosPorAusenciaDeRival(), 0, AP0, AP1, ganador); }
+                else if (!AP0 && AP1) {
+                    unResultado = new Resultado(unNumero, 0, unaCompetencia.getTantosPorAusenciaDeRival(), AP0, AP1, ganador); }
+                else {
+                    unResultado = new Resultado(unNumero, PP0, PP1, AP0, AP1, ganador); }
             }
             listaNuevosResultados.add(unResultado);
         }
