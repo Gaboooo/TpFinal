@@ -392,6 +392,14 @@ public class GestionarResultados extends javax.swing.JPanel {
                 int set8participante2 = 0;
                 int set9participante1 = 0;
                 int set9participante2 = 0;
+                int setsparticipante1 = contarSetsParticipante1();
+                int setsparticipante2 = contarSetsParticipante2();
+                                    
+                if(!(setsparticipante1  >= (cantSets/2)+1 || setsparticipante2  >= (cantSets/2)+1)){
+                    if(!cadenaError.contains("No se permiten resultados parciales")){
+                        cadenaError+= "No se permiten resultados parciales.\n";
+                    }
+                }
                 
                 if(cantSets == 1){
                     set1participante1 = (int) jSpinner1.getValue();
@@ -466,24 +474,6 @@ public class GestionarResultados extends javax.swing.JPanel {
                 }
                 
                 if(cantSets == 9){
-                    set1participante1 = (int) jSpinner1.getValue();
-                    set1participante2 = (int) jSpinner10.getValue();
-                    set2participante1 = (int) jSpinner2.getValue();
-                    set2participante2 = (int) jSpinner11.getValue();
-                    set3participante1 = (int) jSpinner3.getValue();
-                    set3participante2 = (int) jSpinner12.getValue();
-                    set4participante1 = (int) jSpinner4.getValue();
-                    set4participante2 = (int) jSpinner13.getValue();
-                    set5participante1 = (int) jSpinner5.getValue();
-                    set5participante2 = (int) jSpinner14.getValue();
-                    set6participante1 = (int) jSpinner6.getValue();
-                    set6participante2 = (int) jSpinner15.getValue();
-                    set7participante1 = (int) jSpinner7.getValue();
-                    set7participante2 = (int) jSpinner16.getValue();
-                    set8participante1 = (int) jSpinner8.getValue();
-                    set8participante2 = (int) jSpinner17.getValue();
-                    set9participante1 = (int) jSpinner9.getValue();
-                    set9participante2 = (int) jSpinner18.getValue();
                     
                     if(set1participante1 == 0 && set1participante2 == 0
                         && set2participante1 == 0 && set2participante2 == 0
@@ -498,6 +488,7 @@ public class GestionarResultados extends javax.swing.JPanel {
                     }
                 }
                 
+
                 
                 if(cantSets >= 1){
                     set1participante1 = (int) jSpinner1.getValue();
@@ -885,6 +876,108 @@ public class GestionarResultados extends javax.swing.JPanel {
             jCheckBox4.setVisible(true);            
             repaint();
         }
+    }
+    
+    private int contarSetsParticipante1(){
+                    int set1participante1 = (int) jSpinner1.getValue();
+                    int set1participante2 = (int) jSpinner10.getValue();
+                    int set2participante1 = (int) jSpinner2.getValue();
+                    int set2participante2 = (int) jSpinner11.getValue();
+                    int set3participante1 = (int) jSpinner3.getValue();
+                    int set3participante2 = (int) jSpinner12.getValue();
+                    int set4participante1 = (int) jSpinner4.getValue();
+                    int set4participante2 = (int) jSpinner13.getValue();
+                    int set5participante1 = (int) jSpinner5.getValue();
+                    int set5participante2 = (int) jSpinner14.getValue();
+                    int set6participante1 = (int) jSpinner6.getValue();
+                    int set6participante2 = (int) jSpinner15.getValue();
+                    int set7participante1 = (int) jSpinner7.getValue();
+                    int set7participante2 = (int) jSpinner16.getValue();
+                    int set8participante1 = (int) jSpinner8.getValue();
+                    int set8participante2 = (int) jSpinner17.getValue();
+                    int set9participante1 = (int) jSpinner9.getValue();
+                    int set9participante2 = (int) jSpinner18.getValue();
+                    int contador = 0;
+                    
+                    if(set1participante1 > set1participante2){
+                        contador++;
+                    }
+                    if(set2participante1 > set2participante2){
+                        contador++;
+                    }
+                    if(set3participante1 > set3participante2){
+                        contador++;
+                    }
+                    if(set4participante1 > set4participante2){
+                        contador++;
+                    }
+                    if(set5participante1 > set5participante2){
+                        contador++;
+                    }
+                    if(set6participante1 > set6participante2){
+                        contador++;
+                    }
+                    if(set7participante1 > set7participante2){
+                        contador++;
+                    }
+                    if(set8participante1 > set8participante2){
+                        contador++;
+                    }
+                    if(set9participante1 > set9participante2){
+                        contador++;
+                    }
+                    return(contador);
+    }
+    
+    private int contarSetsParticipante2(){
+                    int set1participante1 = (int) jSpinner1.getValue();
+                    int set1participante2 = (int) jSpinner10.getValue();
+                    int set2participante1 = (int) jSpinner2.getValue();
+                    int set2participante2 = (int) jSpinner11.getValue();
+                    int set3participante1 = (int) jSpinner3.getValue();
+                    int set3participante2 = (int) jSpinner12.getValue();
+                    int set4participante1 = (int) jSpinner4.getValue();
+                    int set4participante2 = (int) jSpinner13.getValue();
+                    int set5participante1 = (int) jSpinner5.getValue();
+                    int set5participante2 = (int) jSpinner14.getValue();
+                    int set6participante1 = (int) jSpinner6.getValue();
+                    int set6participante2 = (int) jSpinner15.getValue();
+                    int set7participante1 = (int) jSpinner7.getValue();
+                    int set7participante2 = (int) jSpinner16.getValue();
+                    int set8participante1 = (int) jSpinner8.getValue();
+                    int set8participante2 = (int) jSpinner17.getValue();
+                    int set9participante1 = (int) jSpinner9.getValue();
+                    int set9participante2 = (int) jSpinner18.getValue();
+                    int contador = 0;
+                    
+                    if(set1participante2 > set1participante1){
+                        contador++;
+                    }
+                    if(set2participante2 > set2participante1){
+                        contador++;
+                    }
+                    if(set3participante2 > set3participante1){
+                        contador++;
+                    }
+                    if(set4participante2 > set4participante1){
+                        contador++;
+                    }
+                    if(set5participante2 > set5participante1){
+                        contador++;
+                    }
+                    if(set6participante2 > set6participante1){
+                        contador++;
+                    }
+                    if(set7participante2 > set7participante1){
+                        contador++;
+                    }
+                    if(set8participante2 > set8participante1){
+                        contador++;
+                    }
+                    if(set9participante2 > set9participante1){
+                        contador++;
+                    }
+                    return(contador);
     }
     
     private void crearVentana(){
