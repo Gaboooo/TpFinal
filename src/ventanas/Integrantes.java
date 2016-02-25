@@ -33,6 +33,7 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -67,7 +68,7 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel6.setBounds(650, 82, 150, 30);
 
         jLabel8.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel8.setText("Jorge Ramirez");
+        jLabel8.setText("Ramirez Jorge");
         add(jLabel8);
         jLabel8.setBounds(680, 152, 120, 22);
 
@@ -78,9 +79,14 @@ public class Integrantes extends javax.swing.JPanel {
         jLabel3.setIcon(avatar);
 
         jLabel13.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jLabel13.setText("Vargas Gabriel");
+        jLabel13.setText("Schneider Alejandro");
         add(jLabel13);
         jLabel13.setBounds(680, 150, 120, 90);
+
+        jLabel14.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel14.setText("Vargas Gabriel");
+        add(jLabel14);
+        jLabel14.setBounds(680, 200, 120, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/img_general.jpg"))); // NOI18N
         add(jLabel4);
@@ -96,6 +102,7 @@ public class Integrantes extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
