@@ -691,17 +691,17 @@ public class GestionarResultados extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        V.get().remove(this);
-        V.get().gestionarResultadosVolver();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().gestionarResultadosVolver();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        V.get().remove(this);
-        V.get().gestionarResultadosSalir();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().gestionarResultadosSalir();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
@@ -723,12 +723,12 @@ public class GestionarResultados extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox2StateChanged
 
     private void Error(String cadenaError){
-        V.get().alerta();
+        GestorVentanas.get().alerta();
         JOptionPane.showMessageDialog(null,cadenaError,"Error", JOptionPane.INFORMATION_MESSAGE);
     }
     private void finVentana(){
-        V.get().remove(this);
-        V.get().mostrarFixtureVolver(compAux);
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().mostrarFixtureVolver(compAux);
     }
     private void crearYLlenarVentana(){
         String formaPuntuacion = compAux.getFormaPuntuacion();

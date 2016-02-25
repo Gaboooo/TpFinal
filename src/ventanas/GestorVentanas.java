@@ -22,12 +22,12 @@ import sonidos.alertaSuave;
  *
  * @author Martin
  */
-public class V extends javax.swing.JFrame {
+public class GestorVentanas extends javax.swing.JFrame {
    
     // Forma de SINGLETON
-    private static final V SELF = new V();
+    private static final GestorVentanas SELF = new GestorVentanas();
     //private V() {}
-    public static V get(){
+    public static GestorVentanas get(){
         return SELF;
     }
     
@@ -42,7 +42,7 @@ public class V extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    private V() {
+    private GestorVentanas() {
         initComponents();
     }
     
@@ -261,7 +261,7 @@ public class V extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new V().get().setVisible(true);
+                new GestorVentanas().get().setVisible(true);
             }
         });
     }

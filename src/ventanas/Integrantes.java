@@ -94,7 +94,7 @@ public class Integrantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        V.get().integrantesVolver();
+        GestorVentanas.get().integrantesVolver();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

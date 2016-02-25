@@ -187,8 +187,8 @@ public class MostrarFixture extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaSalir();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -196,7 +196,7 @@ public class MostrarFixture extends javax.swing.JPanel {
         int row = jTable1.getSelectedRow();
         
         if(row == -1){
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null,"Debe seleccionar un partido",
                     "Error al gestionar resultado", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -210,22 +210,22 @@ public class MostrarFixture extends javax.swing.JPanel {
             
             PartidoAux partidoActual= new PartidoAux(id, part1, part2, "");
             RondaAux rondaActual=rondas.get((int)jSpinner1.getValue()-1);
-            V.get().gestionarResultados(compAux, rondaActual, partidoActual);
+            GestorVentanas.get().gestionarResultados(compAux, rondaActual, partidoActual);
         }
         else{
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null,"No se puede modificar la ronda",
                     "Error al gestionar resultado", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaRecargar(compAux);
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().verCompetenciaRecargar(compAux);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged

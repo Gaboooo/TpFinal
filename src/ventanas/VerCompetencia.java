@@ -260,20 +260,20 @@ public class VerCompetencia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().remove(this);
-        V.get().listarCompetenciasSalir();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().listarCompetenciasSalir();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().listarParticipantes(compAux);
+        GestorVentanas.get().listarParticipantes(compAux);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(!"Creada".equals(compAux.getEstado())){
-            V.get().mostrarFixture(compAux);
+            GestorVentanas.get().mostrarFixture(compAux);
         }
         else{
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null, "La competencia debe estar Planificada, en disputa o finalizada",
                     "Error al mostrar Fixture", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -287,25 +287,25 @@ public class VerCompetencia extends javax.swing.JPanel {
         boolean ml= modalidadLiga();
         boolean dop= disputaOFinalizada();
         if(ml || dop){
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null,cadenaError,
                     "Error", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
-            V.get().mostrarTablaPosiciones(compAux);
+            GestorVentanas.get().mostrarTablaPosiciones(compAux);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        V.get().remove(this);
-        V.get().listarCompetenciasVolver();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().listarCompetenciasVolver();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Contar cantidad de participantes, mayor o igual a 2
         int cant=gestor.GestorParticipante.cantidadParticipantes(compAux.getId());
         if(cant<2){
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null, "La competencia debe tener dos o mas participantes",
                     "Error al generar Fixture", JOptionPane.INFORMATION_MESSAGE);
 
@@ -335,14 +335,14 @@ public class VerCompetencia extends javax.swing.JPanel {
             }
         }
         else {
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null, "La competencia debe estar en estado Creada o Planificada",
                     "Error al generar Fixture", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButton9ActionPerformed
 
 

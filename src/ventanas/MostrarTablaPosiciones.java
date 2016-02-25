@@ -166,17 +166,17 @@ public class MostrarTablaPosiciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaSalir();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaVolver();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().verCompetenciaVolver();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
     
     

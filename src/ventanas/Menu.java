@@ -127,7 +127,7 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().listarCompetencias();
+        GestorVentanas.get().listarCompetencias();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -135,12 +135,12 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        V.get().salir();
+        GestorVentanas.get().salir();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // Hacer que se muestre la ventana de Integrantes
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

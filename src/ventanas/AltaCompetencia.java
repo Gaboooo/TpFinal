@@ -429,7 +429,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
         nomb = verificarNombreCompetencia();
         disp = verificarDisponibilidades();
         if(nomb || disp){
-            V.get().alerta();
+            GestorVentanas.get().alerta();
         }
         else{
             // Se extraen todos los datos para pasar al gestor
@@ -450,14 +450,14 @@ public class AltaCompetencia extends javax.swing.JPanel {
                     puntuacion, jPuntuacion, jSets, jPtosGanado , jPresentarse, jEmpate, jPtosEmpate);
             JOptionPane.showMessageDialog(null, "Competencia creada exitosamente", "", JOptionPane.INFORMATION_MESSAGE);
             
-            V.get().remove(this);
-            V.get().listarCompetenciasVolver();
+            GestorVentanas.get().remove(this);
+            GestorVentanas.get().listarCompetenciasVolver();
         }
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-        V.get().remove(this);
-        V.get().listarCompetenciasVolver();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().listarCompetenciasVolver();
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void jComboBoxPuntuacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPuntuacionItemStateChanged
@@ -511,8 +511,8 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jSpinnerPtosEmpateStateChanged
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
-        V.get().remove(this);
-        V.get().listarCompetenciasSalir();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().listarCompetenciasSalir();
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
     private void jTextFieldNombreCompetenciaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreCompetenciaFocusGained
@@ -533,7 +533,7 @@ public class AltaCompetencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBoxDeporteItemStateChanged
 
     private void jButtonIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntegrantesActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButtonIntegrantesActionPerformed
 
 

@@ -165,32 +165,32 @@ public class ListarParticipantes extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "Si agrega un participante se eliminara el fixture",
                     "Agregar participante", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
-                V.get().altaParticipante(compAux);
+                GestorVentanas.get().altaParticipante(compAux);
             }
         }
         else if("Creada".equals(compAux.getEstado()) || "Planificada".equals(compAux.getEstado())){
-            V.get().altaParticipante(compAux);
+            GestorVentanas.get().altaParticipante(compAux);
         }
         else{
             JOptionPane.showMessageDialog(null,"<html>La competencia debe estar en<br>"+
                                                 "estado 'Creada' o 'Planificada'",
                     "Error al agregar participante", JOptionPane.INFORMATION_MESSAGE);
-            V.get().alerta();
+            GestorVentanas.get().alerta();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaRecargar(compAux);
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().verCompetenciaRecargar(compAux);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        V.get().remove(this);
-        V.get().verCompetenciaSalir();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().verCompetenciaSalir();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

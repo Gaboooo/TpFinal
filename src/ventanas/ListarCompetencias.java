@@ -248,8 +248,8 @@ public class ListarCompetencias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-        V.get().remove(this);
-        V.get().menuVolver();
+        GestorVentanas.get().remove(this);
+        GestorVentanas.get().menuVolver();
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -314,7 +314,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
 
     private void jButtonCrearCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearCompetenciaActionPerformed
         this.setVisible(false);
-        V.get().altaCompetencia();
+        GestorVentanas.get().altaCompetencia();
     }//GEN-LAST:event_jButtonCrearCompetenciaActionPerformed
 
     private void jButtonVerCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerCompetenciaActionPerformed
@@ -322,7 +322,7 @@ public class ListarCompetencias extends javax.swing.JPanel {
         int row = jTable1.getSelectedRow();
         
         if(row == -1){
-            V.get().alerta();
+            GestorVentanas.get().alerta();
             JOptionPane.showMessageDialog(null,"Debe seleccionar una competencia",
                     "Error", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -340,18 +340,18 @@ public class ListarCompetencias extends javax.swing.JPanel {
             
             CompetenciaAux compAux= new CompetenciaAux(estado, deporte, modalidad,
                     nombre, elem.getFormaPuntuacion(), idComp);
-            V.get().verCompetencia(compAux);
+            GestorVentanas.get().verCompetencia(compAux);
         }
         
         
     }//GEN-LAST:event_jButtonVerCompetenciaActionPerformed
 
     private void jButtonIntegrantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntegrantesActionPerformed
-        V.get().integrantes(this);
+        GestorVentanas.get().integrantes(this);
     }//GEN-LAST:event_jButtonIntegrantesActionPerformed
 
     private void errorFiltros(){
-        V.get().alerta();
+        GestorVentanas.get().alerta();
         JOptionPane.showMessageDialog(null, "Ingrese un filtro de busqueda", "", JOptionPane.INFORMATION_MESSAGE);
     }
     
